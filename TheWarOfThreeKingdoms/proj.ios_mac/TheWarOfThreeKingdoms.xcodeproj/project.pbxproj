@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05C9B2751E90DD7F0031D6A3 /* GameWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05C9B2731E90DD7F0031D6A3 /* GameWorld.cpp */; settings = {ASSET_TAGS = (); }; };
+		05C9B2761E90DD7F0031D6A3 /* GameWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05C9B2731E90DD7F0031D6A3 /* GameWorld.cpp */; settings = {ASSET_TAGS = (); }; };
+		05C9B27D1E90EEB70031D6A3 /* Squad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05C9B27B1E90EEB70031D6A3 /* Squad.cpp */; settings = {ASSET_TAGS = (); }; };
+		05C9B27E1E90EEB70031D6A3 /* Squad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05C9B27B1E90EEB70031D6A3 /* Squad.cpp */; settings = {ASSET_TAGS = (); }; };
+		05C9B2811E90F7610031D6A3 /* GameMaster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05C9B27F1E90F7610031D6A3 /* GameMaster.cpp */; settings = {ASSET_TAGS = (); }; };
+		05C9B2821E90F7610031D6A3 /* GameMaster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05C9B27F1E90F7610031D6A3 /* GameMaster.cpp */; settings = {ASSET_TAGS = (); }; };
+		05C9B2861E90FCF50031D6A3 /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05C9B2841E90FCF50031D6A3 /* Character.cpp */; settings = {ASSET_TAGS = (); }; };
+		05C9B2871E90FCF50031D6A3 /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05C9B2841E90FCF50031D6A3 /* Character.cpp */; settings = {ASSET_TAGS = (); }; };
 		1AC6FB21180E996B004C840B /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2d Mac.a */; };
 		1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FB07180E9839004C840B /* libcocos2d iOS.a */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -23,8 +31,6 @@
 		46880B8219C43A67006E1F66 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 46880B7A19C43A67006E1F66 /* HelloWorld.png */; };
 		46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8419C43A87006E1F66 /* AppDelegate.cpp */; };
 		46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8419C43A87006E1F66 /* AppDelegate.cpp */; };
-		46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */; };
-		46880B8B19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */; };
 		503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 503AE0F617EB97AB00D1A890 /* Icon.icns */; };
 		503AE10017EB989F00D1A890 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FB17EB989F00D1A890 /* AppController.mm */; };
 		503AE10117EB989F00D1A890 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FC17EB989F00D1A890 /* main.m */; };
@@ -73,6 +79,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		05C9B2781E90DD800031D6A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 507B40FD1C31BDD30067B53E;
+			remoteInfo = "libcocos2d tvOS";
+		};
 		1AC6FAF8180E9839004C840B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */;
@@ -104,6 +117,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05C9B2731E90DD7F0031D6A3 /* GameWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameWorld.cpp; sourceTree = "<group>"; };
+		05C9B2741E90DD7F0031D6A3 /* GameWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameWorld.h; sourceTree = "<group>"; };
+		05C9B27B1E90EEB70031D6A3 /* Squad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Squad.cpp; sourceTree = "<group>"; };
+		05C9B27C1E90EEB70031D6A3 /* Squad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Squad.h; sourceTree = "<group>"; };
+		05C9B27F1E90F7610031D6A3 /* GameMaster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameMaster.cpp; sourceTree = "<group>"; };
+		05C9B2801E90F7610031D6A3 /* GameMaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMaster.h; sourceTree = "<group>"; };
+		05C9B2841E90FCF50031D6A3 /* Character.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Character.cpp; sourceTree = "<group>"; };
+		05C9B2851E90FCF50031D6A3 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
 		1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../cocos2d/build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -117,8 +138,6 @@
 		46880B7A19C43A67006E1F66 /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
 		46880B8419C43A87006E1F66 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		46880B8519C43A87006E1F66 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HelloWorldScene.cpp; sourceTree = "<group>"; };
-		46880B8719C43A87006E1F66 /* HelloWorldScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloWorldScene.h; sourceTree = "<group>"; };
 		503AE0F617EB97AB00D1A890 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 		503AE0F717EB97AB00D1A890 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503AE0FA17EB989F00D1A890 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppController.h; path = ios/AppController.h; sourceTree = SOURCE_ROOT; };
@@ -211,6 +230,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05C9B27A1E90EE5F0031D6A3 /* Squad */ = {
+			isa = PBXGroup;
+			children = (
+				05C9B27B1E90EEB70031D6A3 /* Squad.cpp */,
+				05C9B27C1E90EEB70031D6A3 /* Squad.h */,
+			);
+			name = Squad;
+			sourceTree = "<group>";
+		};
+		05C9B2831E90FCDD0031D6A3 /* Character */ = {
+			isa = PBXGroup;
+			children = (
+				05C9B2841E90FCF50031D6A3 /* Character.cpp */,
+				05C9B2851E90FCF50031D6A3 /* Character.h */,
+			);
+			name = Character;
+			sourceTree = "<group>";
+		};
 		080E96DDFE201D6D7F000001 /* ios */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,6 +277,7 @@
 			children = (
 				1AC6FAF9180E9839004C840B /* libcocos2d Mac.a */,
 				1AC6FB07180E9839004C840B /* libcocos2d iOS.a */,
+				05C9B2791E90DD800031D6A3 /* libcocos2d tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -301,10 +339,14 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				05C9B2831E90FCDD0031D6A3 /* Character */,
+				05C9B27A1E90EE5F0031D6A3 /* Squad */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
-				46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */,
-				46880B8719C43A87006E1F66 /* HelloWorldScene.h */,
+				05C9B2731E90DD7F0031D6A3 /* GameWorld.cpp */,
+				05C9B2741E90DD7F0031D6A3 /* GameWorld.h */,
+				05C9B27F1E90F7610031D6A3 /* GameMaster.cpp */,
+				05C9B2801E90F7610031D6A3 /* GameMaster.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -431,6 +473,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		05C9B2791E90DD800031D6A3 /* libcocos2d tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libcocos2d tvOS.a";
+			remoteRef = 05C9B2781E90DD800031D6A3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		1AC6FAF9180E9839004C840B /* libcocos2d Mac.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -498,11 +547,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05C9B2811E90F7610031D6A3 /* GameMaster.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
-				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
+				05C9B2751E90DD7F0031D6A3 /* GameWorld.cpp in Sources */,
+				05C9B2861E90FCF50031D6A3 /* Character.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				05C9B27D1E90EEB70031D6A3 /* Squad.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,9 +562,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05C9B2761E90DD7F0031D6A3 /* GameWorld.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				05C9B2821E90F7610031D6A3 /* GameMaster.cpp in Sources */,
+				05C9B2871E90FCF50031D6A3 /* Character.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
-				46880B8B19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
+				05C9B27E1E90EEB70031D6A3 /* Squad.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
