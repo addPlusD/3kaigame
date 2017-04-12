@@ -74,6 +74,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     register_all_packages();
 
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("character.plist");    
     // create a scene. it's an autorelease object
     auto scene = GameWorld::createScene();
 
