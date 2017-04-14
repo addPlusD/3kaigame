@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include "cocos2d.h"
 #include <string>
-
+//test
 
 class Card:public cocos2d::Sprite
 {
