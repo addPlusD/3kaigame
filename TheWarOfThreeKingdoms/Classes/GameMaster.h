@@ -31,7 +31,7 @@ public:
     
     cocos2d::Vector<Squad*> getHomeLaneVector(int);
     cocos2d::Vector<Character*> getAwayLaneVector(int);
-
+    
     
     void checkCollision();
     

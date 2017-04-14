@@ -9,20 +9,20 @@
 class Card:public cocos2d::Sprite
 {
 public:
-	Card();
-	~Card();
-
-	static Card* create(const std::string& _file, int characterId, int position);
-
-	void initOptions(int position);
-
-	void addEvents();
-	void setCharacterId(int id);
-	int getCharacterId();
-//	void touchEvent(cocos2d::Touch* touch, cocos2d::Vector2 _p);
-
+    Card();
+    ~Card();
+    
+    static Card* create(const std::string& _file, int characterId, int position);
+    
+    void initOptions(int position);
+    
+    void addEvents();
+    void setCharacterId(int id);
+    int getCharacterId();
+    //	void touchEvent(cocos2d::Touch* touch, cocos2d::Vector2 _p);
+    
 private:
-	int characterId;
+    int characterId;
 };
 #endif // _CARD_HPP_
 

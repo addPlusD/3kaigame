@@ -13,7 +13,7 @@
 #include "cocos2d.h"
 
 class Squad : public cocos2d::Object{
-
+    
 public:
     virtual bool init();
     virtual void update();
@@ -24,7 +24,7 @@ public:
     void loseBlood(int);
     void createCharacterOnPath();
     
-
+    
 private:
     int x, y;
     int health;

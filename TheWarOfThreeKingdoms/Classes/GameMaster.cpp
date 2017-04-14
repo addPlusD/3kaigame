@@ -12,7 +12,7 @@ USING_NS_CC;
 
 
 GameMaster* GameMaster::createMaster(){
-	return GameMaster::create();
+    return GameMaster::create();
 }
 
 
