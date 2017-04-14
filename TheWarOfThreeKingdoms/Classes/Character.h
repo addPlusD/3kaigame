@@ -20,20 +20,20 @@ public:
     virtual bool init();
     virtual void update();
     
-    bool findEnemyWithinRange();
+    Character findEnemyWithinRange(Character* enemy);
     //void move();
     void stopAndAttack();
     void loseBlood(int);
     void createCharacterOnPath();
 
-	static Character* createCharacter(const std::string& _file);
+	static Character* createCharacter(const std::string& _file, int direction);
 	void createWalkAnimation();
 
 private:
     int x, y;
     int health;
     int attackDamage;
-    //int direction;
+    int direction; //-1 = NPC  1=player
     float speed;
     bool attacking;
 	cocos2d::Vector<cocos2d::SpriteFrame *> walkAnimation;

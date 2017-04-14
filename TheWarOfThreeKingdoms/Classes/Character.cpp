@@ -22,9 +22,9 @@ void Character::update(){
     //if it is stop and attack, then update the attacking tag
 }
 
-bool Character::findEnemyWithinRange(){
-    return true;
-}
+//Character Character::findEnemyWithinRange(Character* enemy){
+//    if(this->getPositionX())
+//}
 
 void Character::stopAndAttack(){
     
@@ -38,7 +38,7 @@ void Character::createCharacterOnPath(){
     
 }
 
-Character* Character::createCharacter(const std::string& _file)
+Character* Character::createCharacter(const std::string& _file, int direction)
 {
 	Character* pCharacter = new Character();
 
@@ -46,6 +46,7 @@ Character* Character::createCharacter(const std::string& _file)
 		pCharacter->fileName = _file.c_str();
 		pCharacter->setPosition(Vec2(300, 300));
 		pCharacter->setScale(3);
+		pCharacter->setScaleX(direction*3);
 		pCharacter->createWalkAnimation();
 
 		return pCharacter;

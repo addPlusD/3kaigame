@@ -59,9 +59,14 @@ void Card::addEvents() {
         
         if (bounds.containsPoint(touch->getLocation())) {
             // the following code is for testing purpose
-            std::stringstream touchDetails;
-            touchDetails << "character id: " << this->getCharacterId();
-            cocos2d::MessageBox(touchDetails.str().c_str(), "Touched");
+			auto scene = cocos2d::Director::getInstance()->getRunningScene();
+			scene->addChild(Character::createCharacter("moveCharacter1.png",1), 1);
+
+			//scene->addChild(newCharacter, 1);
+	
+            //std::stringstream touchDetails;
+            //touchDetails << "character id: " << this->getCharacterId();
+            //cocos2d::MessageBox(touchDetails.str().c_str(), "Touched");
             
             
             //pass character id to create suitable sprite here.

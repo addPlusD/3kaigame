@@ -32,8 +32,12 @@ bool GameWorld::init(){
         return false;
     }
     
-	auto character = Character::createCharacter("moveCharacter1.png");
-	this->addChild(character, 1);
+	//auto character = Character::createCharacter("moveCharacter1.png");
+	//this->addChild(character, 1);
+	//this->setScaleX(-1);
+
+	//auto character2 = Character::createCharacter("moveCharacter1.png");
+	//this->addChild(character2, 1);
 
     setBackground();
     setCards();
@@ -53,19 +57,19 @@ void GameWorld::update(float delta){
 
 void GameWorld::setCards() {
     
-    auto card1 = Card::create("character1.png",9999,0);
+    auto card1 = Card::create("character1.png",0,0);
     this->addChild(card1, 1);
     
-    auto card2 = Card::create("character2.png", 998, 1);
+    auto card2 = Card::create("character2.png", 1, 1);
     this->addChild(card2, 1);
     
     auto card3 = Card::create("arrow.png", 2, 2);
     this->addChild(card3, 1);
     
-    auto card4 = Card::create("horse.png", 23, 3);
+    auto card4 = Card::create("horse.png", 3, 3);
     this->addChild(card4, 1);
     
-    auto card5 = Card::create("character1.png", 242, 4);
+    auto card5 = Card::create("character1.png", 4, 4);
     this->addChild(card5, 1);
     
 }
