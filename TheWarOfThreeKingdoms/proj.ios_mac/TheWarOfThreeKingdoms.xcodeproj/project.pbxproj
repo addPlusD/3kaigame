@@ -25,6 +25,10 @@
 		212033971EA0A945004C77D3 /* character.plist in Resources */ = {isa = PBXBuildFile; fileRef = 212033941EA0A945004C77D3 /* character.plist */; };
 		212033981EA0A945004C77D3 /* character.png in Resources */ = {isa = PBXBuildFile; fileRef = 212033951EA0A945004C77D3 /* character.png */; };
 		212033991EA0A945004C77D3 /* character.png in Resources */ = {isa = PBXBuildFile; fileRef = 212033951EA0A945004C77D3 /* character.png */; };
+		2120339C1EA0B1D6004C77D3 /* castle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2120339A1EA0B1D6004C77D3 /* castle.png */; };
+		2120339D1EA0B1D6004C77D3 /* castle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2120339A1EA0B1D6004C77D3 /* castle.png */; };
+		2120339E1EA0B1D6004C77D3 /* enemy_castle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2120339B1EA0B1D6004C77D3 /* enemy_castle.png */; };
+		2120339F1EA0B1D6004C77D3 /* enemy_castle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2120339B1EA0B1D6004C77D3 /* enemy_castle.png */; };
 		218B6D931E9FE351009395C3 /* AIGame_map.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 218B6D8C1E9FE351009395C3 /* AIGame_map.tmx */; };
 		218B6D941E9FE351009395C3 /* AIGame_map.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 218B6D8C1E9FE351009395C3 /* AIGame_map.tmx */; };
 		218B6D951E9FE351009395C3 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 218B6D8D1E9FE351009395C3 /* background.png */; };
@@ -154,6 +158,8 @@
 		2104F8061EA0786500A7EFD8 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
 		212033941EA0A945004C77D3 /* character.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = character.plist; sourceTree = "<group>"; };
 		212033951EA0A945004C77D3 /* character.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = character.png; sourceTree = "<group>"; };
+		2120339A1EA0B1D6004C77D3 /* castle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = castle.png; sourceTree = "<group>"; };
+		2120339B1EA0B1D6004C77D3 /* enemy_castle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy_castle.png; sourceTree = "<group>"; };
 		218B6D8C1E9FE351009395C3 /* AIGame_map.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = AIGame_map.tmx; sourceTree = "<group>"; };
 		218B6D8D1E9FE351009395C3 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		218B6D8E1E9FE351009395C3 /* terrain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = terrain.png; sourceTree = "<group>"; };
@@ -360,6 +366,8 @@
 				521A8EA819F11F5000D177D7 /* fonts */,
 				3EACC98E19EE6D4300EB3C5E /* res */,
 				218B6D8C1E9FE351009395C3 /* AIGame_map.tmx */,
+				2120339A1EA0B1D6004C77D3 /* castle.png */,
+				2120339B1EA0B1D6004C77D3 /* enemy_castle.png */,
 				212033941EA0A945004C77D3 /* character.plist */,
 				212033951EA0A945004C77D3 /* character.png */,
 				218B6D8D1E9FE351009395C3 /* background.png */,
@@ -543,8 +551,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2120339E1EA0B1D6004C77D3 /* enemy_castle.png in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				218B6D971E9FE351009395C3 /* terrain.png in Resources */,
+				2120339C1EA0B1D6004C77D3 /* castle.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
@@ -582,6 +592,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2120339F1EA0B1D6004C77D3 /* enemy_castle.png in Resources */,
 				218B6D9C1E9FE351009395C3 /* TileNature.png in Resources */,
 				218B6D941E9FE351009395C3 /* AIGame_map.tmx in Resources */,
 				212033991EA0A945004C77D3 /* character.png in Resources */,
@@ -591,6 +602,7 @@
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				3EACC99019EE6D4300EB3C5E /* res in Resources */,
 				218B6D9E1E9FE351009395C3 /* tower_1.png in Resources */,
+				2120339D1EA0B1D6004C77D3 /* castle.png in Resources */,
 				212033971EA0A945004C77D3 /* character.plist in Resources */,
 				521A8EAA19F11F5000D177D7 /* fonts in Resources */,
 				46880B7C19C43A67006E1F66 /* CloseNormal.png in Resources */,

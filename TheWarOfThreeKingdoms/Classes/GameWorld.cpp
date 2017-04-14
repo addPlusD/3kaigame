@@ -76,39 +76,14 @@ void GameWorld::setBackground(){
     //    auto background = tileMap->layerNamed("Background");
     this->addChild(tileMap);
     
-    auto tower01 = Sprite::create("tower.png");
-    tower01->setTextureRect(Rect(26, 172, 50, 130));
-    tower01->setPosition(Vec2(origin.x + tower01->getContentSize().width/2 ,
-                              origin.y + tower01->getContentSize().height/2));
-    this->addChild(tower01,1);
     
-    auto tower02 = Sprite::create("tower.png");
-    tower02->setTextureRect(Rect(26, 172, 50, 130));
-    tower02->setPosition(Vec2(origin.x + visibleSize.width/2 - tower01->getContentSize().width/2 ,
-                              origin.y + tower01->getContentSize().height/2));
-    this->addChild(tower02,1);
+    auto castle = Sprite::create("castle.png");
+    castle->setPosition(Vec2(origin.x + visibleSize.width - castle->getContentSize().width/2 ,
+                              origin.y + visibleSize.height/2 + castle->getContentSize().height/2));
+    this->addChild(castle,1);
     
-    auto tower03 = Sprite::create("tower.png");
-    tower03->setTextureRect(Rect(26, 172, 50, 130));
-    tower03->setPosition(Vec2(origin.x + visibleSize.width - tower01->getContentSize().width/2 ,
-                              origin.y + tower01->getContentSize().height/2));
-    this->addChild(tower03,1);
-    
-    auto enemyTower01 = Sprite::create("tower.png");
-    enemyTower01->setTextureRect(Rect(26, 172, 50, 130));
-    enemyTower01->setPosition(Vec2(origin.x + enemyTower01->getContentSize().width/2 ,
-                                   origin.y + visibleSize.height - enemyTower01->getContentSize().height/2));
-    this->addChild(enemyTower01,1);
-    
-    auto enemyTower02 = Sprite::create("tower.png");
-    enemyTower02->setTextureRect(Rect(26, 172, 50, 130));
-    enemyTower02->setPosition(Vec2(origin.x + visibleSize.width/2 - enemyTower01->getContentSize().width/2 ,
-                                   origin.y + visibleSize.height - enemyTower01->getContentSize().height/2));
-    this->addChild(enemyTower02,1);
-    
-    auto enemyTower03 = Sprite::create("tower.png");
-    enemyTower03->setTextureRect(Rect(26, 172, 50, 130));
-    enemyTower03->setPosition(Vec2(origin.x + visibleSize.width - enemyTower01->getContentSize().width/2 ,
-                                   origin.y + visibleSize.height - enemyTower01->getContentSize().height/2));
-    this->addChild(enemyTower03,1);
+    auto enemyCastle = Sprite::create("enemy_castle.png");
+    enemyCastle->setPosition(Vec2(origin.x + enemyCastle->getContentSize().width/2 ,
+                                   origin.y + visibleSize.height/2 + enemyCastle->getContentSize().height/2));
+    this->addChild(enemyCastle,1);
 }
