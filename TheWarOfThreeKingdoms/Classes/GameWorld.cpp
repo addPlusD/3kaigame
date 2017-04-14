@@ -32,6 +32,9 @@ bool GameWorld::init(){
         return false;
     }
     
+	auto character = Character::createCharacter("moveCharacter1.png");
+	this->addChild(character, 1);
+
     setBackground();
     setCards();
     
@@ -62,7 +65,7 @@ void GameWorld::setCards() {
     auto card4 = Card::create("horse.png", 23, 3);
     this->addChild(card4, 1);
     
-    auto card5 = Card::create("soldier.png", 242, 4);
+    auto card5 = Card::create("character1.png", 242, 4);
     this->addChild(card5, 1);
     
 }

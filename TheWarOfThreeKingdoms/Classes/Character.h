@@ -12,8 +12,9 @@
 
 #include <stdio.h>
 #include "cocos2d.h"
+#include <string>
 
-class Character : public cocos2d::Object{
+class Character : public cocos2d::Sprite {
     
 public:
     virtual bool init();
@@ -24,8 +25,10 @@ public:
     void stopAndAttack();
     void loseBlood(int);
     void createCharacterOnPath();
-    
-    
+
+	static Character* createCharacter(const std::string& _file);
+	void createWalkAnimation();
+
 private:
     int x, y;
     int health;
@@ -33,6 +36,8 @@ private:
     //int direction;
     float speed;
     bool attacking;
+	cocos2d::Vector<cocos2d::SpriteFrame *> walkAnimation;
+	const char* fileName;
     
 };
 

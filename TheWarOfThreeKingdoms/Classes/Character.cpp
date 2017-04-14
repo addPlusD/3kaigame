@@ -7,6 +7,7 @@
 //
 
 #include "Character.h"
+USING_NS_CC;
 
 bool Character::init(){
     this->attacking = false;
@@ -36,3 +37,34 @@ void Character::loseBlood(int damage){
 void Character::createCharacterOnPath(){
     
 }
+
+Character* Character::createCharacter(const std::string& _file)
+{
+	Character* pCharacter = new Character();
+
+	if (pCharacter->initWithFile(_file.c_str(), Rect(0, 32, 32, 32))) {
+		pCharacter->fileName = _file.c_str();
+		pCharacter->setPosition(Vec2(300, 300));
+		pCharacter->setScale(3);
+		pCharacter->createWalkAnimation();
+
+		return pCharacter;
+	}
+
+	CC_SAFE_DELETE(pCharacter);
+	return NULL;
+
+}
+
+void Character::createWalkAnimation()
+{
+	this->walkAnimation.reserve(3);
+	this->walkAnimation.pushBack(SpriteFrame::create(this->fileName, Rect(0, 32, 32, 32)));
+	this->walkAnimation.pushBack(SpriteFrame::create(this->fileName, Rect(32, 32, 32, 32)));
+	this->walkAnimation.pushBack(SpriteFrame::create(this->fileName, Rect(64, 32, 32, 32)));
+
+	Animation* animation = Animation::createWithSpriteFrames(this->walkAnimation, 0.2f);
+	Animate* animate = Animate::create(animation);
+	this->runAction(RepeatForever::create(animate));
+}
+

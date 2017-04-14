@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "cocos2d.h"
 #include "Card.h"
+#include "Character.h"
 
 
 class GameWorld : public cocos2d::Layer{
