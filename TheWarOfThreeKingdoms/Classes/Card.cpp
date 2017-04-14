@@ -60,9 +60,10 @@ void Card::addEvents() {
         if (bounds.containsPoint(touch->getLocation())) {
             // the following code is for testing purpose
 			auto scene = cocos2d::Director::getInstance()->getRunningScene();
-			scene->addChild(Character::createCharacter("moveCharacter1.png",1), 1);
+			//scene->addChild(Character::createCharacter("moveCharacter1.png",1), 1);
 
-			//scene->addChild(newCharacter, 1);
+			auto newCharacter=CharacterCreator::getInstance()->createCharacters(this->getCharacterId(), 1);
+			scene->addChild(newCharacter, 1);
 	
             //std::stringstream touchDetails;
             //touchDetails << "character id: " << this->getCharacterId();
