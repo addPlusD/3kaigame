@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="13" height="10" tilewidth="64" tileheight="64" nextobjectid="1">
+ <tileset firstgid="1" name="background" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="background.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="2" name="TileNature_1" tilewidth="62" tileheight="32" tilecount="9" columns="3">
+  <image source="TileNature_1.png" width="192" height="96"/>
+ </tileset>
+ <layer name="background" width="13" height="10">
+  <data encoding="csv">
+1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1
+</data>
+ </layer>
+ <layer name="rock" width="13" height="10">
+  <data encoding="csv">
+0,6,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,6,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,9,
+0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,6,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,8,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,
+6,0,0,0,0,0,0,0,0,0,0,6,0
+</data>
+ </layer>
+</map>

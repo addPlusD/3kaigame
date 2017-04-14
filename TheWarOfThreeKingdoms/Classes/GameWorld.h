@@ -20,7 +20,7 @@ public:
     virtual bool init();
     virtual void update(float);
     void setCards();
-    
+    void setBackground();
     
     
     CREATE_FUNC(GameWorld);
