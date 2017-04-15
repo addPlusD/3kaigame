@@ -32,7 +32,7 @@ Card* Card::create(const std::string& _file, int characterId, int position)
 void Card::initOptions(int position)
 {
     auto visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
-    this->setPosition(cocos2d::Vec2(visibleSize.width / 10+position*150, visibleSize.height / 10));
+    this->setPosition(cocos2d::Vec2(visibleSize.width / 10+position*150, (visibleSize.height / 10)-50));
     this->setScale(0.50);
     // do things here like setTag(), setPosition(), any custom logic.
 }

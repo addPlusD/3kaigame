@@ -16,6 +16,8 @@
 
 class GameMaster : public cocos2d::Layer{
     
+	enum _currentLane { top = -1, mid = 0, bot = 1 };
+
 public:
     static GameMaster* createMaster();
     virtual bool init();
@@ -32,7 +34,8 @@ public:
     cocos2d::Vector<Squad*> getHomeLaneVector(int);
     cocos2d::Vector<Character*> getAwayLaneVector(int);
     
-    
+	void switchLaneCallback(cocos2d::Event*);
+
     void checkCollision();
     
     CREATE_FUNC(GameMaster);
@@ -40,6 +43,7 @@ public:
 private:
     cocos2d::Vector<Squad*> HOME_TOP, HOME_MID, HOME_BOT;
     cocos2d::Vector<Character*> AWAY_TOP, AWAY_MID, AWAY_BOT;
+	_currentLane currentLane;
 };
 
 #endif /* GameMaster_class */
