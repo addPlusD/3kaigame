@@ -42,7 +42,7 @@ Character* Character::createCharacter(const std::string& _file, int direction)
 {
 	Character* pCharacter = new Character();
 
-	if (pCharacter->initWithFile(_file.c_str(), Rect(0, 32, 32, 32))) {
+	if (pCharacter->initWithFile(_file.c_str(), Rect(0, 32, 32, 38))) {
 		pCharacter->fileName = _file.c_str();
 		pCharacter->setPosition(Vec2(300, 300));
 		pCharacter->setScale(3);
@@ -60,9 +60,9 @@ Character* Character::createCharacter(const std::string& _file, int direction)
 void Character::createWalkAnimation()
 {
 	this->walkAnimation.reserve(3);
-	this->walkAnimation.pushBack(SpriteFrame::create(this->fileName, Rect(0, 32, 32, 32)));
-	this->walkAnimation.pushBack(SpriteFrame::create(this->fileName, Rect(32, 32, 32, 32)));
-	this->walkAnimation.pushBack(SpriteFrame::create(this->fileName, Rect(64, 32, 32, 32)));
+	this->walkAnimation.pushBack(SpriteFrame::create(this->fileName, Rect(0, 38, 32, 38)));
+	this->walkAnimation.pushBack(SpriteFrame::create(this->fileName, Rect(32, 38, 32, 38)));
+	this->walkAnimation.pushBack(SpriteFrame::create(this->fileName, Rect(64, 38, 32, 38)));
 
 	Animation* animation = Animation::createWithSpriteFrames(this->walkAnimation, 0.2f);
 	Animate* animate = Animate::create(animation);

@@ -62,7 +62,7 @@ void Card::addEvents() {
 			auto scene = cocos2d::Director::getInstance()->getRunningScene();
 			//scene->addChild(Character::createCharacter("moveCharacter1.png",1), 1);
 
-			auto newCharacter=CharacterCreator::getInstance()->createCharacters(this->getCharacterId(), 1);
+			auto newCharacter=CharacterCreator::getInstance()->charactersFactory(this->getCharacterId(), 1);
 			scene->addChild(newCharacter, 1);
 	
             //std::stringstream touchDetails;

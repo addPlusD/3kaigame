@@ -7,12 +7,13 @@ class CharacterCreator
 public:
 	
 
-	Character* createCharacters(int charcterId, int direction);
+	Character* charactersFactory(int charcterId, int direction);
 	static CharacterCreator* getInstance();
 
 private:
 	CharacterCreator();
-	const string characterFileName[7];
+	/*string fileName[7] = { "moveCharacter1.png", "moveCharacter1.png", "moveCharacter1.png", "moveCharacter1.png", "moveCharacter1.png",
+		"moveCharacter1.png", "moveCharacter1.png"};*/
 
 };
 
