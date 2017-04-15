@@ -13,7 +13,7 @@
 #include "cocos2d.h"
 #include "Card.h"
 #include "Character.h"
-
+#include "GameMaster.h"
 
 class GameWorld : public cocos2d::Layer{
     
@@ -23,9 +23,14 @@ public:
     virtual void update(float);
     void setCards();
     void setBackground();
+	void setMaster();
     
-    
+
     CREATE_FUNC(GameWorld);
+
+
+private:
+	GameMaster* gameMaster;
 };
 
 

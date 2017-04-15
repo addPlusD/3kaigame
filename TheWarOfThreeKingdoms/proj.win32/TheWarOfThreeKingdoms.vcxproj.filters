@@ -68,4 +68,62 @@
       <Filter>resource</Filter>
     </ResourceCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Resources\AIGame_map.tmx">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\character.plist">
+      <Filter>resource</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Resources\background.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\castle.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\castle_orginal.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\character.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\enemy_castle.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\enemy_castle_orignal.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\image.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\moveCharacter1.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\terrain.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\tile_ele.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\TileNature.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\TileNature_1.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\tiletile.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\tmw_desert_spacing.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\tower.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\tower_1.png">
+      <Filter>resource</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

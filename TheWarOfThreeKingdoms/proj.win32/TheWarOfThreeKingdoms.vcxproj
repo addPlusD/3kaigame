@@ -178,6 +178,28 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
   <ItemGroup>
     <ResourceCompile Include="game.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Resources\AIGame_map.tmx" />
+    <None Include="..\Resources\character.plist" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Resources\background.png" />
+    <Image Include="..\Resources\castle.png" />
+    <Image Include="..\Resources\castle_orginal.png" />
+    <Image Include="..\Resources\character.png" />
+    <Image Include="..\Resources\enemy_castle.png" />
+    <Image Include="..\Resources\enemy_castle_orignal.png" />
+    <Image Include="..\Resources\image.png" />
+    <Image Include="..\Resources\moveCharacter1.png" />
+    <Image Include="..\Resources\terrain.png" />
+    <Image Include="..\Resources\TileNature.png" />
+    <Image Include="..\Resources\TileNature_1.png" />
+    <Image Include="..\Resources\tiletile.png" />
+    <Image Include="..\Resources\tile_ele.png" />
+    <Image Include="..\Resources\tmw_desert_spacing.png" />
+    <Image Include="..\Resources\tower.png" />
+    <Image Include="..\Resources\tower_1.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
