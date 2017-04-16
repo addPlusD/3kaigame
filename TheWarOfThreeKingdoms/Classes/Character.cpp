@@ -22,9 +22,9 @@ void Character::update(){
     //if it is stop and attack, then update the attacking tag
 }
 
-bool Character::findEnemyWithinRange(){
-    return true;
-}
+//Character Character::findEnemyWithinRange(Character* enemy){
+//    if(this->getPositionX())
+//}
 
 void Character::stopAndAttack(){
     
@@ -38,14 +38,15 @@ void Character::createCharacterOnPath(){
     
 }
 
-Character* Character::createCharacter(const std::string& _file)
+Character* Character::createCharacter(const std::string& _file, int direction)
 {
 	Character* pCharacter = new Character();
 
-	if (pCharacter->initWithFile(_file.c_str(), Rect(0, 32, 32, 32))) {
+	if (pCharacter->initWithFile(_file.c_str(), Rect(0, 32, 32, 38))) {
 		pCharacter->fileName = _file.c_str();
 		pCharacter->setPosition(Vec2(300, 300));
 		pCharacter->setScale(3);
+		pCharacter->setScaleX(direction*3);
 		pCharacter->createWalkAnimation();
 
 		return pCharacter;
@@ -59,9 +60,9 @@ Character* Character::createCharacter(const std::string& _file)
 void Character::createWalkAnimation()
 {
 	this->walkAnimation.reserve(3);
-	this->walkAnimation.pushBack(SpriteFrame::create(this->fileName, Rect(0, 32, 32, 32)));
-	this->walkAnimation.pushBack(SpriteFrame::create(this->fileName, Rect(32, 32, 32, 32)));
-	this->walkAnimation.pushBack(SpriteFrame::create(this->fileName, Rect(64, 32, 32, 32)));
+	this->walkAnimation.pushBack(SpriteFrame::create(this->fileName, Rect(0, 38, 32, 38)));
+	this->walkAnimation.pushBack(SpriteFrame::create(this->fileName, Rect(32, 38, 32, 38)));
+	this->walkAnimation.pushBack(SpriteFrame::create(this->fileName, Rect(64, 38, 32, 38)));
 
 	Animation* animation = Animation::createWithSpriteFrames(this->walkAnimation, 0.2f);
 	Animate* animate = Animate::create(animation);

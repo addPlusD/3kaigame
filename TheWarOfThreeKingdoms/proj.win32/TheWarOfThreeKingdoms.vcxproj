@@ -147,6 +147,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\Card.cpp" />
     <ClCompile Include="..\Classes\Character.cpp" />
+    <ClCompile Include="..\Classes\CharacterCreator.cpp" />
     <ClCompile Include="..\Classes\GameMaster.cpp" />
     <ClCompile Include="..\Classes\GameWorld.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
@@ -157,6 +158,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\Card.h" />
     <ClInclude Include="..\Classes\Character.h" />
+    <ClInclude Include="..\Classes\CharacterCreator.h" />
     <ClInclude Include="..\Classes\GameMaster.h" />
     <ClInclude Include="..\Classes\GameWorld.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
@@ -191,6 +193,11 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <Image Include="..\Resources\enemy_castle_orignal.png" />
     <Image Include="..\Resources\image.png" />
     <Image Include="..\Resources\moveCharacter1.png" />
+    <Image Include="..\Resources\moveCharacter2.png" />
+    <Image Include="..\Resources\moveCharacter3.png" />
+    <Image Include="..\Resources\moveCharacter4.png" />
+    <Image Include="..\Resources\moveCharacter5.png" />
+    <Image Include="..\Resources\moveCharacter6.png" />
     <Image Include="..\Resources\terrain.png" />
     <Image Include="..\Resources\TileNature.png" />
     <Image Include="..\Resources\TileNature_1.png" />
