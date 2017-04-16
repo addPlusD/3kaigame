@@ -62,9 +62,13 @@ void Card::addEvents() {
 			auto scene = cocos2d::Director::getInstance()->getRunningScene();
 			//scene->addChild(Character::createCharacter("moveCharacter1.png",1), 1);
 
-			auto newCharacter=CharacterCreator::getInstance()->charactersFactory(this->getCharacterId(), 1);
-			scene->addChild(newCharacter, 1);
-	
+			//direction: 0=down, 1=left, 2=right, 3=up
+			//Eddie on 20170416 -start
+			
+			//auto newCharacter=CharacterCreator::getInstance()->charactersFactory(this->getCharacterId(), 1);
+			//scene->addChild(newCharacter, 1);
+			//Eddie on 20170416 -end
+			GameMaster::getInstance()->clickOnCard(this->getCharacterId(), 1);
             //std::stringstream touchDetails;
             //touchDetails << "character id: " << this->getCharacterId();
             //cocos2d::MessageBox(touchDetails.str().c_str(), "Touched");

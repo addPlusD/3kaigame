@@ -4,9 +4,9 @@
 using namespace std;
 class CharacterCreator
 {
-public:
-	
 
+
+public:
 	Character* charactersFactory(int charcterId, int direction);
 	static CharacterCreator* getInstance();
 

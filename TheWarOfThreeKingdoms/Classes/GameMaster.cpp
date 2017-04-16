@@ -11,8 +11,26 @@
 USING_NS_CC;
 
 
-GameMaster* GameMaster::createMaster(){
-    return GameMaster::create();
+static GameMaster* gameMaster = nullptr;
+static bool isCreated = false;
+int currentLane;
+
+////GameMaster* GameMaster::createMaster(){
+////    //return GameMaster::create();
+////	gameMaster = GameMaster::create();
+////	return gameMaster;
+////}
+
+GameMaster* GameMaster::getInstance() {
+	if (!isCreated) {
+		gameMaster = new GameMaster();
+		if (gameMaster && gameMaster->init()) {
+			gameMaster->autorelease();
+			return gameMaster;
+		}
+		CC_SAFE_DELETE(gameMaster);
+	}
+	return gameMaster;
 }
 
 
@@ -24,10 +42,72 @@ bool GameMaster::init(){
 	EventListenerMouse* switchLaneListener = EventListenerMouse::create();
 	switchLaneListener->onMouseDown = CC_CALLBACK_1(GameMaster::switchLaneCallback, this);
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(switchLaneListener, this);
-	
-    
+
+	//create the lane indicator arrow
+	arrowIndicatorSprite = Sprite::create("arrow.png");
+	//init the arrow position to the mid lane
+	arrowIndicatorSprite->setPositionX(awaySpawnPositionX);
+	arrowIndicatorSprite->setPositionY(midLaneY);
+	arrowIndicatorSprite->setScale(0.2f);
+	auto scaleAnimation = ScaleTo::create(0.5f, 0.2f);
+	auto scaleAnimation2 = ScaleTo::create(0.5f, 0.3f);
+	auto animatedSequence = Sequence::createWithTwoActions(scaleAnimation, scaleAnimation2);
+	arrowIndicatorSprite->runAction(RepeatForever::create(animatedSequence));
+	this->addChild(arrowIndicatorSprite);
+
     return true;
 }
+
+
+void GameMaster::clickOnCard(int characterId, int direction) {
+	//direction: 0=down, 1=left, 2=right, 3=up
+	//spawn the character object
+	auto newCharacter = CharacterCreator::getInstance()->charactersFactory(characterId, direction);
+	
+	auto scene = cocos2d::Director::getInstance()->getRunningScene();
+	scene->addChild(newCharacter, 1);
+
+	CCLOG("lane selector: %d", currentLane);
+
+	//check the currentLane flag and then add the character into the corresponding vector
+	addCharacterToLane(currentLane, newCharacter, "away");
+
+	CCLOG("The  lane : %d", currentLane);
+
+	//calculate the laneposition
+	float LanePositionY;
+	switch (currentLane) {
+	case laneTop:
+		LanePositionY = topLaneY;
+		break;
+	case laneMid:
+		LanePositionY = midLaneY;
+		break;
+	case laneBot:
+		LanePositionY = botLaneY;
+		break;
+	default:
+		LanePositionY = 0;
+		break;
+	}
+	
+	//adjust the position of the fucking character
+	newCharacter->setPosition(Vec2(awaySpawnPositionX, LanePositionY));
+
+	
+	//set the moveto action to the new character
+	CCLOG("Current Lane: %d", currentLane);
+	CCLOG("LanePositionY=%f", LanePositionY);
+	auto characterMoveAction = MoveTo::create(1.2*newCharacter->getSpeed(), Vec2(homeSpawnPositionX, LanePositionY));
+	newCharacter->runAction(characterMoveAction);
+	CCLOG("Move to %f,%f", homeSpawnPositionX, LanePositionY);
+	CCLOG("From %f,%f", newCharacter->getPositionX(), newCharacter->getPositionY());
+
+	
+}
+
+
+
 
 
 void GameMaster::switchLaneCallback(Event* e) {
@@ -54,15 +134,18 @@ void GameMaster::switchLaneCallback(Event* e) {
 		switch (targetGID){
 		case 0: return;
 		case 18: 
-			currentLane = top;
+			currentLane = laneTop;
+			arrowIndicatorSprite->setPositionY(topLaneY);
 			CCLOG("Lane switched to top");
 			break;
 		case 22:
-			currentLane = mid;
+			currentLane = laneMid;
+			arrowIndicatorSprite->setPositionY(midLaneY);
 			CCLOG("Lane switched to mid");
 			break;
 		case 26:
-			currentLane = bot;
+			currentLane = laneBot;
+			arrowIndicatorSprite->setPositionY(botLaneY);
 			CCLOG("Lane switched to bot");
 			break;
 		default:
@@ -71,60 +154,155 @@ void GameMaster::switchLaneCallback(Event* e) {
 		}
 	}
 
-	CCLOG("The updated lane selector: %d", (int)currentLane);
+	CCLOG("The updated lane selector: %d", currentLane);
 
 
 }
 
-void GameMaster::addSquadToLane(int laneInd, Squad* squad){
-    Vector<Squad*> lane = getHomeLaneVector(laneInd);
+void GameMaster::addSquadToLane(int laneInd, Squad* squad, const std::string& side){
+	Vector<Squad*> lane;
+	//get the corresponding lane vector
+	if (side == "home") {
+		lane = getHomeSquadLaneVector(laneInd);
+		CCLOG("Gotcha!!! The HOME squad lane vector");
+
+		CCLOG("Added a squad to HomeSquadLaneVector");
+	}
+	else {
+		lane = getAwaySquadLaneVector(laneInd);
+		CCLOG("Gotcha!!! The AWAY squad lane vector");
+
+
+		CCLOG("Added a squad to AwaySquadLaneVector");
+	}
     //lane.pushBack(squad);
 }
 
-void GameMaster::removeSquadFromLane(int laneInd, Squad* squad){
-    Vector<Squad*> lane = getHomeLaneVector(laneInd);
+void GameMaster::removeSquadFromLane(int laneInd, Squad* squad, const std::string& side){
+	Vector<Squad*> lane;
+	//get the corresponding lane vector
+	if (side == "home") {
+		lane = getHomeSquadLaneVector(laneInd);
+		CCLOG("Gotcha!!! The HOME squad lane vector");
+
+
+		CCLOG("Removed a squad to HomeSquadLaneVector");
+	}
+	else {
+		lane = getAwaySquadLaneVector(laneInd);
+		CCLOG("Gotcha!!! The AWAY squad lane vector");
+
+
+		CCLOG("Removed a squad to AwaySquadLaneVector");
+	}
     //lane.erase(lane.find(squad));
 }
 
-void GameMaster::addCharacterToLane(int laneInd, Character* character){
-    Vector<Character*> lane = getAwayLaneVector(laneInd);
+void GameMaster::addCharacterToLane(int laneInd, Character* character, const std::string& side){
+	Vector<Character*> lane;
+	//get the corresponding lane vector
+	if (side == "home") {
+		lane = getHomeCharacterLaneVector(laneInd);
+		CCLOG("Gotcha!!! The HOME character lane vector");
+		
+
+		CCLOG("Added a character to HomeCharacterLaneVector");
+	}
+	else {
+		lane = getAwayCharacterLaneVector(laneInd);
+		CCLOG("Gotcha!!! The AWAY character lane vector");
+
+
+		CCLOG("The up321313dated lane selector: %d", currentLane);
+		CCLOG("Added a character to AwayCharacterLaneVector");
+	}
+	//push the character to the lane vector
     //lane.pushBack(character);
 }
 
-void GameMaster::removeCharacterFromLane(int laneInd, Character* character){
-    Vector<Character*> lane = getAwayLaneVector(laneInd);
+void GameMaster::removeCharacterFromLane(int laneInd, Character* character, const std::string& side){
+	Vector<Character*> lane;
+	//get the corresponding lane vector
+	if (side == "home") {
+		lane = getHomeCharacterLaneVector(laneInd);
+		CCLOG("Gotcha!!! The HOME character lane vector");
+
+
+		CCLOG("Removed a character to HomeCharacterLaneVector");
+	}
+	else {
+		lane = getAwayCharacterLaneVector(laneInd);
+		CCLOG("Gotcha!!! The AWAY character lane vector");
+
+		CCLOG("Removed a character to AwayCharacterLaneVector");
+	}
+	//erase the character to the lane vector
     //lane.erase(lane.find(squad));
 }
 
-Vector<Squad*> GameMaster::getHomeLaneVector(int laneIndicator){
+Vector<Squad*> GameMaster::getHomeSquadLaneVector(int laneIndicator){
     Vector<Squad*> target;
     switch(laneIndicator){
             //-1 top, 0 mid, 1 bot
         case -1:
-            target = HOME_TOP;
+            target = HOME_TOP_SQUAD;
             break;
         case 0:
-            target = HOME_MID;
+            target = HOME_MID_SQUAD;
             break;
         case 1:
-            target = HOME_BOT;
+            target = HOME_BOT_SQUAD;
             break;
     }
     return target;
 }
 
-Vector<Character*> GameMaster::getAwayLaneVector(int laneIndicator){
+Vector<Character*> GameMaster::getHomeCharacterLaneVector(int laneIndicator) {
+	Vector<Character*> target;
+	switch (laneIndicator) {
+		//-1 top, 0 mid, 1 bot
+	case -1:
+		target = HOME_TOP_CHARACTER;
+		break;
+	case 0:
+		target = HOME_MID_CHARACTER;
+		break;
+	case 1:
+		target = HOME_BOT_CHARACTER;
+		break;
+	}
+	return target;
+}
+
+Vector<Squad*> GameMaster::getAwaySquadLaneVector(int laneIndicator) {
+	Vector<Squad*> target;
+	switch (laneIndicator) {
+		//-1 top, 0 mid, 1 bot
+	case -1:
+		target = AWAY_TOP_SQUAD;
+		break;
+	case 0:
+		target = AWAY_MID_SQUAD;
+		break;
+	case 1:
+		target = AWAY_BOT_SQUAD;
+		break;
+	}
+	return target;
+}
+
+Vector<Character*> GameMaster::getAwayCharacterLaneVector(int laneIndicator){
     Vector<Character*> target;
     switch(laneIndicator){
             //-1 top, 0 mid, 1 bot
         case -1:
-            target = AWAY_TOP;
+            target = AWAY_TOP_CHARACTER;
             break;
         case 0:
-            target = AWAY_MID;
+            target = AWAY_MID_CHARACTER;
             break;
         case 1:
-            target = AWAY_BOT;
+            target = AWAY_BOT_CHARACTER;
             break;
     }
     return target;

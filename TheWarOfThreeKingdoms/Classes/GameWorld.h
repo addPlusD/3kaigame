@@ -25,7 +25,6 @@ public:
     void setBackground();
 	void setMaster();
     
-
     CREATE_FUNC(GameWorld);
 
 

@@ -69,7 +69,7 @@ void GameWorld::update(float delta) {
 }
 
 void GameWorld::setMaster() {
-	gameMaster = GameMaster::createMaster();
+	gameMaster = GameMaster::getInstance();
 	this->addChild(gameMaster);
 }
 

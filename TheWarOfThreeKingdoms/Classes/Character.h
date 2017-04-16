@@ -13,7 +13,6 @@
 #include <stdio.h>
 #include "cocos2d.h"
 #include <string>
-#include <stdlib.h> 
 
 class Character : public cocos2d::Sprite {
     
@@ -30,6 +29,10 @@ public:
 	static Character* createCharacter(const std::string& _file, int direction);
 	void createWalkAnimation();
 	void setProperty(int health, int attackDamage, int attackRange,float speed);
+
+
+	//accessor method of the attributes
+	float getSpeed();
 
 private:
     int x, y;
