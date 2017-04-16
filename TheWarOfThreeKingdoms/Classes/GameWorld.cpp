@@ -32,8 +32,8 @@ bool GameWorld::init() {
 		return false;
 	}
 
-	auto character = Character::createCharacter("moveCharacter1.png");
-	this->addChild(character, 1);
+	/*auto character = Character::createCharacter("moveCharacter1.png");
+	this->addChild(character, 1);*/
 	
 	setBackground();
 	setCards();

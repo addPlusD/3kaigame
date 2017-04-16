@@ -36,6 +36,9 @@
     <ClCompile Include="..\Classes\Card.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\CharacterCreator.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -60,6 +63,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Card.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CharacterCreator.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
@@ -123,6 +129,21 @@
       <Filter>resource</Filter>
     </Image>
     <Image Include="..\Resources\tower_1.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\moveCharacter2.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\moveCharacter3.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\moveCharacter4.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\moveCharacter5.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\moveCharacter6.png">
       <Filter>resource</Filter>
     </Image>
   </ItemGroup>
