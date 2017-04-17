@@ -19,6 +19,7 @@ class GameWorld : public cocos2d::Layer{
     
 public:
     static cocos2d::Scene* createScene();
+	~GameWorld();
     virtual bool init();
     virtual void update(float);
     void setCards();

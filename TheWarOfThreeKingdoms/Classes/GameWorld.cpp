@@ -23,6 +23,9 @@ Scene* GameWorld::createScene() {
 	return scene;
 }
 
+GameWorld::~GameWorld() {
+}
+
 //Implementing init member function of class GameWorld
 bool GameWorld::init() {
 	//do the init job here
@@ -71,6 +74,7 @@ void GameWorld::update(float delta) {
 void GameWorld::setMaster() {
 	gameMaster = GameMaster::getInstance();
 	this->addChild(gameMaster);
+	CCLOG("Reference count of the master: %d", gameMaster->getReferenceCount());
 }
 
 void GameWorld::setCards() {

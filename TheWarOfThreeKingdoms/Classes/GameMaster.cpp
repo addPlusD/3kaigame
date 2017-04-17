@@ -13,8 +13,6 @@ USING_NS_CC;
 
 static GameMaster* gameMaster = nullptr;
 static bool isCreated = false;
-int currentLane;
-
 
 ////GameMaster* GameMaster::createMaster(){
 ////    //return GameMaster::create();
@@ -24,6 +22,7 @@ int currentLane;
 
 GameMaster* GameMaster::getInstance() {
 	if (!isCreated) {
+		isCreated = true;
 		gameMaster = new GameMaster();
 		if (gameMaster && gameMaster->init()) {
 			gameMaster->autorelease();
@@ -32,6 +31,24 @@ GameMaster* GameMaster::getInstance() {
 		CC_SAFE_DELETE(gameMaster);
 	}
 	return gameMaster;
+}
+
+GameMaster::GameMaster() {
+	HOME_TOP_SQUAD = Vector<Squad*>{ 10 };
+	HOME_MID_SQUAD = Vector<Squad*>{ 10 };
+	HOME_BOT_SQUAD = Vector<Squad*>{ 10 };
+	 AWAY_TOP_SQUAD = Vector<Squad*>{ 10 };
+	 AWAY_MID_SQUAD = Vector<Squad*>{ 10 };
+	 AWAY_BOT_SQUAD = Vector<Squad*>{ 10 };
+	 HOME_TOP_CHARACTER = Vector<Character*>{ 10 };
+	 HOME_MID_CHARACTER = Vector<Character*>{ 10 };
+	 HOME_BOT_CHARACTER = Vector<Character*>{ 10 };
+	 AWAY_TOP_CHARACTER = Vector<Character*>{ 10 };
+	 AWAY_MID_CHARACTER = Vector<Character*>{ 10 };
+	 AWAY_BOT_CHARACTER = Vector<Character*>{ 10 };
+}
+
+GameMaster::~GameMaster() {
 }
 
 
@@ -56,6 +73,7 @@ bool GameMaster::init(){
 	arrowIndicatorSprite->runAction(RepeatForever::create(animatedSequence));
 	this->addChild(arrowIndicatorSprite);
 
+	currentLane = laneMid;
     return true;
 }
 
@@ -212,6 +230,7 @@ void GameMaster::addCharacterToLane(int laneInd, Character* character, const std
 
 		CCLOG("Added a character to AwayCharacterLaneVector");
 	}
+	lane.reserve(1);
 	//push the character to the lane vector
     lane.pushBack(character);
 	CCLOG("Added!");

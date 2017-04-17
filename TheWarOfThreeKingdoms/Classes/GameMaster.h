@@ -39,6 +39,8 @@ public:
 	static GameMaster* getInstance();
 
     virtual bool init();
+	GameMaster();
+	~GameMaster();
     //add and remove squad from lane
     //@param 1)lane vector 2)squad object 3)side(home or away)
     void addSquadToLane(int , Squad*, const std::string&);
@@ -64,12 +66,24 @@ public:
     
 private:
 
-	cocos2d::Vector<Squad*> HOME_TOP_SQUAD, HOME_MID_SQUAD, HOME_BOT_SQUAD;
-	cocos2d::Vector<Squad*> AWAY_TOP_SQUAD, AWAY_MID_SQUAD, AWAY_BOT_SQUAD;
-	cocos2d::Vector<Character*> HOME_TOP_CHARACTER, HOME_MID_CHARACTER, HOME_BOT_CHARACTER;
-	cocos2d::Vector<Character*> AWAY_TOP_CHARACTER, AWAY_MID_CHARACTER, AWAY_BOT_CHARACTER;
+	cocos2d::Vector<Squad*> HOME_TOP_SQUAD;
+		cocos2d::Vector<Squad*> HOME_MID_SQUAD;
+		cocos2d::Vector<Squad*> HOME_BOT_SQUAD;
+		cocos2d::Vector<Squad*> AWAY_TOP_SQUAD;
+		cocos2d::Vector<Squad*> AWAY_MID_SQUAD;
+		cocos2d::Vector<Squad*> AWAY_BOT_SQUAD;
+		cocos2d::Vector<Character*> HOME_TOP_CHARACTER;
+		cocos2d::Vector<Character*> HOME_MID_CHARACTER;
+		cocos2d::Vector<Character*> HOME_BOT_CHARACTER;
+		cocos2d::Vector<Character*> AWAY_TOP_CHARACTER;
+		cocos2d::Vector<Character*> AWAY_MID_CHARACTER;
+		cocos2d::Vector<Character*> AWAY_BOT_CHARACTER;
 
 	cocos2d::Sprite* arrowIndicatorSprite;
+
+	
+	int currentLane;
+
 };
 
 #endif /* GameMaster_class */
