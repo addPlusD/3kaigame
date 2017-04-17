@@ -53,8 +53,8 @@ public:
     
     cocos2d::Vector<Squad*> getHomeSquadLaneVector(int);
 	cocos2d::Vector<Squad*> getAwaySquadLaneVector(int);
-    cocos2d::Vector<Character*> getAwayCharacterLaneVector(int);
-	cocos2d::Vector<Character*> getHomeCharacterLaneVector(int);
+    cocos2d::Vector<Character*>* getAwayCharacterLaneVector(int);
+	cocos2d::Vector<Character*>* getHomeCharacterLaneVector(int);
     
 	void switchLaneCallback(cocos2d::Event*);
 	void clickOnCard(int, int);
@@ -66,7 +66,7 @@ public:
     
 private:
 
-	cocos2d::Vector<Squad*> HOME_TOP_SQUAD;
+		cocos2d::Vector<Squad*> HOME_TOP_SQUAD;
 		cocos2d::Vector<Squad*> HOME_MID_SQUAD;
 		cocos2d::Vector<Squad*> HOME_BOT_SQUAD;
 		cocos2d::Vector<Squad*> AWAY_TOP_SQUAD;
