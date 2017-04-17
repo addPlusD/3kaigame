@@ -63,11 +63,12 @@ public:
     CREATE_FUNC(GameMaster);
     
 private:
-    cocos2d::Vector<Squad*> HOME_TOP_SQUAD, HOME_MID_SQUAD, HOME_BOT_SQUAD;
-	cocos2d::Vector<Squad*> AWAY_TOP_SQUAD, AWAY_MID_SQUAD, AWAY_BOT_SQUAD; 
+
+	cocos2d::Vector<Squad*> HOME_TOP_SQUAD, HOME_MID_SQUAD, HOME_BOT_SQUAD;
+	cocos2d::Vector<Squad*> AWAY_TOP_SQUAD, AWAY_MID_SQUAD, AWAY_BOT_SQUAD;
 	cocos2d::Vector<Character*> HOME_TOP_CHARACTER, HOME_MID_CHARACTER, HOME_BOT_CHARACTER;
 	cocos2d::Vector<Character*> AWAY_TOP_CHARACTER, AWAY_MID_CHARACTER, AWAY_BOT_CHARACTER;
-	
+
 	cocos2d::Sprite* arrowIndicatorSprite;
 };
 

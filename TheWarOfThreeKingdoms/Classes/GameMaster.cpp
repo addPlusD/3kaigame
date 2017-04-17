@@ -15,6 +15,7 @@ static GameMaster* gameMaster = nullptr;
 static bool isCreated = false;
 int currentLane;
 
+
 ////GameMaster* GameMaster::createMaster(){
 ////    //return GameMaster::create();
 ////	gameMaster = GameMaster::create();
@@ -67,13 +68,6 @@ void GameMaster::clickOnCard(int characterId, int direction) {
 	auto scene = cocos2d::Director::getInstance()->getRunningScene();
 	scene->addChild(newCharacter, 1);
 
-	CCLOG("lane selector: %d", currentLane);
-
-	//check the currentLane flag and then add the character into the corresponding vector
-	addCharacterToLane(currentLane, newCharacter, "away");
-
-	CCLOG("The  lane : %d", currentLane);
-
 	//calculate the laneposition
 	float LanePositionY;
 	switch (currentLane) {
@@ -96,14 +90,13 @@ void GameMaster::clickOnCard(int characterId, int direction) {
 
 	
 	//set the moveto action to the new character
-	CCLOG("Current Lane: %d", currentLane);
-	CCLOG("LanePositionY=%f", LanePositionY);
 	auto characterMoveAction = MoveTo::create(1.2*newCharacter->getSpeed(), Vec2(homeSpawnPositionX, LanePositionY));
 	newCharacter->runAction(characterMoveAction);
 	CCLOG("Move to %f,%f", homeSpawnPositionX, LanePositionY);
 	CCLOG("From %f,%f", newCharacter->getPositionX(), newCharacter->getPositionY());
 
-	
+	//check the currentLane flag and then add the character into the corresponding vector
+	addCharacterToLane(currentLane, newCharacter, "away");
 }
 
 
@@ -175,7 +168,9 @@ void GameMaster::addSquadToLane(int laneInd, Squad* squad, const std::string& si
 
 		CCLOG("Added a squad to AwaySquadLaneVector");
 	}
-    //lane.pushBack(squad);
+    lane.pushBack(squad);
+	CCLOG("Added!");
+	CCLOG("There are %d elements in the lane", lane.size());
 }
 
 void GameMaster::removeSquadFromLane(int laneInd, Squad* squad, const std::string& side){
@@ -195,7 +190,9 @@ void GameMaster::removeSquadFromLane(int laneInd, Squad* squad, const std::strin
 
 		CCLOG("Removed a squad to AwaySquadLaneVector");
 	}
-    //lane.erase(lane.find(squad));
+    lane.erase(lane.find(squad));
+	CCLOG("Erased!");
+	CCLOG("There are %d elements in the lane", lane.size());
 }
 
 void GameMaster::addCharacterToLane(int laneInd, Character* character, const std::string& side){
@@ -213,11 +210,13 @@ void GameMaster::addCharacterToLane(int laneInd, Character* character, const std
 		CCLOG("Gotcha!!! The AWAY character lane vector");
 
 
-		CCLOG("The up321313dated lane selector: %d", currentLane);
 		CCLOG("Added a character to AwayCharacterLaneVector");
 	}
 	//push the character to the lane vector
-    //lane.pushBack(character);
+    lane.pushBack(character);
+	CCLOG("Added!");
+	CCLOG("There are %d elements in the lane", lane.size());
+	CCLOG("There are %d elements in the lane", lane.capacity());
 }
 
 void GameMaster::removeCharacterFromLane(int laneInd, Character* character, const std::string& side){
@@ -237,7 +236,10 @@ void GameMaster::removeCharacterFromLane(int laneInd, Character* character, cons
 		CCLOG("Removed a character to AwayCharacterLaneVector");
 	}
 	//erase the character to the lane vector
-    //lane.erase(lane.find(squad));
+    lane.erase(lane.find(character));
+	CCLOG("Erased!");
+	CCLOG("There are %d elements in the lane", lane.size());
+	CCLOG("There are %d elements in the lane", lane.capacity());
 }
 
 Vector<Squad*> GameMaster::getHomeSquadLaneVector(int laneIndicator){
@@ -246,12 +248,15 @@ Vector<Squad*> GameMaster::getHomeSquadLaneVector(int laneIndicator){
             //-1 top, 0 mid, 1 bot
         case -1:
             target = HOME_TOP_SQUAD;
+			CCLOG("Returned Squad Home Top");
             break;
         case 0:
             target = HOME_MID_SQUAD;
+			CCLOG("Returned Squad Home Mid");
             break;
         case 1:
             target = HOME_BOT_SQUAD;
+			CCLOG("Returned Squad Home Bot");
             break;
     }
     return target;
@@ -263,12 +268,15 @@ Vector<Character*> GameMaster::getHomeCharacterLaneVector(int laneIndicator) {
 		//-1 top, 0 mid, 1 bot
 	case -1:
 		target = HOME_TOP_CHARACTER;
+		CCLOG("Returned Character Home Top");
 		break;
 	case 0:
 		target = HOME_MID_CHARACTER;
+		CCLOG("Returned Character Home Mid");
 		break;
 	case 1:
 		target = HOME_BOT_CHARACTER;
+		CCLOG("Returned Character Home Bot");
 		break;
 	}
 	return target;
@@ -280,12 +288,15 @@ Vector<Squad*> GameMaster::getAwaySquadLaneVector(int laneIndicator) {
 		//-1 top, 0 mid, 1 bot
 	case -1:
 		target = AWAY_TOP_SQUAD;
+		CCLOG("Returned Squad Away Top");
 		break;
 	case 0:
 		target = AWAY_MID_SQUAD;
+		CCLOG("Returned Squad Away Mid");
 		break;
 	case 1:
 		target = AWAY_BOT_SQUAD;
+		CCLOG("Returned Squad Away Bot");
 		break;
 	}
 	return target;
@@ -297,12 +308,15 @@ Vector<Character*> GameMaster::getAwayCharacterLaneVector(int laneIndicator){
             //-1 top, 0 mid, 1 bot
         case -1:
             target = AWAY_TOP_CHARACTER;
+			CCLOG("Returned Character Away Top");
             break;
         case 0:
             target = AWAY_MID_CHARACTER;
+			CCLOG("Returned Character Away Mid");
             break;
         case 1:
             target = AWAY_BOT_CHARACTER;
+			CCLOG("Returned Character Away Bot");
             break;
     }
     return target;
