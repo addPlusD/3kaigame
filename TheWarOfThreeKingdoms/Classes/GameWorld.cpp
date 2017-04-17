@@ -25,6 +25,9 @@ Scene* GameWorld::createScene() {
 	return scene;
 }
 
+GameWorld::~GameWorld() {
+}
+
 //Implementing init member function of class GameWorld
 bool GameWorld::init() {
 	//do the init job here
@@ -59,7 +62,7 @@ bool GameWorld::init() {
 
 	//tell program to do update
 	scheduleUpdate();
-
+	GameMaster::getInstance()->scheduleUpdate();
 	return true;
 }
 
@@ -70,8 +73,9 @@ void GameWorld::update(float delta) {
 }
 
 void GameWorld::setMaster() {
-	gameMaster = GameMaster::createMaster();
+	gameMaster = GameMaster::getInstance();
 	this->addChild(gameMaster);
+	CCLOG("Reference count of the master: %d", gameMaster->getReferenceCount());
 }
 
 void GameWorld::setCards() {
@@ -88,7 +92,7 @@ void GameWorld::setCards() {
     auto card4 = Card::create("horse.png", 3, 3);
     this->addChild(card4, 1);
     
-    auto card5 = Card::create("character1.png", 4, 4);
+    auto card5 = Card::create("soldier.png", 4, 4);
     this->addChild(card5, 1);
     
 }
