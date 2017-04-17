@@ -378,24 +378,36 @@ void GameMaster::update(float delta) {
 
 	for (vector<Character*>::iterator pit = AWAY_TOP_CHARACTER.begin();pit != AWAY_TOP_CHARACTER.end();)
 	{
-
-
 		for (vector<Character*>::iterator ait = HOME_TOP_CHARACTER.begin(); ait != HOME_TOP_CHARACTER.end();) {
 			(*pit)->findEnemyWithinRange((*ait));
 			//CCLOG("home top: %d", HOME_TOP_CHARACTER.size());
 			if ((*ait)->health<0) {
 				(*ait)->die();
 				ait = HOME_TOP_CHARACTER.erase(ait);
-				//(*pit)->runAction((*pit)->moveTo);
 			}
 			else {
 				++ait;
 			}
 		}
+		//(*pit)->runAction((*pit)->moveTo);
 		++pit;
 	}
 
-
+	for (vector<Character*>::iterator ait = HOME_TOP_CHARACTER.begin(); ait != HOME_TOP_CHARACTER.end();)
+	{
+		for (vector<Character*>::iterator pit = AWAY_TOP_CHARACTER.begin(); pit != AWAY_TOP_CHARACTER.end();) {
+			(*ait)->findEnemyWithinRange((*pit));
+			//CCLOG("home top: %d", HOME_TOP_CHARACTER.size());
+			if ((*pit)->health<0) {
+				(*pit)->die();
+				pit = AWAY_TOP_CHARACTER.erase(pit);
+			}
+			else {
+				++pit;
+			}
+		}
+		++ait;
+	}
 
 	//cocos2d::Vector<Character*> HOME_TOP_CHARACTER;
 	//cocos2d::Vector<Character*> HOME_MID_CHARACTER;

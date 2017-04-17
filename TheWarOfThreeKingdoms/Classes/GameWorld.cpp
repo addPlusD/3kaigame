@@ -43,13 +43,15 @@ bool GameWorld::init() {
 	setMaster();
 
 	auto test1= Character::createCharacter("moveCharacter2.png", 1);
-	test1->setPosition(Vec2(100, 650));
+	test1->setPosition(Vec2(200, 650));
+	test1->setProperty(200, 500, 50, 0);
 	this->addChild(test1,1);
-	test1->health = 1000;
+	//test1->health = 1000;
 	GameMaster::getInstance()->addCharacterToLane(-1, test1, "home");
 
 	auto test2 = Character::createCharacter("moveCharacter3.png", 1);
-	test2->setPosition(Vec2(200, 650));
+	test2->setPosition(Vec2(100, 650));
+	test2->setProperty(1000, 50, 20, 0);
 	this->addChild(test2, 1);
 	test2->health = 1000;
 	GameMaster::getInstance()->addCharacterToLane(-1, test2, "home");

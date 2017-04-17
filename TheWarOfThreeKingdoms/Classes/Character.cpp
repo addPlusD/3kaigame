@@ -23,7 +23,7 @@ void Character::update(float delta){
 }
 
 void Character::findEnemyWithinRange(Sprite* enemy){
-	if (abs(this->getPositionX() - enemy->getPositionX()) < this->attackRange) {
+	if (abs(this->getPositionX() - enemy->getPositionX()) < this->attackRange && !attacking) {
 		this->attacking = true;
 		this->stopAndAttack(static_cast<Character*>(enemy));
 		CCLOG("find enemy within %d ",this->attackRange);
@@ -33,13 +33,16 @@ void Character::findEnemyWithinRange(Sprite* enemy){
 
 void Character::stopAndAttack(Sprite* enemy) {
 	//this->stopAllActions(); //stop the running action
+	//Director::getInstance()->getActionManager()->pauseTarget(this);
 	this->stopAction(this->moveTo);
+	if(this->attacking)
 	static_cast<Character*>(enemy)->loseBlood(this->attackDamage);
 }
 
 void Character::loseBlood(int damage){
     this->health -= damage;
 	CCLOG("Enemy health: %d",this->health);
+	this->attacking = false;
 }
 
 void Character::die() {
