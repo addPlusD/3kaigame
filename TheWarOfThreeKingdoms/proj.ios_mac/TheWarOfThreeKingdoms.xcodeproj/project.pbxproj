@@ -29,6 +29,22 @@
 		2120339D1EA0B1D6004C77D3 /* castle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2120339A1EA0B1D6004C77D3 /* castle.png */; };
 		2120339E1EA0B1D6004C77D3 /* enemy_castle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2120339B1EA0B1D6004C77D3 /* enemy_castle.png */; };
 		2120339F1EA0B1D6004C77D3 /* enemy_castle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2120339B1EA0B1D6004C77D3 /* enemy_castle.png */; };
+		212033A31EA34788004C77D3 /* CharacterCreator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 212033A11EA34788004C77D3 /* CharacterCreator.cpp */; };
+		212033A41EA34788004C77D3 /* CharacterCreator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 212033A11EA34788004C77D3 /* CharacterCreator.cpp */; };
+		212033AB1EA347E6004C77D3 /* moveCharacter2.png in Resources */ = {isa = PBXBuildFile; fileRef = 212033A61EA347E6004C77D3 /* moveCharacter2.png */; };
+		212033AC1EA347E6004C77D3 /* moveCharacter2.png in Resources */ = {isa = PBXBuildFile; fileRef = 212033A61EA347E6004C77D3 /* moveCharacter2.png */; };
+		212033AD1EA347E6004C77D3 /* moveCharacter3.png in Resources */ = {isa = PBXBuildFile; fileRef = 212033A71EA347E6004C77D3 /* moveCharacter3.png */; };
+		212033AE1EA347E6004C77D3 /* moveCharacter3.png in Resources */ = {isa = PBXBuildFile; fileRef = 212033A71EA347E6004C77D3 /* moveCharacter3.png */; };
+		212033AF1EA347E6004C77D3 /* moveCharacter4.png in Resources */ = {isa = PBXBuildFile; fileRef = 212033A81EA347E6004C77D3 /* moveCharacter4.png */; };
+		212033B01EA347E6004C77D3 /* moveCharacter4.png in Resources */ = {isa = PBXBuildFile; fileRef = 212033A81EA347E6004C77D3 /* moveCharacter4.png */; };
+		212033B11EA347E6004C77D3 /* moveCharacter5.png in Resources */ = {isa = PBXBuildFile; fileRef = 212033A91EA347E6004C77D3 /* moveCharacter5.png */; };
+		212033B21EA347E6004C77D3 /* moveCharacter5.png in Resources */ = {isa = PBXBuildFile; fileRef = 212033A91EA347E6004C77D3 /* moveCharacter5.png */; };
+		212033B31EA347E6004C77D3 /* moveCharacter6.png in Resources */ = {isa = PBXBuildFile; fileRef = 212033AA1EA347E6004C77D3 /* moveCharacter6.png */; };
+		212033B41EA347E6004C77D3 /* moveCharacter6.png in Resources */ = {isa = PBXBuildFile; fileRef = 212033AA1EA347E6004C77D3 /* moveCharacter6.png */; };
+		212033B61EA34A9C004C77D3 /* tiletile.png in Resources */ = {isa = PBXBuildFile; fileRef = 212033B51EA34A9C004C77D3 /* tiletile.png */; };
+		212033B71EA34A9C004C77D3 /* tiletile.png in Resources */ = {isa = PBXBuildFile; fileRef = 212033B51EA34A9C004C77D3 /* tiletile.png */; };
+		212033B91EA34AB9004C77D3 /* HP_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 212033B81EA34AB9004C77D3 /* HP_bar.png */; };
+		212033BA1EA34AB9004C77D3 /* HP_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 212033B81EA34AB9004C77D3 /* HP_bar.png */; };
 		218B6D931E9FE351009395C3 /* AIGame_map.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 218B6D8C1E9FE351009395C3 /* AIGame_map.tmx */; };
 		218B6D941E9FE351009395C3 /* AIGame_map.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 218B6D8C1E9FE351009395C3 /* AIGame_map.tmx */; };
 		218B6D951E9FE351009395C3 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 218B6D8D1E9FE351009395C3 /* background.png */; };
@@ -160,6 +176,15 @@
 		212033951EA0A945004C77D3 /* character.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = character.png; sourceTree = "<group>"; };
 		2120339A1EA0B1D6004C77D3 /* castle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = castle.png; sourceTree = "<group>"; };
 		2120339B1EA0B1D6004C77D3 /* enemy_castle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy_castle.png; sourceTree = "<group>"; };
+		212033A11EA34788004C77D3 /* CharacterCreator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CharacterCreator.cpp; sourceTree = "<group>"; };
+		212033A21EA34788004C77D3 /* CharacterCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterCreator.h; sourceTree = "<group>"; };
+		212033A61EA347E6004C77D3 /* moveCharacter2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moveCharacter2.png; sourceTree = "<group>"; };
+		212033A71EA347E6004C77D3 /* moveCharacter3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moveCharacter3.png; sourceTree = "<group>"; };
+		212033A81EA347E6004C77D3 /* moveCharacter4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moveCharacter4.png; sourceTree = "<group>"; };
+		212033A91EA347E6004C77D3 /* moveCharacter5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moveCharacter5.png; sourceTree = "<group>"; };
+		212033AA1EA347E6004C77D3 /* moveCharacter6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moveCharacter6.png; sourceTree = "<group>"; };
+		212033B51EA34A9C004C77D3 /* tiletile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tiletile.png; sourceTree = "<group>"; };
+		212033B81EA34AB9004C77D3 /* HP_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HP_bar.png; sourceTree = "<group>"; };
 		218B6D8C1E9FE351009395C3 /* AIGame_map.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = AIGame_map.tmx; sourceTree = "<group>"; };
 		218B6D8D1E9FE351009395C3 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		218B6D8E1E9FE351009395C3 /* terrain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = terrain.png; sourceTree = "<group>"; };
@@ -366,6 +391,13 @@
 				521A8EA819F11F5000D177D7 /* fonts */,
 				3EACC98E19EE6D4300EB3C5E /* res */,
 				218B6D8C1E9FE351009395C3 /* AIGame_map.tmx */,
+				212033B81EA34AB9004C77D3 /* HP_bar.png */,
+				212033A61EA347E6004C77D3 /* moveCharacter2.png */,
+				212033A71EA347E6004C77D3 /* moveCharacter3.png */,
+				212033A81EA347E6004C77D3 /* moveCharacter4.png */,
+				212033A91EA347E6004C77D3 /* moveCharacter5.png */,
+				212033AA1EA347E6004C77D3 /* moveCharacter6.png */,
+				212033B51EA34A9C004C77D3 /* tiletile.png */,
 				2120339A1EA0B1D6004C77D3 /* castle.png */,
 				2120339B1EA0B1D6004C77D3 /* enemy_castle.png */,
 				212033941EA0A945004C77D3 /* character.plist */,
@@ -391,6 +423,8 @@
 				05C9B27A1E90EE5F0031D6A3 /* Squad */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
+				212033A11EA34788004C77D3 /* CharacterCreator.cpp */,
+				212033A21EA34788004C77D3 /* CharacterCreator.h */,
 				2104F8051EA0786500A7EFD8 /* Card.cpp */,
 				2104F8061EA0786500A7EFD8 /* Card.h */,
 				05C9B2731E90DD7F0031D6A3 /* GameWorld.cpp */,
@@ -554,6 +588,7 @@
 				2120339E1EA0B1D6004C77D3 /* enemy_castle.png in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				218B6D971E9FE351009395C3 /* terrain.png in Resources */,
+				212033B61EA34A9C004C77D3 /* tiletile.png in Resources */,
 				2120339C1EA0B1D6004C77D3 /* castle.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
@@ -562,25 +597,31 @@
 				46880B8119C43A67006E1F66 /* HelloWorld.png in Resources */,
 				218B6D9D1E9FE351009395C3 /* tower_1.png in Resources */,
 				218B6D951E9FE351009395C3 /* background.png in Resources */,
+				212033B91EA34AB9004C77D3 /* HP_bar.png in Resources */,
 				46880B7D19C43A67006E1F66 /* CloseSelected.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
 				212033981EA0A945004C77D3 /* character.png in Resources */,
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
+				212033AB1EA347E6004C77D3 /* moveCharacter2.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				212033961EA0A945004C77D3 /* character.plist in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
+				212033AF1EA347E6004C77D3 /* moveCharacter4.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				3EACC98F19EE6D4300EB3C5E /* res in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
+				212033AD1EA347E6004C77D3 /* moveCharacter3.png in Resources */,
+				212033B11EA347E6004C77D3 /* moveCharacter5.png in Resources */,
 				218B6D9F1E9FE351009395C3 /* tower.png in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
 				46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */,
+				212033B31EA347E6004C77D3 /* moveCharacter6.png in Resources */,
 				218B6D991E9FE351009395C3 /* TileNature_1.png in Resources */,
 				218B6D931E9FE351009395C3 /* AIGame_map.tmx in Resources */,
 				218B6D9B1E9FE351009395C3 /* TileNature.png in Resources */,
@@ -593,20 +634,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				2120339F1EA0B1D6004C77D3 /* enemy_castle.png in Resources */,
+				212033BA1EA34AB9004C77D3 /* HP_bar.png in Resources */,
 				218B6D9C1E9FE351009395C3 /* TileNature.png in Resources */,
 				218B6D941E9FE351009395C3 /* AIGame_map.tmx in Resources */,
+				212033B71EA34A9C004C77D3 /* tiletile.png in Resources */,
 				212033991EA0A945004C77D3 /* character.png in Resources */,
 				218B6D961E9FE351009395C3 /* background.png in Resources */,
 				218B6D981E9FE351009395C3 /* terrain.png in Resources */,
+				212033AE1EA347E6004C77D3 /* moveCharacter3.png in Resources */,
 				46880B8219C43A67006E1F66 /* HelloWorld.png in Resources */,
+				212033B21EA347E6004C77D3 /* moveCharacter5.png in Resources */,
+				212033B41EA347E6004C77D3 /* moveCharacter6.png in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				3EACC99019EE6D4300EB3C5E /* res in Resources */,
 				218B6D9E1E9FE351009395C3 /* tower_1.png in Resources */,
 				2120339D1EA0B1D6004C77D3 /* castle.png in Resources */,
+				212033AC1EA347E6004C77D3 /* moveCharacter2.png in Resources */,
 				212033971EA0A945004C77D3 /* character.plist in Resources */,
 				521A8EAA19F11F5000D177D7 /* fonts in Resources */,
 				46880B7C19C43A67006E1F66 /* CloseNormal.png in Resources */,
 				218B6D9A1E9FE351009395C3 /* TileNature_1.png in Resources */,
+				212033B01EA347E6004C77D3 /* moveCharacter4.png in Resources */,
 				218B6DA01E9FE351009395C3 /* tower.png in Resources */,
 				46880B7E19C43A67006E1F66 /* CloseSelected.png in Resources */,
 			);
@@ -627,6 +675,7 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				212033A31EA34788004C77D3 /* CharacterCreator.cpp in Sources */,
 				05C9B27D1E90EEB70031D6A3 /* Squad.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -637,6 +686,7 @@
 			files = (
 				05C9B2761E90DD7F0031D6A3 /* GameWorld.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				212033A41EA34788004C77D3 /* CharacterCreator.cpp in Sources */,
 				05C9B2821E90F7610031D6A3 /* GameMaster.cpp in Sources */,
 				05C9B2871E90FCF50031D6A3 /* Character.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
