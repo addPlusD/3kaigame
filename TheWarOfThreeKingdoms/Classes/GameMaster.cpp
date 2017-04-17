@@ -34,18 +34,6 @@ GameMaster* GameMaster::getInstance() {
 }
 
 GameMaster::GameMaster() {
-	HOME_TOP_SQUAD = Vector<Squad*>{ 10 };
-	HOME_MID_SQUAD = Vector<Squad*>{ 10 };
-	HOME_BOT_SQUAD = Vector<Squad*>{ 10 };
-	 AWAY_TOP_SQUAD = Vector<Squad*>{ 10 };
-	 AWAY_MID_SQUAD = Vector<Squad*>{ 10 };
-	 AWAY_BOT_SQUAD = Vector<Squad*>{ 10 };
-	 HOME_TOP_CHARACTER = Vector<Character*>{ 10 };
-	 HOME_MID_CHARACTER = Vector<Character*>{ 10 };
-	 HOME_BOT_CHARACTER = Vector<Character*>{ 10 };
-	 AWAY_TOP_CHARACTER = Vector<Character*>{ 10 };
-	 AWAY_MID_CHARACTER = Vector<Character*>{ 10 };
-	 AWAY_BOT_CHARACTER = Vector<Character*>{ 10 };
 }
 
 GameMaster::~GameMaster() {
@@ -120,10 +108,7 @@ void GameMaster::clickOnCard(int characterId, int direction) {
 	addCharacterToLane(currentLane, newCharacter, "away");
 }
 
-
-
-
-
+//implement the switch lane command click
 void GameMaster::switchLaneCallback(Event* e) {
 	EventMouse* mouseEvent = (EventMouse*)e;
 	//get the layer, then get the click position, check if it is in the lane layer
@@ -174,7 +159,7 @@ void GameMaster::switchLaneCallback(Event* e) {
 }
 
 void GameMaster::addSquadToLane(int laneInd, Squad* squad, const std::string& side){
-	Vector<Squad*> lane;
+	Vector<Squad*>* lane;
 	//get the corresponding lane vector
 	if (side == "home") {
 		lane = getHomeSquadLaneVector(laneInd);
@@ -189,13 +174,13 @@ void GameMaster::addSquadToLane(int laneInd, Squad* squad, const std::string& si
 
 		CCLOG("Added a squad to AwaySquadLaneVector");
 	}
-    lane.pushBack(squad);
+    lane->pushBack(squad);
 	CCLOG("Added!");
-	CCLOG("There are %d elements in the lane", lane.size());
+	CCLOG("There are %d elements in the lane", lane->size());
 }
 
 void GameMaster::removeSquadFromLane(int laneInd, Squad* squad, const std::string& side){
-	Vector<Squad*> lane;
+	Vector<Squad*>* lane;
 	//get the corresponding lane vector
 	if (side == "home") {
 		lane = getHomeSquadLaneVector(laneInd);
@@ -211,9 +196,9 @@ void GameMaster::removeSquadFromLane(int laneInd, Squad* squad, const std::strin
 
 		CCLOG("Removed a squad to AwaySquadLaneVector");
 	}
-    lane.erase(lane.find(squad));
+    lane->erase(lane->find(squad));
 	CCLOG("Erased!");
-	CCLOG("There are %d elements in the lane", lane.size());
+	CCLOG("There are %d elements in the lane", lane->size());
 }
 
 void GameMaster::addCharacterToLane(int laneInd, Character* character, const std::string& side){
@@ -233,7 +218,6 @@ void GameMaster::addCharacterToLane(int laneInd, Character* character, const std
 
 		CCLOG("Added a character to AwayCharacterLaneVector");
 	}
-	lane->reserve(1);
 	//push the character to the lane vector
     lane->pushBack(character);
 
@@ -241,7 +225,6 @@ void GameMaster::addCharacterToLane(int laneInd, Character* character, const std
 	CCLOG("There are %d elements in the lane", lane->size());
 //	CCLOG("testing mid::::There are %d elements in the lane", AWAY_MID_CHARACTER.size());
 //	CCLOG("testing top::::There are %d elements in the lane", AWAY_TOP_CHARACTER.size());
-	CCLOG("There are %d elements in the lane", lane->capacity());
 }
 
 void GameMaster::removeCharacterFromLane(int laneInd, Character* character, const std::string& side){ //not test
@@ -264,23 +247,22 @@ void GameMaster::removeCharacterFromLane(int laneInd, Character* character, cons
     lane->erase(lane->find(character));
 	CCLOG("Erased!");
 	CCLOG("There are %d elements in the lane", lane->size());
-	CCLOG("There are %d elements in the lane", lane->capacity());
 }
 
-Vector<Squad*> GameMaster::getHomeSquadLaneVector(int laneIndicator){
-    Vector<Squad*> target;
+Vector<Squad*>* GameMaster::getHomeSquadLaneVector(int laneIndicator){
+    Vector<Squad*>* target;
     switch(laneIndicator){
             //-1 top, 0 mid, 1 bot
         case -1:
-            target = HOME_TOP_SQUAD;
+            target = &HOME_TOP_SQUAD;
 			CCLOG("Returned Squad Home Top");
             break;
         case 0:
-            target = HOME_MID_SQUAD;
+            target = &HOME_MID_SQUAD;
 			CCLOG("Returned Squad Home Mid");
             break;
         case 1:
-            target = HOME_BOT_SQUAD;
+            target = &HOME_BOT_SQUAD;
 			CCLOG("Returned Squad Home Bot");
             break;
     }
@@ -307,20 +289,20 @@ Vector<Character*>* GameMaster::getHomeCharacterLaneVector(int laneIndicator) {
 	return target;
 }
 
-Vector<Squad*> GameMaster::getAwaySquadLaneVector(int laneIndicator) {
-	Vector<Squad*> target;
+Vector<Squad*>* GameMaster::getAwaySquadLaneVector(int laneIndicator) {
+	Vector<Squad*>* target;
 	switch (laneIndicator) {
 		//-1 top, 0 mid, 1 bot
 	case -1:
-		target = AWAY_TOP_SQUAD;
+		target = &AWAY_TOP_SQUAD;
 		CCLOG("Returned Squad Away Top");
 		break;
 	case 0:
-		target = AWAY_MID_SQUAD;
+		target = &AWAY_MID_SQUAD;
 		CCLOG("Returned Squad Away Mid");
 		break;
 	case 1:
-		target = AWAY_BOT_SQUAD;
+		target = &AWAY_BOT_SQUAD;
 		CCLOG("Returned Squad Away Bot");
 		break;
 	}

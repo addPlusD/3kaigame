@@ -51,8 +51,8 @@ public:
     void addCharacterToLane(int, Character*, const std::string&);
     void removeCharacterFromLane(int, Character*, const std::string&);
     
-    cocos2d::Vector<Squad*> getHomeSquadLaneVector(int);
-	cocos2d::Vector<Squad*> getAwaySquadLaneVector(int);
+    cocos2d::Vector<Squad*>* getHomeSquadLaneVector(int);
+	cocos2d::Vector<Squad*>* getAwaySquadLaneVector(int);
     cocos2d::Vector<Character*>* getAwayCharacterLaneVector(int);
 	cocos2d::Vector<Character*>* getHomeCharacterLaneVector(int);
     
