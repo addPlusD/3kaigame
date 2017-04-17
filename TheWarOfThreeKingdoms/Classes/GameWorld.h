@@ -24,7 +24,8 @@ public:
     void setCards();
     void setBackground();
 	void setMaster();
-    
+    void setHP();
+    cocos2d::Rect getHPRect(int);
 
     CREATE_FUNC(GameWorld);
 
