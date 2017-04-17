@@ -75,6 +75,7 @@ bool GameMaster::init(){
 
 	currentLane = laneMid;
     return true;
+	
 }
 
 
@@ -108,8 +109,10 @@ void GameMaster::clickOnCard(int characterId, int direction) {
 
 	
 	//set the moveto action to the new character
-	auto characterMoveAction = MoveTo::create(1.2*newCharacter->getSpeed(), Vec2(homeSpawnPositionX, LanePositionY));
-	newCharacter->runAction(characterMoveAction);
+	//auto characterMoveAction = MoveTo::create(1.2*newCharacter->getSpeed(), Vec2(homeSpawnPositionX, LanePositionY));
+	//newCharacter->moveTo = characterMoveAction;
+	newCharacter->moveTo = MoveTo::create(1.2*newCharacter->getSpeed(), Vec2(homeSpawnPositionX, LanePositionY));
+	newCharacter->runAction(newCharacter->moveTo);
 	CCLOG("Move to %f,%f", homeSpawnPositionX, LanePositionY);
 	CCLOG("From %f,%f", newCharacter->getPositionX(), newCharacter->getPositionY());
 
@@ -346,4 +349,58 @@ Vector<Character*>* GameMaster::getAwayCharacterLaneVector(int laneIndicator){
 
 void GameMaster::checkCollision(){
 	
+}
+
+void GameMaster::update(float delta) {
+	//do the update job here
+
+	//vector<Character*>::iterator iter;
+	//for (iter = AWAY_TOP_CHARACTER.begin(); iter != AWAY_TOP_CHARACTER.end(); iter++) {
+	//	CCLOG("update character"); 
+	//}
+
+	//CCLOG("updating master");
+	//AWAY_TOP_CHARACTER
+	//CCLOG("ai size: %d", HOME_TOP_CHARACTER.size());
+	//for (auto *playerCharacter : AWAY_TOP_CHARACTER) // access by reference to avoid copying
+	//{
+	//	if (HOME_TOP_CHARACTER.size() != 0) {
+	//		for (auto *aiCharacter : HOME_TOP_CHARACTER) {
+	//			playerCharacter->findEnemyWithinRange(aiCharacter);
+	//			if (aiCharacter->health < 0) {
+	//				aiCharacter->die();
+	//				//HOME_TOP_CHARACTER.eraseObject(aiCharacter);
+	//				//removeCharacterFromLane(-1, aiCharacter, "home");
+	//			}
+	//		}
+	//	}
+	//}
+
+	for (vector<Character*>::iterator pit = AWAY_TOP_CHARACTER.begin();pit != AWAY_TOP_CHARACTER.end();)
+	{
+
+
+		for (vector<Character*>::iterator ait = HOME_TOP_CHARACTER.begin(); ait != HOME_TOP_CHARACTER.end();) {
+			(*pit)->findEnemyWithinRange((*ait));
+			//CCLOG("home top: %d", HOME_TOP_CHARACTER.size());
+			if ((*ait)->health<0) {
+				(*ait)->die();
+				ait = HOME_TOP_CHARACTER.erase(ait);
+				//(*pit)->runAction((*pit)->moveTo);
+			}
+			else {
+				++ait;
+			}
+		}
+		++pit;
+	}
+
+
+
+	//cocos2d::Vector<Character*> HOME_TOP_CHARACTER;
+	//cocos2d::Vector<Character*> HOME_MID_CHARACTER;
+	//cocos2d::Vector<Character*> HOME_BOT_CHARACTER;
+	//cocos2d::Vector<Character*> AWAY_TOP_CHARACTER;
+	//cocos2d::Vector<Character*> AWAY_MID_CHARACTER;
+	//cocos2d::Vector<Character*> AWAY_BOT_CHARACTER;
 }

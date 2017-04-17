@@ -60,7 +60,7 @@ public:
 	void clickOnCard(int, int);
 
     void checkCollision();
-
+	void update(float delta);
 	
     CREATE_FUNC(GameMaster);
     

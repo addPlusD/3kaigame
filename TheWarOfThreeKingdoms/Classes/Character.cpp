@@ -32,18 +32,19 @@ void Character::findEnemyWithinRange(Sprite* enemy){
 }
 
 void Character::stopAndAttack(Sprite* enemy) {
-	this->stopAllActions(); //stop the running action
+	//this->stopAllActions(); //stop the running action
+	this->stopAction(this->moveTo);
 	static_cast<Character*>(enemy)->loseBlood(this->attackDamage);
 }
 
 void Character::loseBlood(int damage){
     this->health -= damage;
 	CCLOG("Enemy health: %d",this->health);
-	if (this->health < 0) {
-		auto fadeOut = FadeOut::create(1.0f);
-		this->runAction(fadeOut);
-		//remove this object from gamemaster vector
-	}
+}
+
+void Character::die() {
+	auto fadeOut = FadeOut::create(1.0f);
+	this->runAction(fadeOut);
 }
 
 void Character::createCharacterOnPath(){

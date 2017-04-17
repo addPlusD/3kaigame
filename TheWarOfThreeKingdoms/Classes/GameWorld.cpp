@@ -42,6 +42,19 @@ bool GameWorld::init() {
 	setCards();
 	setMaster();
 
+	auto test1= Character::createCharacter("moveCharacter2.png", 1);
+	test1->setPosition(Vec2(100, 650));
+	this->addChild(test1,1);
+	test1->health = 1000;
+	GameMaster::getInstance()->addCharacterToLane(-1, test1, "home");
+
+	auto test2 = Character::createCharacter("moveCharacter3.png", 1);
+	test2->setPosition(Vec2(200, 650));
+	this->addChild(test2, 1);
+	test2->health = 1000;
+	GameMaster::getInstance()->addCharacterToLane(-1, test2, "home");
+//	GameMaster::getInstance()->removeCharacterFromLane(0, test1, "away");
+
 
 	//Below code for debug purpose
 	auto label = Label::create("", "Arial", 50.0);
@@ -61,14 +74,15 @@ bool GameWorld::init() {
 
 	//tell program to do update
 	scheduleUpdate();
-
+	GameMaster::getInstance()->scheduleUpdate();
 	return true;
 }
 
 //Implementing update member function of class GameWorld
 void GameWorld::update(float delta) {
 	//do the update job here
-
+	//CCLOG("updating game world");
+	//GameMaster::getInstance()->checkCollision();
 }
 
 void GameWorld::setMaster() {
@@ -91,7 +105,7 @@ void GameWorld::setCards() {
     auto card4 = Card::create("horse.png", 3, 3);
     this->addChild(card4, 1);
     
-    auto card5 = Card::create("character1.png", 4, 4);
+    auto card5 = Card::create("soldier.png", 4, 4);
     this->addChild(card5, 1);
     
 }

@@ -29,14 +29,17 @@ public:
 	static Character* createCharacter(const std::string& _file, int direction);
 	void createWalkAnimation();
 	void setProperty(int health, int attackDamage, int attackRange,float speed);
-
+	void die();
 
 	//accessor method of the attributes
 	float getSpeed();
+	int health;
+
+	cocos2d::MoveTo* moveTo;
 
 private:
     int x, y;
-    int health;
+    
     int attackDamage;
 	int attackRange;
     int direction; //-1 = NPC  1=player
