@@ -22,9 +22,9 @@ static bool isCreated = false;
 
 GameMaster* GameMaster::getInstance() {
 	if (!isCreated) {
-		isCreated = true;
 		gameMaster = new GameMaster();
 		if (gameMaster && gameMaster->init()) {
+            isCreated = true;
 			gameMaster->autorelease();
 			return gameMaster;
 		}
@@ -72,7 +72,7 @@ void GameMaster::clickOnCard(int characterId, int direction) {
 	//spawn the character object
 	auto newCharacter = CharacterCreator::getInstance()->charactersFactory(characterId, direction);
 	
-	auto scene = cocos2d::Director::getInstance()->getRunningScene();
+    auto scene = cocos2d::Director::getInstance()->getRunningScene()->getChildByTag(999);
 	scene->addChild(newCharacter, 1);
 
 	//calculate the laneposition
@@ -95,17 +95,55 @@ void GameMaster::clickOnCard(int characterId, int direction) {
 	//adjust the position of the fucking character
 	newCharacter->setPosition(Vec2(awaySpawnPositionX, LanePositionY));
 
-	
-	//set the moveto action to the new character
-	//auto characterMoveAction = MoveTo::create(1.2*newCharacter->getSpeed(), Vec2(homeSpawnPositionX, LanePositionY));
-	//newCharacter->moveTo = characterMoveAction;
-	newCharacter->moveTo = MoveTo::create(1.2*newCharacter->getSpeed(), Vec2(homeSpawnPositionX, LanePositionY));
-	newCharacter->runAction(newCharacter->moveTo);
+	//create the action for the sprites
+    createAction(newCharacter);
+  
 	CCLOG("Move to %f,%f", homeSpawnPositionX, LanePositionY);
 	CCLOG("From %f,%f", newCharacter->getPositionX(), newCharacter->getPositionY());
 
 	//check the currentLane flag and then add the character into the corresponding vector
 	addCharacterToLane(currentLane, newCharacter, "away");
+}
+
+void GameMaster::createAction(Character* target){
+    //set the moveto action to the new character
+    auto characterMoveAction = MoveTo::create(1.2*target->getSpeed(), Vec2(homeSpawnPositionX, target->getPositionY()));
+    
+    CCLOG("init duration:%f",1.2*target->getSpeed());
+    
+    //set the duration to action for later resume
+    target->setPassedActionDuration(1.2*target->getSpeed());
+    
+    //newCharacter->moveTo = characterMoveAction;
+    //newCharacter->moveTo = MoveTo::create(1.2*newCharacter->getSpeed(), Vec2(homeSpawnPositionX, LanePositionY));
+    //newCharacter->runAction(newCharacter->moveTo);
+    //target->setMoveAction(characterMoveAction);
+    
+    //set the finish callback to new character
+    //auto characterCallbackAction = CallFuncN::create(CC_CALLBACK_1(Tower::minionNearBy, this));
+    //newCharacter->setCallbackAction(characterCallbackAction);
+    
+    //set the action sequence to new character, later you just only need to rerun this sequence by character->runAction();
+    
+    auto runSequence = Sequence::create(characterMoveAction, nullptr);
+    target->setActionSequence(runSequence);
+    
+    target->runAction(runSequence);
+    target->startPathing();
+
+}
+
+void GameMaster::resumeAction(Character* target){
+    //set the moveto action based on passed duration to the new character
+    auto characterMoveAction = MoveTo::create(target->getPassedActionDuration(), Vec2(homeSpawnPositionX, target->getPositionY()));
+    CCLOG("Resume duration:%f", target->getPassedActionDuration());
+    auto runSequence = Sequence::create(characterMoveAction, nullptr);
+    target->setActionSequence(runSequence);
+    
+    target->runAction(runSequence);
+    
+    //resume the walking
+    target->startPathing();
 }
 
 //implement the switch lane command click
@@ -159,7 +197,7 @@ void GameMaster::switchLaneCallback(Event* e) {
 }
 
 void GameMaster::addSquadToLane(int laneInd, Squad* squad, const std::string& side){
-	Vector<Squad*>* lane;
+	std::vector<Squad*>* lane;
 	//get the corresponding lane vector
 	if (side == "home") {
 		lane = getHomeSquadLaneVector(laneInd);
@@ -174,13 +212,13 @@ void GameMaster::addSquadToLane(int laneInd, Squad* squad, const std::string& si
 
 		CCLOG("Added a squad to AwaySquadLaneVector");
 	}
-    lane->pushBack(squad);
+    lane->push_back(squad);
 	CCLOG("Added!");
-	CCLOG("There are %d elements in the lane", lane->size());
+	CCLOG("There are %ld elements in the lane", lane->size());
 }
 
 void GameMaster::removeSquadFromLane(int laneInd, Squad* squad, const std::string& side){
-	Vector<Squad*>* lane;
+	std::vector<Squad*>* lane;
 	//get the corresponding lane vector
 	if (side == "home") {
 		lane = getHomeSquadLaneVector(laneInd);
@@ -196,13 +234,13 @@ void GameMaster::removeSquadFromLane(int laneInd, Squad* squad, const std::strin
 
 		CCLOG("Removed a squad to AwaySquadLaneVector");
 	}
-    lane->erase(lane->find(squad));
+	lane->erase(std::remove(lane->begin(), lane->end(), squad), lane->end());
 	CCLOG("Erased!");
-	CCLOG("There are %d elements in the lane", lane->size());
+	CCLOG("There are %ld elements in the lane", lane->size());
 }
 
 void GameMaster::addCharacterToLane(int laneInd, Character* character, const std::string& side){
-	Vector<Character*>* lane;
+	std::vector<Character*>* lane;
 	//get the corresponding lane vector
 	if (side == "home") {
 		lane = getHomeCharacterLaneVector(laneInd);
@@ -219,16 +257,16 @@ void GameMaster::addCharacterToLane(int laneInd, Character* character, const std
 		CCLOG("Added a character to AwayCharacterLaneVector");
 	}
 	//push the character to the lane vector
-    lane->pushBack(character);
+    lane->push_back(character);
 
 	CCLOG("Added!");
-	CCLOG("There are %d elements in the lane", lane->size());
+	CCLOG("There are %ld elements in the lane", lane->size());
 //	CCLOG("testing mid::::There are %d elements in the lane", AWAY_MID_CHARACTER.size());
 //	CCLOG("testing top::::There are %d elements in the lane", AWAY_TOP_CHARACTER.size());
 }
 
 void GameMaster::removeCharacterFromLane(int laneInd, Character* character, const std::string& side){ //not test
-	Vector<Character*>* lane;
+	std::vector<Character*>* lane;
 	//get the corresponding lane vector
 	if (side == "home") {
 		lane = getHomeCharacterLaneVector(laneInd);
@@ -244,13 +282,13 @@ void GameMaster::removeCharacterFromLane(int laneInd, Character* character, cons
 		CCLOG("Removed a character to AwayCharacterLaneVector");
 	}
 	//erase the character to the lane vector
-    lane->erase(lane->find(character));
+    lane->erase(std::remove(lane->begin(), lane->end(), character), lane->end());
 	CCLOG("Erased!");
-	CCLOG("There are %d elements in the lane", lane->size());
+	CCLOG("There are %ld elements in the lane", lane->size());
 }
 
-Vector<Squad*>* GameMaster::getHomeSquadLaneVector(int laneIndicator){
-    Vector<Squad*>* target;
+std::vector<Squad*>* GameMaster::getHomeSquadLaneVector(int laneIndicator){
+	std::vector<Squad*>* target;
     switch(laneIndicator){
             //-1 top, 0 mid, 1 bot
         case -1:
@@ -269,8 +307,8 @@ Vector<Squad*>* GameMaster::getHomeSquadLaneVector(int laneIndicator){
     return target;
 }
 
-Vector<Character*>* GameMaster::getHomeCharacterLaneVector(int laneIndicator) {
-	Vector<Character*>* target;
+std::vector<Character*>* GameMaster::getHomeCharacterLaneVector(int laneIndicator) {
+	std::vector<Character*>* target;
 	switch (laneIndicator) {
 		//-1 top, 0 mid, 1 bot
 	case -1:
@@ -289,8 +327,8 @@ Vector<Character*>* GameMaster::getHomeCharacterLaneVector(int laneIndicator) {
 	return target;
 }
 
-Vector<Squad*>* GameMaster::getAwaySquadLaneVector(int laneIndicator) {
-	Vector<Squad*>* target;
+std::vector<Squad*>* GameMaster::getAwaySquadLaneVector(int laneIndicator) {
+	std::vector<Squad*>* target;
 	switch (laneIndicator) {
 		//-1 top, 0 mid, 1 bot
 	case -1:
@@ -309,8 +347,8 @@ Vector<Squad*>* GameMaster::getAwaySquadLaneVector(int laneIndicator) {
 	return target;
 }
 
-Vector<Character*>* GameMaster::getAwayCharacterLaneVector(int laneIndicator){
-    Vector<Character*>* target;
+std::vector<Character*>* GameMaster::getAwayCharacterLaneVector(int laneIndicator){
+	std::vector<Character*>* target;
     switch(laneIndicator){
             //-1 top, 0 mid, 1 bot
         case -1:
@@ -332,6 +370,8 @@ Vector<Character*>* GameMaster::getAwayCharacterLaneVector(int laneIndicator){
 void GameMaster::checkCollision(){
 	
 }
+
+
 
 void GameMaster::update(float delta) {
 	//do the update job here
@@ -358,14 +398,198 @@ void GameMaster::update(float delta) {
 	//	}
 	//}
 
-	for (vector<Character*>::iterator pit = AWAY_TOP_CHARACTER.begin();pit != AWAY_TOP_CHARACTER.end();)
+	
+
+	Vector<Character*> homeTBDVector;
+	Vector<Character*> awayTBDVector;
+
+
+	
+    //Eddie on 20170418
+	//Handle top collision
+    for(Character* player : AWAY_TOP_CHARACTER){
+        for(Character* ai : HOME_TOP_CHARACTER){
+            //player tries to attack the ai
+            player->findEnemyWithinRange(ai);
+            //check ai's health
+            if(ai->getHealth()<=0){
+                CCLOG("Player killed the AI with damage %d", player->getAttackDamage());
+                //ai dies
+                ai->die();
+				//add the object to TO BE DELETED vector
+				homeTBDVector.pushBack(ai);
+                //remove ai from the lane vector
+                //removeCharacterFromLane(laneTop, ai, "home");
+                CCLOG("AI dies!");
+                //resume action for player
+                resumeAction(player);
+                continue;
+            }
+            
+            //ai tries to attack the player
+            ai->findEnemyWithinRange(player);
+            //check player's health
+            if(player->getHealth()<=0){
+                CCLOG("AI killed the player with damage %d", ai->getAttackDamage());
+                //stop player action
+                player->stopAction(player->getActionSequence());
+                //player dies
+                player->die();
+				//add the object to TO BE DELETED vector
+				awayTBDVector.pushBack(player);
+                //remove player from the lane vector
+                //removeCharacterFromLane(laneTop, player, "away");
+                CCLOG("Player dies!");
+                //resume action for ai(later remove the comment)
+                //resumeAction(ai);
+                break;
+            }
+        }
+    }
+
+	//Handle mid collision
+	for (Character* player : AWAY_MID_CHARACTER) {
+		for (Character* ai : HOME_MID_CHARACTER) {
+			//player tries to attack the ai
+			player->findEnemyWithinRange(ai);
+			//check ai's health
+			if (ai->getHealth() <= 0) {
+				CCLOG("Player killed the AI with damage %d", player->getAttackDamage());
+				//ai dies
+				ai->die();
+				//add the object to TO BE DELETED vector
+				homeTBDVector.pushBack(ai);
+				//remove ai from the lane vector
+				//removeCharacterFromLane(laneTop, ai, "home");
+				CCLOG("AI dies!");
+				//resume action for player
+				resumeAction(player);
+				continue;
+			}
+
+			//ai tries to attack the player
+			ai->findEnemyWithinRange(player);
+			//check player's health
+			if (player->getHealth() <= 0) {
+				CCLOG("AI killed the player with damage %d", ai->getAttackDamage());
+				//stop player action
+				player->stopAction(player->getActionSequence());
+				//player dies
+				player->die();
+				//add the object to TO BE DELETED vector
+				awayTBDVector.pushBack(player);
+				//remove player from the lane vector
+				//removeCharacterFromLane(laneTop, player, "away");
+				CCLOG("Player dies!");
+				//resume action for ai(later remove the comment)
+				//resumeAction(ai);
+				break;
+			}
+		}
+	}
+
+	//Handle bot collision
+	for (Character* player : AWAY_BOT_CHARACTER) {
+		for (Character* ai : HOME_BOT_CHARACTER) {
+			//player tries to attack the ai
+			player->findEnemyWithinRange(ai);
+			//check ai's health
+			if (ai->getHealth() <= 0) {
+				CCLOG("Player killed the AI with damage %d", player->getAttackDamage());
+				//ai dies
+				ai->die();
+				//add the object to TO BE DELETED vector
+				homeTBDVector.pushBack(ai);
+				//remove ai from the lane vector
+				//removeCharacterFromLane(laneTop, ai, "home");
+				CCLOG("AI dies!");
+				//resume action for player
+				resumeAction(player);
+				continue;
+			}
+
+			//ai tries to attack the player
+			ai->findEnemyWithinRange(player);
+			//check player's health
+			if (player->getHealth() <= 0) {
+				CCLOG("AI killed the player with damage %d", ai->getAttackDamage());
+				//stop player action
+				player->stopAction(player->getActionSequence());
+				//player dies
+				player->die();
+				//add the object to TO BE DELETED vector
+				awayTBDVector.pushBack(player);
+				//remove player from the lane vector
+				//removeCharacterFromLane(laneTop, player, "away");
+				CCLOG("Player dies!");
+				//resume action for ai(later remove the comment)
+				//resumeAction(ai);
+				break;
+			}
+		}
+	}
+
+	//remove all the fucking elements in the TO BE DELETED vector, becoz they can't be erased inside the iteration
+	for (Character* character : homeTBDVector) {
+		removeCharacterFromLane(laneTop, character, "home");
+	}
+
+	for (Character* character : awayTBDVector) {
+		removeCharacterFromLane(laneTop, character, "away");
+	}
+
+     
+	//for (std::vector<Character*>::iterator player = AWAY_TOP_CHARACTER.begin(); player != AWAY_TOP_CHARACTER.end();)
+	//{
+	//	for (std::vector<Character*>::iterator ai = HOME_TOP_CHARACTER.begin(); ai != HOME_TOP_CHARACTER.end();) {
+	//		//player tries to attack the ai
+	//		(*player)->findEnemyWithinRange(*ai);
+	//		//check ai's health
+	//		if ((*ai)->getHealth() <= 0) {
+	//			CCLOG("Player killed the AI with damage %d", (*player)->getAttackDamage());
+	//			//ai dies
+	//			(*ai)->die();
+	//			//remove ai from the lane vector
+	//			//removeCharacterFromLane(laneTop, *ai, "home");
+	//			CCLOG("AI dies!");
+	//			//resume action for player
+	//			resumeAction(*player);
+	//			continue;
+	//		}
+
+	//		//ai tries to attack the player
+	//		(*ai)->findEnemyWithinRange(*player);
+	//		//check player's health
+	//		if ((*player)->getHealth() <= 0) {
+	//			CCLOG("AI killed the player with damage %d", (*ai)->getAttackDamage());
+	//			//stop player action
+	//			(*player)->stopAction((*player)->getActionSequence());
+	//			//player dies
+	//			(*player)->die();
+	//			//remove player from the lane vector
+	//			//removeCharacterFromLane(laneTop, *player, "away");
+	//			CCLOG("Player dies!");
+	//			//resume action for ai
+	//			//resumeAction(ai);
+	//			break;
+	//		}
+	//		++ai;
+	//	}
+	//	++player;
+	//}
+
+    //
+    
+    /* Bon's collision
+	for (vector<Character*>::iterator player = AWAY_TOP_CHARACTER.begin();pit != AWAY_TOP_CHARACTER.end();)
 	{
-		for (vector<Character*>::iterator ait = HOME_TOP_CHARACTER.begin(); ait != HOME_TOP_CHARACTER.end();) {
-			(*pit)->findEnemyWithinRange((*ait));
+		for (vector<Character*>::iterator ai = HOME_TOP_CHARACTER.begin(); ait != HOME_TOP_CHARACTER.end();) {
+			(*player)->findEnemyWithinRange((*ai));
 			//CCLOG("home top: %d", HOME_TOP_CHARACTER.size());
-			if ((*ait)->health<0) {
-				(*ait)->die();
+			if ((*ai)->health<0) {
+				(*ai)->die();
 				ait = HOME_TOP_CHARACTER.erase(ait);
+                performAction(*pit);
 			}
 			else {
 				++ait;
@@ -390,6 +614,7 @@ void GameMaster::update(float delta) {
 		}
 		++ait;
 	}
+     */
 
 	//cocos2d::Vector<Character*> HOME_TOP_CHARACTER;
 	//cocos2d::Vector<Character*> HOME_MID_CHARACTER;
@@ -397,4 +622,5 @@ void GameMaster::update(float delta) {
 	//cocos2d::Vector<Character*> AWAY_TOP_CHARACTER;
 	//cocos2d::Vector<Character*> AWAY_MID_CHARACTER;
 	//cocos2d::Vector<Character*> AWAY_BOT_CHARACTER;
+    
 }
