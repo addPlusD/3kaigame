@@ -70,39 +70,45 @@ bool GameMaster::init(){
 void GameMaster::clickOnCard(int characterId, int direction) {
 	//direction: 0=down, 1=left, 2=right, 3=up
 	//spawn the character object
-	auto newCharacter = CharacterCreator::getInstance()->charactersFactory(characterId, direction);
-	
-    auto scene = cocos2d::Director::getInstance()->getRunningScene()->getChildByTag(999);
-	scene->addChild(newCharacter, 1);
+	if (!cardCoolDown) {
+		auto newCharacter = CharacterCreator::getInstance()->charactersFactory(characterId, direction);
+		
+		auto scene = cocos2d::Director::getInstance()->getRunningScene()->getChildByTag(999);
+		scene->addChild(newCharacter, 1);
 
-	//calculate the laneposition
-	float LanePositionY;
-	switch (currentLane) {
-	case laneTop:
-		LanePositionY = topLaneY;
-		break;
-	case laneMid:
-		LanePositionY = midLaneY;
-		break;
-	case laneBot:
-		LanePositionY = botLaneY;
-		break;
-	default:
-		LanePositionY = 0;
-		break;
+		//calculate the laneposition
+		float LanePositionY;
+		switch (currentLane) {
+		case laneTop:
+			LanePositionY = topLaneY;
+			break;
+		case laneMid:
+			LanePositionY = midLaneY;
+			break;
+		case laneBot:
+			LanePositionY = botLaneY;
+			break;
+		default:
+			LanePositionY = 0;
+			break;
+		}
+		
+		//adjust the position of the fucking character
+		newCharacter->setPosition(Vec2(awaySpawnPositionX, LanePositionY));
+
+		//create the action for the sprites
+		createAction(newCharacter);
+	  
+		CCLOG("Move to %f,%f", homeSpawnPositionX, LanePositionY);
+		CCLOG("From %f,%f", newCharacter->getPositionX(), newCharacter->getPositionY());
+
+		//check the currentLane flag and then add the character into the corresponding vector
+		addCharacterToLane(currentLane, newCharacter, "away");
+		cardCoolDown = true;
 	}
-	
-	//adjust the position of the fucking character
-	newCharacter->setPosition(Vec2(awaySpawnPositionX, LanePositionY));
-
-	//create the action for the sprites
-    createAction(newCharacter);
-  
-	CCLOG("Move to %f,%f", homeSpawnPositionX, LanePositionY);
-	CCLOG("From %f,%f", newCharacter->getPositionX(), newCharacter->getPositionY());
-
-	//check the currentLane flag and then add the character into the corresponding vector
-	addCharacterToLane(currentLane, newCharacter, "away");
+	else {
+		return;
+	}
 }
 
 void GameMaster::createAction(Character* target){

@@ -89,7 +89,9 @@ private:
 
 	
 	int currentLane;
-
+	
+	float timeStamp=0;
+	bool cardCoolDown = false;
 };
 
 #endif /* GameMaster_class */
