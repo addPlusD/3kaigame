@@ -1,5 +1,6 @@
 #pragma once
 #include "Character.h"
+#include "Bar.h"
 #include <string>
 using namespace std;
 class CharacterCreator

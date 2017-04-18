@@ -94,7 +94,13 @@ void GameMaster::clickOnCard(int characterId, int direction) {
 	
 	//adjust the position of the fucking character
 	newCharacter->setPosition(Vec2(awaySpawnPositionX, LanePositionY));
-
+    
+    //assigning HP bar to new character
+//    auto HPBar = Bar::create();
+//    HPBar->setScale(0.1);
+//    HPBar->setTag(101);
+//    HPBar->setPosition(Vec2(newCharacter->getContentSize().width/2,30));
+//    newCharacter->addChild(HPBar, 1);
 	
 	//set the moveto action to the new character
 	//auto characterMoveAction = MoveTo::create(1.2*newCharacter->getSpeed(), Vec2(homeSpawnPositionX, LanePositionY));

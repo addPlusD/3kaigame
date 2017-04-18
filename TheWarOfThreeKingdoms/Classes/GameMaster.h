@@ -14,6 +14,7 @@
 #include "Squad.h"
 #include "Character.h"
 #include "CharacterCreator.h"
+#include "Bar.h"
 
 class GameMaster : public cocos2d::Layer{
     
