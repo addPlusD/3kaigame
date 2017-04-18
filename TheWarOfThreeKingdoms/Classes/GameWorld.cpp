@@ -45,18 +45,20 @@ bool GameWorld::init() {
 	setCards();
 	setMaster();
 
-	auto test1= Character::createCharacter("moveCharacter2.png", 1);
+	auto test1= Character::createCharacter("moveCharacter2.png", 2);
 	test1->setPosition(Vec2(200, 650));
-	test1->setProperty(200, 500, 50, 0);
+	test1->setProperty(200, 500, 50, 0, 2);
 	this->addChild(test1,1);
+    test1->setName("test1");
 	//test1->health = 1000;
 	GameMaster::getInstance()->addCharacterToLane(-1, test1, "home");
 
-	auto test2 = Character::createCharacter("moveCharacter3.png", 1);
+	auto test2 = Character::createCharacter("moveCharacter3.png", 2);
 	test2->setPosition(Vec2(100, 650));
-	test2->setProperty(1000, 50, 20, 0);
+	test2->setProperty(1000, 50, 20, 0, 2);
 	this->addChild(test2, 1);
-	test2->health = 1000;
+	test2->setHealth(1000);
+    test2->setName("test2");
 	GameMaster::getInstance()->addCharacterToLane(-1, test2, "home");
 //	GameMaster::getInstance()->removeCharacterFromLane(0, test1, "away");
 
@@ -85,6 +87,7 @@ bool GameWorld::init() {
 
 //Implementing update member function of class GameWorld
 void GameWorld::update(float delta) {
+    gameMaster->update(delta);
 	//do the update job here
 	//CCLOG("updating game world");
 	//GameMaster::getInstance()->checkCollision();

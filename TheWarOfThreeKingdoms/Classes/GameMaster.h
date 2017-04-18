@@ -52,33 +52,38 @@ public:
     void addCharacterToLane(int, Character*, const std::string&);
     void removeCharacterFromLane(int, Character*, const std::string&);
     
-    cocos2d::Vector<Squad*>* getHomeSquadLaneVector(int);
-	cocos2d::Vector<Squad*>* getAwaySquadLaneVector(int);
-    cocos2d::Vector<Character*>* getAwayCharacterLaneVector(int);
-	cocos2d::Vector<Character*>* getHomeCharacterLaneVector(int);
+    std::vector<Squad*>* getHomeSquadLaneVector(int);
+	std::vector<Squad*>* getAwaySquadLaneVector(int);
+    std::vector<Character*>* getAwayCharacterLaneVector(int);
+	std::vector<Character*>* getHomeCharacterLaneVector(int);
     
 	void switchLaneCallback(cocos2d::Event*);
 	void clickOnCard(int, int);
 
     void checkCollision();
 	void update(float delta);
+    
+    void createAction(Character*);
+    void resumeAction(Character*);
+    
+    
 	
     CREATE_FUNC(GameMaster);
     
 private:
 
-		cocos2d::Vector<Squad*> HOME_TOP_SQUAD;
-		cocos2d::Vector<Squad*> HOME_MID_SQUAD;
-		cocos2d::Vector<Squad*> HOME_BOT_SQUAD;
-		cocos2d::Vector<Squad*> AWAY_TOP_SQUAD;
-		cocos2d::Vector<Squad*> AWAY_MID_SQUAD;
-		cocos2d::Vector<Squad*> AWAY_BOT_SQUAD;
-		cocos2d::Vector<Character*> HOME_TOP_CHARACTER;
-		cocos2d::Vector<Character*> HOME_MID_CHARACTER;
-		cocos2d::Vector<Character*> HOME_BOT_CHARACTER;
-		cocos2d::Vector<Character*> AWAY_TOP_CHARACTER;
-		cocos2d::Vector<Character*> AWAY_MID_CHARACTER;
-		cocos2d::Vector<Character*> AWAY_BOT_CHARACTER;
+		std::vector<Squad*> HOME_TOP_SQUAD;
+		std::vector<Squad*> HOME_MID_SQUAD;
+		std::vector<Squad*> HOME_BOT_SQUAD;
+		std::vector<Squad*> AWAY_TOP_SQUAD;
+		std::vector<Squad*> AWAY_MID_SQUAD;
+		std::vector<Squad*> AWAY_BOT_SQUAD;
+		std::vector<Character*> HOME_TOP_CHARACTER;
+		std::vector<Character*> HOME_MID_CHARACTER;
+		std::vector<Character*> HOME_BOT_CHARACTER;
+		std::vector<Character*> AWAY_TOP_CHARACTER;
+		std::vector<Character*> AWAY_MID_CHARACTER;
+		std::vector<Character*> AWAY_BOT_CHARACTER;
 
 	cocos2d::Sprite* arrowIndicatorSprite;
 

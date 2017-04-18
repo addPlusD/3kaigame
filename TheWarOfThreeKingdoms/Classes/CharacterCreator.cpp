@@ -2,6 +2,7 @@
 USING_NS_CC;
 using namespace std;
 
+
 CharacterCreator::CharacterCreator()
 {
 
