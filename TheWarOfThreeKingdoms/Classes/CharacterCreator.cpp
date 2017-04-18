@@ -48,11 +48,11 @@ Character*  CharacterCreator::charactersFactory(int charcterId,int direction){
 		break;
 	}
 	
-    auto HPBar = Bar::create(HP);
-    HPBar->setScale(0.1);
-    HPBar->setTag(101);
-    HPBar->setPosition(Vec2(newCharacter->getContentSize().width/2,30));
-    newCharacter->addChild(HPBar, 1);
+//    auto HPBar = Bar::create(HP);
+//    HPBar->setScale(0.1);
+//    HPBar->setTag(101);
+//    HPBar->setPosition(Vec2(newCharacter->getContentSize().width/2,30));
+//    newCharacter->addChild(HPBar, 1);
 	
 	return newCharacter;
 }

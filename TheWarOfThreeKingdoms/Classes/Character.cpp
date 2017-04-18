@@ -104,6 +104,8 @@ void Character::stopAndAttack(Sprite* enemy) {
 
 void Character::loseBlood(int damage){
     this->health -= damage;
+    auto HPBar= (Bar*)this->getChildByTag(101);
+    HPBar->updateHP(this->health);
 	CCLOG("Enemy health: %d",this->health);
 	this->attacking = false;
 }
@@ -156,6 +158,12 @@ void Character::setProperty(int health, int attackDamage, int attackRange, float
 	this->attackRange = attackRange;
 	this->speed = speed;
     this->cooldown = cooldown;
+    
+    auto HPBar = Bar::create(health);
+    HPBar->setScale(0.1);
+    HPBar->setTag(101);
+    HPBar->setPosition(Vec2(this->getContentSize().width/2,30));
+    this->addChild(HPBar, 1);
 }
 
 float Character::getSpeed() {

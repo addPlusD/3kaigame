@@ -12,6 +12,7 @@
 
 #include <stdio.h>
 #include "cocos2d.h"
+#include "Bar.h"
 #include <string>
 
 class Character : public cocos2d::Sprite {
