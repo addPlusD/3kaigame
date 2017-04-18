@@ -400,8 +400,12 @@ void GameMaster::update(float delta) {
 
 	
 
-	Vector<Character*> homeTBDVector;
-	Vector<Character*> awayTBDVector;
+	Vector<Character*> homeTBDTopVector;
+	Vector<Character*> awayTBDTopVector;
+	Vector<Character*> homeTBDMidVector;
+	Vector<Character*> awayTBDMidVector;
+	Vector<Character*> homeTBDBotVector;
+	Vector<Character*> awayTBDBotVector;
 
 
 	
@@ -417,7 +421,7 @@ void GameMaster::update(float delta) {
                 //ai dies
                 ai->die();
 				//add the object to TO BE DELETED vector
-				homeTBDVector.pushBack(ai);
+				homeTBDTopVector.pushBack(ai);
                 //remove ai from the lane vector
                 //removeCharacterFromLane(laneTop, ai, "home");
                 CCLOG("AI dies!");
@@ -436,7 +440,7 @@ void GameMaster::update(float delta) {
                 //player dies
                 player->die();
 				//add the object to TO BE DELETED vector
-				awayTBDVector.pushBack(player);
+				awayTBDTopVector.pushBack(player);
                 //remove player from the lane vector
                 //removeCharacterFromLane(laneTop, player, "away");
                 CCLOG("Player dies!");
@@ -458,7 +462,7 @@ void GameMaster::update(float delta) {
 				//ai dies
 				ai->die();
 				//add the object to TO BE DELETED vector
-				homeTBDVector.pushBack(ai);
+				homeTBDMidVector.pushBack(ai);
 				//remove ai from the lane vector
 				//removeCharacterFromLane(laneTop, ai, "home");
 				CCLOG("AI dies!");
@@ -477,7 +481,7 @@ void GameMaster::update(float delta) {
 				//player dies
 				player->die();
 				//add the object to TO BE DELETED vector
-				awayTBDVector.pushBack(player);
+				awayTBDMidVector.pushBack(player);
 				//remove player from the lane vector
 				//removeCharacterFromLane(laneTop, player, "away");
 				CCLOG("Player dies!");
@@ -499,7 +503,7 @@ void GameMaster::update(float delta) {
 				//ai dies
 				ai->die();
 				//add the object to TO BE DELETED vector
-				homeTBDVector.pushBack(ai);
+				homeTBDBotVector.pushBack(ai);
 				//remove ai from the lane vector
 				//removeCharacterFromLane(laneTop, ai, "home");
 				CCLOG("AI dies!");
@@ -518,7 +522,7 @@ void GameMaster::update(float delta) {
 				//player dies
 				player->die();
 				//add the object to TO BE DELETED vector
-				awayTBDVector.pushBack(player);
+				awayTBDBotVector.pushBack(player);
 				//remove player from the lane vector
 				//removeCharacterFromLane(laneTop, player, "away");
 				CCLOG("Player dies!");
@@ -530,12 +534,28 @@ void GameMaster::update(float delta) {
 	}
 
 	//remove all the fucking elements in the TO BE DELETED vector, becoz they can't be erased inside the iteration
-	for (Character* character : homeTBDVector) {
+	for (Character* character : homeTBDTopVector) {
 		removeCharacterFromLane(laneTop, character, "home");
 	}
 
-	for (Character* character : awayTBDVector) {
+	for (Character* character : awayTBDTopVector) {
 		removeCharacterFromLane(laneTop, character, "away");
+	}
+
+	for (Character* character : homeTBDMidVector) {
+		removeCharacterFromLane(laneMid, character, "home");
+	}
+
+	for (Character* character : awayTBDMidVector) {
+		removeCharacterFromLane(laneMid, character, "away");
+	}
+
+	for (Character* character : homeTBDBotVector) {
+		removeCharacterFromLane(laneBot, character, "home");
+	}
+
+	for (Character* character : awayTBDBotVector) {
+		removeCharacterFromLane(laneBot, character, "away");
 	}
 
      
