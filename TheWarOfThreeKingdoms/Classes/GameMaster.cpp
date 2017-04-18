@@ -564,7 +564,15 @@ void GameMaster::update(float delta) {
 		removeCharacterFromLane(laneBot, character, "away");
 	}
 
-     
+  	if (cardCoolDown) {
+		this->timeStamp += delta;
+	}
+
+	if (timeStamp > 1) {
+		cardCoolDown = false;
+		timeStamp = 0;
+	}
+	
 	//for (std::vector<Character*>::iterator player = AWAY_TOP_CHARACTER.begin(); player != AWAY_TOP_CHARACTER.end();)
 	//{
 	//	for (std::vector<Character*>::iterator ai = HOME_TOP_CHARACTER.begin(); ai != HOME_TOP_CHARACTER.end();) {
