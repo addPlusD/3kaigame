@@ -67,6 +67,7 @@ public:
     void resumeAction(Character*);
     
     void setCost(int);
+    void recoverCost(float);
     int getCost();
 	
     CREATE_FUNC(GameMaster);

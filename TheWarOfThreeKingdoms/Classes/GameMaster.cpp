@@ -75,6 +75,8 @@ bool GameMaster::init(){
     costBarLabel ->setPosition(Vec2(costBarLabel->getContentSize().width-costBar->getContentSize().width/2,costBar->getContentSize().height / 2));
     costBar->addChild(costBarLabel);
     
+    this->schedule(schedule_selector(GameMaster::recoverCost),5.0f);
+    
 	currentLane = laneMid;
     return true;
 	
@@ -82,6 +84,10 @@ bool GameMaster::init(){
 
 void GameMaster::setCost(int diff){
     this->cost+=diff;
+}
+
+void GameMaster::recoverCost(float dt){
+    this->cost+=1;
 }
 
 int GameMaster::getCost(){
@@ -440,8 +446,6 @@ void GameMaster::update(float delta) {
 	Vector<Character*> awayTBDMidVector;
 	Vector<Character*> homeTBDBotVector;
 	Vector<Character*> awayTBDBotVector;
-    
-    
     
     //update cost bar
     auto costBar = (Bar*)this->getChildByTag(201);
