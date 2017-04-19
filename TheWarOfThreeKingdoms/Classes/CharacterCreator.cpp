@@ -17,7 +17,8 @@ Character*  CharacterCreator::charactersFactory(int charcterId,int direction){
 //    int HP;
 	switch (charcterId) {
 		case 0:
-			newCharacter->setProperty(500,50,20,1, 4);// int health, int attackDamage, int attackRange, float speed, float cooldown
+			newCharacter->setProperty(500,50,20,1, 4);
+            // int health, int attackDamage, int attackRange, float speed, float cooldown
             newCharacter->setName("Player1");
 //            HP = 500;
 		break;
