@@ -21,7 +21,7 @@ public:
     virtual bool init();
     virtual void update(float delta);
     
-    void findEnemyWithinRange(Sprite* enemy);
+    bool findEnemyWithinRange(Sprite* enemy);
     //void move();
     void stopAndAttack(Sprite* enemy);
     void loseBlood(int);
@@ -52,6 +52,26 @@ public:
     //for character's die callback
     void diedObject(Node*);
     
+    //get the attack range bounding box
+    cocos2d::Rect getAttackBoundingBox();
+    
+    //check attacking status
+    bool getAttacking();
+    void notAttackingNow();
+    
+    bool isStopped();
+    void setStopped(bool);
+    
+    void setBoundingBox();
+    
+    void setSide(const std::string&);
+    const std::string& getSide();
+    
+    void setLane(int);
+    int getLane();
+    
+    bool getIsCooldown();
+    
     void setActionSequence(cocos2d::Sequence*);
     cocos2d::Sequence* getActionSequence();
 
@@ -68,6 +88,9 @@ private:
     bool attacking;
     bool isCooldown;
     bool isPathing;
+    bool stopped;
+    int lane;
+    std::string side;
 	cocos2d::Vector<cocos2d::SpriteFrame *> walkAnimation;
 	const char* fileName;
     cocos2d::MoveTo* moveTo;

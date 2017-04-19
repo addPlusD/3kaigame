@@ -63,21 +63,6 @@ bool GameWorld::init() {
 //	GameMaster::getInstance()->removeCharacterFromLane(0, test1, "away");
 
 
-	//Below code for debug purpose
-	auto label = Label::create("", "Arial", 50.0);
-	label->setPosition(300, 700);
-	this->addChild(label);
-	label->setColor(Color3B::RED);
-	label->setName("debugLabel");
-	auto _mouseEventListener = EventListenerMouse::create();
-	_mouseEventListener->onMouseMove = [&](Event* event) -> void {
-		EventMouse* e = (EventMouse*)event;
-		auto label = (Label*)this->getChildByName("debugLabel");
-		char buffer[256] = { 0 };
-		sprintf(buffer, "x: %f, y: %f", e->getCursorX(), e->getCursorY());
-		label->setString(buffer);
-	};
-	_eventDispatcher->addEventListenerWithSceneGraphPriority(_mouseEventListener, this);
 
 	//tell program to do update
 	scheduleUpdate();
@@ -129,7 +114,7 @@ void GameWorld::setBackground() {
 	tileMap->setName("GameMap"); 
 	this->addChild(tileMap);
 
-	auto castle = Sprite::create("castle.png");
+	/*auto castle = Sprite::create("castle.png");
 	castle->setPosition(Vec2(origin.x + visibleSize.width - castle->getContentSize().width / 2,
 		origin.y + visibleSize.height / 2 + castle->getContentSize().height / 2));
 	this->addChild(castle, 1);
@@ -137,7 +122,23 @@ void GameWorld::setBackground() {
 	auto enemyCastle = Sprite::create("enemy_castle.png");
 	enemyCastle->setPosition(Vec2(origin.x + enemyCastle->getContentSize().width / 2,
 		origin.y + visibleSize.height / 2 + enemyCastle->getContentSize().height / 2));
-	this->addChild(enemyCastle, 1);
+	this->addChild(enemyCastle, 1);*/
+
+	auto castle = Tower::createTower("castle.png", towerHP);
+	castle->setPosition(Vec2(origin.x + visibleSize.width - castle->getContentSize().width / 2,
+		origin.y + visibleSize.height / 2 + castle->getContentSize().height / 2));
+	castle->setName("awayTower");
+	//set the bounding box of the tower;
+	castle->setBoundingBox();
+	this->addChild(castle);
+
+
+	auto enemyCastle = Tower::createTower("enemy_castle.png", towerHP);
+	enemyCastle->setPosition(Vec2(origin.x + enemyCastle->getContentSize().width / 2,
+		origin.y + visibleSize.height / 2 + enemyCastle->getContentSize().height / 2));
+	enemyCastle->setName("homeTower");
+	//set the bounding box of the tower;
+	this->addChild(enemyCastle);
     
     auto castleHP = Bar::create(1000);
     castleHP->setScale(0.3);

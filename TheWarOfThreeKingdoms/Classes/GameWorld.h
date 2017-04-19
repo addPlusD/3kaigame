@@ -15,6 +15,11 @@
 #include "Character.h"
 #include "GameMaster.h"
 
+#ifndef initProperty
+#define initProperty
+#define towerHP 1000
+#endif
+
 class GameWorld : public cocos2d::Layer{
     
 public:
