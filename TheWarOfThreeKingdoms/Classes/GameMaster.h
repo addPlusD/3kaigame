@@ -9,6 +9,7 @@
 #ifndef GameMaster_class
 #define GameMaster_class
 
+#include "Tower.h"
 #include <stdio.h>
 #include "cocos2d.h"
 #include "Squad.h"
@@ -59,6 +60,8 @@ public:
     
 	void switchLaneCallback(cocos2d::Event*);
 	void clickOnCard(int, int);
+
+	void minionArriveTowerCallback(cocos2d::Node*);
 
     void checkCollision();
 	void update(float delta);

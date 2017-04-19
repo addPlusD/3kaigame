@@ -110,10 +110,13 @@ void GameMaster::clickOnCard(int characterId, int direction) {
     
 	if (!cardCoolDown) {
 		auto newCharacter = CharacterCreator::getInstance()->charactersFactory(characterId, direction);
-		
+
 		auto scene = cocos2d::Director::getInstance()->getRunningScene()->getChildByTag(999);
 		scene->addChild(newCharacter, 1);
 
+		//set the side of the character
+		newCharacter->setSide("away");
+		newCharacter->setLane(currentLane);
 		//calculate the laneposition
 		float LanePositionY;
 		switch (currentLane) {
@@ -130,15 +133,15 @@ void GameMaster::clickOnCard(int characterId, int direction) {
 			LanePositionY = 0;
 			break;
 		}
-		
+
 		//adjust the position of the fucking character
 		newCharacter->setPosition(Vec2(awaySpawnPositionX, LanePositionY));
 
 		//create the action for the sprites
 		createAction(newCharacter);
-	  
-		CCLOG("Move to %f,%f", homeSpawnPositionX, LanePositionY);
-		CCLOG("From %f,%f", newCharacter->getPositionX(), newCharacter->getPositionY());
+
+		//CCLOG("Move to %f,%f", homeSpawnPositionX, LanePositionY);
+		//CCLOG("From %f,%f", newCharacter->getPositionX(), newCharacter->getPositionY());
 
 		//check the currentLane flag and then add the character into the corresponding vector
 		addCharacterToLane(currentLane, newCharacter, "away");
@@ -149,45 +152,72 @@ void GameMaster::clickOnCard(int characterId, int direction) {
 	}
 }
 
-void GameMaster::createAction(Character* target){
-    //set the moveto action to the new character
-    auto characterMoveAction = MoveTo::create(1.2*target->getSpeed(), Vec2(homeSpawnPositionX, target->getPositionY()));
-    
-    CCLOG("init duration:%f",1.2*target->getSpeed());
-    
-    //set the duration to action for later resume
-    target->setPassedActionDuration(1.2*target->getSpeed());
-    
-    //newCharacter->moveTo = characterMoveAction;
-    //newCharacter->moveTo = MoveTo::create(1.2*newCharacter->getSpeed(), Vec2(homeSpawnPositionX, LanePositionY));
-    //newCharacter->runAction(newCharacter->moveTo);
-    //target->setMoveAction(characterMoveAction);
-    
-    //set the finish callback to new character
-    //auto characterCallbackAction = CallFuncN::create(CC_CALLBACK_1(Tower::minionNearBy, this));
-    //newCharacter->setCallbackAction(characterCallbackAction);
-    
-    //set the action sequence to new character, later you just only need to rerun this sequence by character->runAction();
-    
-    auto runSequence = Sequence::create(characterMoveAction, nullptr);
-    target->setActionSequence(runSequence);
-    
-    target->runAction(runSequence);
-    target->startPathing();
+//dunt know what is character, tell GameMaster in header(include the Character.h)
+void GameMaster::createAction(Character* target) {
+
+	//check the side, then assign different coordinate
+	float destinationX;
+	if (target->getSide() == "away") {
+		destinationX = homeSpawnPositionX;
+
+	}
+	else {
+		destinationX = awaySpawnPositionX;
+	}
+
+	//set the moveto action to the new character
+	auto characterMoveAction = MoveTo::create(1.2*target->getSpeed(), Vec2(destinationX, target->getPositionY()));
+
+
+	CCLOG("init duration:%f", 1.2*target->getSpeed());
+
+	//set the duration to action for later resume
+	target->setPassedActionDuration(1.2*target->getSpeed());
+
+	//newCharacter->moveTo = characterMoveAction;
+	//newCharacter->moveTo = MoveTo::create(1.2*newCharacter->getSpeed(), Vec2(homeSpawnPositionX, LanePositionY));
+	//newCharacter->runAction(newCharacter->moveTo);
+	//target->setMoveAction(characterMoveAction);
+
+	//set the finish callback to new character
+	//auto characterCallbackAction = CallFuncN::create(CC_CALLBACK_1(GameMaster::minionArriveTowerCallback, this));
+
+	//set the action sequence to new character, later you just only need to rerun this sequence by character->runAction();
+
+	auto runSequence = Sequence::create(characterMoveAction, nullptr);
+	target->setActionSequence(runSequence);
+
+	target->runAction(runSequence);
+	target->startPathing();
 
 }
 
-void GameMaster::resumeAction(Character* target){
-    //set the moveto action based on passed duration to the new character
-    auto characterMoveAction = MoveTo::create(target->getPassedActionDuration(), Vec2(homeSpawnPositionX, target->getPositionY()));
-    CCLOG("Resume duration:%f", target->getPassedActionDuration());
-    auto runSequence = Sequence::create(characterMoveAction, nullptr);
-    target->setActionSequence(runSequence);
-    
-    target->runAction(runSequence);
-    
-    //resume the walking
-    target->startPathing();
+
+void GameMaster::resumeAction(Character* target) {
+	//check the side, then assign different coordinate
+	float destinationX;
+	if (target->getSide() == "away") {
+		destinationX = homeSpawnPositionX;
+	}
+	else {
+		destinationX = awaySpawnPositionX;
+	}
+
+	//set the moveto action based on passed duration to the new character
+	auto characterMoveAction = MoveTo::create(target->getPassedActionDuration(), Vec2(destinationX, target->getPositionY()));
+
+	CCLOG("Resume duration:%f", target->getPassedActionDuration());
+
+	//set the finish callback to new character
+	//auto characterCallbackAction = CallFuncN::create(CC_CALLBACK_1(GameMaster::minionArriveTowerCallback, this ));
+
+	auto runSequence = Sequence::create(characterMoveAction, nullptr);
+	target->setActionSequence(runSequence);
+
+	target->runAction(runSequence);
+
+	//resume the walking
+	target->startPathing();
 }
 
 //implement the switch lane command click
@@ -442,7 +472,9 @@ void GameMaster::update(float delta) {
 	//	}
 	//}
 
-	
+	auto awayTower = (Tower*)Director::getInstance()->getRunningScene()->getChildByTag(999)->getChildByName("awayTower");
+	auto homeTower = (Tower*)Director::getInstance()->getRunningScene()->getChildByTag(999)->getChildByName("homeTower");
+
 
 	Vector<Character*> homeTBDTopVector;
 	Vector<Character*> awayTBDTopVector;
@@ -455,127 +487,42 @@ void GameMaster::update(float delta) {
     auto costBar = (Bar*)this->getChildByTag(201);
     costBar->updateHP(this->getCost());
 	
-    //Eddie on 20170418
-	//Handle top collision
-    for(Character* player : AWAY_TOP_CHARACTER){
-        for(Character* ai : HOME_TOP_CHARACTER){
-            //player tries to attack the ai
-            player->findEnemyWithinRange(ai);
-            //check ai's health
-            if(ai->getHealth()<=0){
-                CCLOG("Player killed the AI with damage %d", player->getAttackDamage());
-                //ai dies
-                ai->die();
-				//add the object to TO BE DELETED vector
-				homeTBDTopVector.pushBack(ai);
-                //remove ai from the lane vector
-                //removeCharacterFromLane(laneTop, ai, "home");
-                CCLOG("AI dies!");
-                //resume action for player
-                resumeAction(player);
-                continue;
-            }
-            
-            //ai tries to attack the player
-            ai->findEnemyWithinRange(player);
-            //check player's health
-            if(player->getHealth()<=0){
-                CCLOG("AI killed the player with damage %d", ai->getAttackDamage());
-                //stop player action
-                player->stopAction(player->getActionSequence());
-                //player dies
-                player->die();
-				//add the object to TO BE DELETED vector
-				awayTBDTopVector.pushBack(player);
-                //remove player from the lane vector
-                //removeCharacterFromLane(laneTop, player, "away");
-                CCLOG("Player dies!");
-                //resume action for ai(later remove the comment)
-                //resumeAction(ai);
-                break;
-            }
-        }
-    }
-
-	//Handle mid collision
-	for (Character* player : AWAY_MID_CHARACTER) {
-		for (Character* ai : HOME_MID_CHARACTER) {
+	//Eddie on 20170418
+	//Handle top collision (Player attack turn)
+	for (Character* player : AWAY_TOP_CHARACTER) {
+		bool playerFoundEnemy = false;
+		//hit the tower first if the character can
+		if (homeTower->findMinionArrived(player)) {
+			playerFoundEnemy = true;
+			homeTower->takeDamage(player);
+		}
+		//if no tower nearby find the enemy
+		for (Character* ai : HOME_TOP_CHARACTER) {
 			//player tries to attack the ai
-			player->findEnemyWithinRange(ai);
-			//check ai's health
-			if (ai->getHealth() <= 0) {
-				CCLOG("Player killed the AI with damage %d", player->getAttackDamage());
-				//ai dies
-				ai->die();
-				//add the object to TO BE DELETED vector
-				homeTBDMidVector.pushBack(ai);
-				//remove ai from the lane vector
-				//removeCharacterFromLane(laneTop, ai, "home");
-				CCLOG("AI dies!");
-				//resume action for player
-				resumeAction(player);
-				continue;
-			}
-
-			//ai tries to attack the player
-			ai->findEnemyWithinRange(player);
-			//check player's health
-			if (player->getHealth() <= 0) {
-				CCLOG("AI killed the player with damage %d", ai->getAttackDamage());
-				//stop player action
-				player->stopAction(player->getActionSequence());
-				//player dies
-				player->die();
-				//add the object to TO BE DELETED vector
-				awayTBDMidVector.pushBack(player);
-				//remove player from the lane vector
-				//removeCharacterFromLane(laneTop, player, "away");
-				CCLOG("Player dies!");
-				//resume action for ai(later remove the comment)
-				//resumeAction(ai);
+			if (player->findEnemyWithinRange(ai)) {
+				//do not let the player resumeAction
+				playerFoundEnemy = true;
+				//check ai's health
+				if (ai->getHealth() <= 0) {
+					CCLOG("Player killed the AI with damage %d", player->getAttackDamage());
+					//ai dies
+					ai->die();
+					//add the object to TO BE DELETED vector
+					homeTBDTopVector.pushBack(ai);
+					//remove ai from the lane vector
+					//removeCharacterFromLane(laneTop, ai, "home");
+					CCLOG("AI dies!");
+					//resume action for player
+					//resumeAction(player);
+				}
 				break;
 			}
 		}
-	}
-
-	//Handle bot collision
-	for (Character* player : AWAY_BOT_CHARACTER) {
-		for (Character* ai : HOME_BOT_CHARACTER) {
-			//player tries to attack the ai
-			player->findEnemyWithinRange(ai);
-			//check ai's health
-			if (ai->getHealth() <= 0) {
-				CCLOG("Player killed the AI with damage %d", player->getAttackDamage());
-				//ai dies
-				ai->die();
-				//add the object to TO BE DELETED vector
-				homeTBDBotVector.pushBack(ai);
-				//remove ai from the lane vector
-				//removeCharacterFromLane(laneTop, ai, "home");
-				CCLOG("AI dies!");
-				//resume action for player
-				resumeAction(player);
-				continue;
-			}
-
-			//ai tries to attack the player
-			ai->findEnemyWithinRange(player);
-			//check player's health
-			if (player->getHealth() <= 0) {
-				CCLOG("AI killed the player with damage %d", ai->getAttackDamage());
-				//stop player action
-				player->stopAction(player->getActionSequence());
-				//player dies
-				player->die();
-				//add the object to TO BE DELETED vector
-				awayTBDBotVector.pushBack(player);
-				//remove player from the lane vector
-				//removeCharacterFromLane(laneTop, player, "away");
-				CCLOG("Player dies!");
-				//resume action for ai(later remove the comment)
-				//resumeAction(ai);
-				break;
-			}
+		//if this round did not find any enemy, and player is not in action(may be due to last round hit)
+		//then resume its action
+		if (!playerFoundEnemy && player->isStopped()) {
+			resumeAction(player);
+			player->setStopped(false);
 		}
 	}
 
@@ -584,27 +531,226 @@ void GameMaster::update(float delta) {
 		removeCharacterFromLane(laneTop, character, "home");
 	}
 
+
+	//Handle top collision (AI attack turn)
+	for (Character* ai : HOME_TOP_CHARACTER) {
+		bool aiFoundEnemy = false;
+		//hit the tower first if the character can
+		if (awayTower->findMinionArrived(ai)) {
+			aiFoundEnemy = true;
+			awayTower->takeDamage(ai);
+		}
+		//if no tower nearby find the enemy
+		for (Character* player : AWAY_TOP_CHARACTER) {
+			//ai tries to attack the player
+			if (ai->findEnemyWithinRange(player)) {
+				//do not let the player resumeAction
+				aiFoundEnemy = true;
+				//check player's health
+				if (player->getHealth() <= 0) {
+					CCLOG("AI killed the player with damage %d", ai->getAttackDamage());
+					//stop player action
+					player->stopAction(player->getActionSequence());
+					//player dies
+					player->die();
+					//add the object to TO BE DELETED vector
+					awayTBDTopVector.pushBack(player);
+					//remove player from the lane vector
+					//removeCharacterFromLane(laneTop, player, "away");
+					CCLOG("Player dies!");
+					//resume action for ai(later remove the comment)
+					//resumeAction(ai);
+					break;
+				}
+			}
+
+		}
+		//if this round did not find any enemy, and player is not in action(may be due to last round hit)
+		//then resume its action
+		if (!aiFoundEnemy && ai->isStopped()) {
+			resumeAction(ai);
+			ai->setStopped(false);
+		}
+	}
+
+	//remove all the fucking elements in the TO BE DELETED vector, becoz they can't be erased inside the iteration
 	for (Character* character : awayTBDTopVector) {
 		removeCharacterFromLane(laneTop, character, "away");
 	}
 
+
+
+	//Handle mid collision (Player attack turn)
+	for (Character* player : AWAY_MID_CHARACTER) {
+		bool playerFoundEnemy = false;
+		//hit the tower first if the character can
+		if (homeTower->findMinionArrived(player)) {
+			playerFoundEnemy = true;
+			homeTower->takeDamage(player);
+		}
+		//if no tower nearby find the enemy
+		for (Character* ai : HOME_MID_CHARACTER) {
+			//player tries to attack the ai
+			if (player->findEnemyWithinRange(ai)) {
+				//do not let the player resumeAction
+				playerFoundEnemy = true;
+				//check ai's health
+				if (ai->getHealth() <= 0) {
+					CCLOG("Player killed the AI with damage %d", player->getAttackDamage());
+					//ai dies
+					ai->die();
+					//add the object to TO BE DELETED vector
+					homeTBDMidVector.pushBack(ai);
+					//remove ai from the lane vector
+					//removeCharacterFromLane(laneTop, ai, "home");
+					CCLOG("AI dies!");
+					//resume action for player
+					//resumeAction(player);
+				}
+				break;
+			}
+		}
+		//if this round did not find any enemy, and player is not in action(may be due to last round hit)
+		//then resume its action
+		if (!playerFoundEnemy && player->isStopped()) {
+			resumeAction(player);
+			player->setStopped(false);
+		}
+	}
+
+	//remove all the fucking elements in the TO BE DELETED vector, becoz they can't be erased inside the iteration
 	for (Character* character : homeTBDMidVector) {
 		removeCharacterFromLane(laneMid, character, "home");
 	}
 
+
+	//Handle mid collision (AI attack turn)
+	for (Character* ai : HOME_MID_CHARACTER) {
+		bool aiFoundEnemy = false;
+		//hit the tower first if the character can
+		if (awayTower->findMinionArrived(ai)) {
+			aiFoundEnemy = true;
+			awayTower->takeDamage(ai);
+		}
+		//if no tower nearby find the enemy
+		for (Character* player : AWAY_MID_CHARACTER) {
+			//ai tries to attack the player
+			if (ai->findEnemyWithinRange(player)) {
+				//do not let the player resumeAction
+				aiFoundEnemy = true;
+				//check player's health
+				if (player->getHealth() <= 0) {
+					CCLOG("AI killed the player with damage %d", ai->getAttackDamage());
+					//stop player action
+					player->stopAction(player->getActionSequence());
+					//player dies
+					player->die();
+					//add the object to TO BE DELETED vector
+					awayTBDMidVector.pushBack(player);
+					//remove player from the lane vector
+					//removeCharacterFromLane(laneTop, player, "away");
+					CCLOG("Player dies!");
+					//resume action for ai(later remove the comment)
+					//resumeAction(ai);
+					break;
+				}
+			}
+
+		}
+		//if this round did not find any enemy, and player is not in action(may be due to last round hit)
+		//then resume its action
+		if (!aiFoundEnemy && ai->isStopped()) {
+			resumeAction(ai);
+			ai->setStopped(false);
+		}
+	}
+
+	//remove all the fucking elements in the TO BE DELETED vector, becoz they can't be erased inside the iteration
 	for (Character* character : awayTBDMidVector) {
 		removeCharacterFromLane(laneMid, character, "away");
 	}
 
+
+
+	//Handle bot collision (Player attack turn)
+	for (Character* player : AWAY_BOT_CHARACTER) {
+		bool playerFoundEnemy = false;
+		for (Character* ai : HOME_BOT_CHARACTER) {
+			//player tries to attack the ai
+			if (player->findEnemyWithinRange(ai)) {
+				//do not let the player resumeAction
+				playerFoundEnemy = true;
+				//check ai's health
+				if (ai->getHealth() <= 0) {
+					CCLOG("Player killed the AI with damage %d", player->getAttackDamage());
+					//ai dies
+					ai->die();
+					//add the object to TO BE DELETED vector
+					homeTBDBotVector.pushBack(ai);
+					//remove ai from the lane vector
+					//removeCharacterFromLane(laneTop, ai, "home");
+					CCLOG("AI dies!");
+					//resume action for player
+					//resumeAction(player);
+				}
+				break;
+			}
+		}
+		//if this round did not find any enemy, and player is not in action(may be due to last round hit)
+		//then resume its action
+		if (!playerFoundEnemy && player->isStopped()) {
+			resumeAction(player);
+			player->setStopped(false);
+		}
+	}
+
+	//remove all the fucking elements in the TO BE DELETED vector, becoz they can't be erased inside the iteration
 	for (Character* character : homeTBDBotVector) {
 		removeCharacterFromLane(laneBot, character, "home");
 	}
 
+
+	//Handle bot collision (AI attack turn)
+	for (Character* ai : HOME_BOT_CHARACTER) {
+		bool aiFoundEnemy = false;
+		for (Character* player : AWAY_BOT_CHARACTER) {
+			//ai tries to attack the player
+			if (ai->findEnemyWithinRange(player)) {
+				//do not let the player resumeAction
+				aiFoundEnemy = true;
+				//check player's health
+				if (player->getHealth() <= 0) {
+					CCLOG("AI killed the player with damage %d", ai->getAttackDamage());
+					//stop player action
+					player->stopAction(player->getActionSequence());
+					//player dies
+					player->die();
+					//add the object to TO BE DELETED vector
+					awayTBDBotVector.pushBack(player);
+					//remove player from the lane vector
+					//removeCharacterFromLane(laneTop, player, "away");
+					CCLOG("Player dies!");
+					//resume action for ai(later remove the comment)
+					//resumeAction(ai);
+					break;
+				}
+			}
+
+		}
+		//if this round did not find any enemy, and player is not in action(may be due to last round hit)
+		//then resume its action
+		if (!aiFoundEnemy && ai->isStopped()) {
+			resumeAction(ai);
+			ai->setStopped(false);
+		}
+	}
+
+	//remove all the fucking elements in the TO BE DELETED vector, becoz they can't be erased inside the iteration
 	for (Character* character : awayTBDBotVector) {
 		removeCharacterFromLane(laneBot, character, "away");
 	}
 
-  	if (cardCoolDown) {
+	if (cardCoolDown) {
 		this->timeStamp += delta;
 	}
 
@@ -612,7 +758,6 @@ void GameMaster::update(float delta) {
 		cardCoolDown = false;
 		timeStamp = 0;
 	}
-	
 	//for (std::vector<Character*>::iterator player = AWAY_TOP_CHARACTER.begin(); player != AWAY_TOP_CHARACTER.end();)
 	//{
 	//	for (std::vector<Character*>::iterator ai = HOME_TOP_CHARACTER.begin(); ai != HOME_TOP_CHARACTER.end();) {

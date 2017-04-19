@@ -15,6 +15,7 @@ bool Character::init(){
     this->isCooldown = true;
     this->actionSequence = nullptr;
     this->isPathing = false;
+    this->stopped = false;
     scheduleUpdate();
     return true;
 }
@@ -42,8 +43,19 @@ Character* Character::createCharacter(const std::string& _file, int direction)
     
 }
 
+void Character::setLane(int lane){
+    this->lane = lane;
+}
+
+int Character::getLane(){
+    return this->lane;
+}
+
+bool Character::getIsCooldown(){
+    return isCooldown;
+}
+
 void Character::update(float delta){
-	this->attacking = false;
 	//this->findEnemyWithinRange(Sprite* enemy); loop through all element in vector
     //if(!attacking){
 	//  continue run action
@@ -65,7 +77,7 @@ void Character::update(float delta){
     if(isPathing){
         passedActionDuration-=delta;
     }
-}
+    }
 
 void Character::startPathing(){
     isPathing = true;
@@ -75,45 +87,75 @@ void Character::stopPathing(){
     isPathing = false;
 }
 
-void Character::findEnemyWithinRange(Sprite* enemy){
+bool Character::findEnemyWithinRange(Sprite* enemy){
 	//CCLOG("Actual range between %s and %s: %f",this->getName().c_str(), enemy->getName().c_str(),abs(this->getPositionX() - enemy->getPositionX()));
-    if (abs(this->getPositionX() - enemy->getPositionX()) < this->attackRange && !this->attacking && this->isCooldown) {
-    //auto myBoundingBox = this->getBoundingBox();
-    //auto enemyBoundingBox = enemy->getBoundingBox();
-    //if(myBoundingBox.intersectsRect(enemyBoundingBox)){
+    //if (abs(this->getPositionX() - enemy->getPositionX()) < this->attackRange && !this->attacking && this->isCooldown) {
+    
+    auto myBoundingBox = this->getAttackBoundingBox();
+    auto enemyBoundingBox = enemy->getBoundingBox();
+    //CCLOG("myBoundingBox: %f, %f", myBoundingBox.origin.x, myBoundingBox.origin.y);
+    //CCLOG("enemyBoundingBox: %f, %f", enemyBoundingBox.origin.x, enemyBoundingBox.origin.y);
+    if(myBoundingBox.intersectsRect(enemyBoundingBox)){
         this->stopAction(this->actionSequence);
+        //start attack, stop the action
+        //action stopped flag -> tell the master to resume action
+        this->stopped = true;
         this->stopPathing();
 		this->attacking = true;
-        this->isCooldown = false;
 		this->stopAndAttack(static_cast<Character*>(enemy));
         
         CCLOG("Attacker %s founds enemy %s in range %d",this->getName().c_str(), enemy->getName().c_str(), this->attackRange);
-        
-	}
+        return true;
+    }
+    return false;
 
+}
+
+void Character::setSide(const std::string& s){
+    this->side = s.c_str();
+}
+
+const std::string& Character::getSide(){
+    return this->side;
+}
+
+
+bool Character::isStopped(){
+    return this->stopped;
+}
+
+void Character::setStopped(bool b){
+    this->stopped = b;
+}
+
+bool Character::getAttacking(){
+    return this->attacking;
+}
+
+void Character::notAttackingNow(){
+    this->attacking = false;
 }
 
 void Character::stopAndAttack(Sprite* enemy) {
 	//this->stopAllActions(); //stop the running action
 	//Director::getInstance()->getActionManager()->pauseTarget(this);
 	//this->stopAction(this->moveTo);
-    if(this->attacking){
+    if(this->attacking && isCooldown){
+        this->isCooldown = false;
         static_cast<Character*>(enemy)->loseBlood(this->attackDamage);
     }
 }
 
 void Character::loseBlood(int damage){
-    auto HPBar= (Bar*)this->getChildByTag(101);
-    HPBar->updateHP(this->health-damage);
     this->health -= damage;
+    auto HPBar= (Bar*)this->getChildByTag(101);
+    HPBar->updateHP(this->health);
 	CCLOG("Enemy health: %d",this->health);
 	this->attacking = false;
 }
 
 void Character::die() {
-    auto HPBar= (Bar*)this->getChildByTag(101);
-    HPBar->updateHP(0);
-	auto fadeOut = FadeOut::create(0.5f);
+	auto fadeOut = FadeOut::create(0.3f);
     auto dieCallback = CallFuncN::create(CC_CALLBACK_1(Character::diedObject, this));
     auto runSequence = Sequence::create(fadeOut, dieCallback, nullptr);
 	this->runAction(runSequence);
@@ -166,6 +208,31 @@ void Character::setProperty(int health, int attackDamage, int attackRange, float
     HPBar->setTag(101);
     HPBar->setPosition(Vec2(this->getContentSize().width/2,30));
     this->addChild(HPBar, 1);
+    
+    
+    
+}
+
+Rect Character::getAttackBoundingBox(){
+    
+    
+    Rect originalBoundingBox = this->getBoundingBox();
+    float increment = 0.3 * this->attackRange;
+    float newOriginX = originalBoundingBox.origin.x-increment;
+    float newOriginY = originalBoundingBox.origin.y;
+    float newWidth = originalBoundingBox.getMaxX() - originalBoundingBox.getMinX() + increment;
+    float newHeight = originalBoundingBox.getMaxY() - originalBoundingBox.getMinY();
+    
+    //CCLOG("OriginalBoundingBox: %f, %f", originalBoundingBox.origin.x, originalBoundingBox.origin.y);
+    
+    Rect newBoundingBox = Rect(newOriginX, newOriginY, newWidth, newHeight);
+    
+    //For debug purpose
+    DrawNode* dn = DrawNode::create();
+    dn->drawRect(Vec2(newBoundingBox.getMinX(), newBoundingBox.getMinY()), Vec2(newBoundingBox.getMinX(), newBoundingBox.getMaxY()), Vec2(newBoundingBox.getMaxX(), newBoundingBox.getMaxY()), Vec2(newBoundingBox.getMaxX(), newBoundingBox.getMinY()), Color4F::RED);
+    this->addChild(dn, 1009);
+    
+    return newBoundingBox;
 }
 
 float Character::getSpeed() {

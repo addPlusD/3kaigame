@@ -39,6 +39,12 @@
     <ClCompile Include="..\Classes\CharacterCreator.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Bar.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Tower.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -66,6 +72,12 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\CharacterCreator.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Bar.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Tower.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
@@ -144,6 +156,9 @@
       <Filter>resource</Filter>
     </Image>
     <Image Include="..\Resources\moveCharacter6.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\HP_bar.png">
       <Filter>resource</Filter>
     </Image>
   </ItemGroup>
