@@ -75,6 +75,11 @@ bool GameMaster::init(){
     costBarLabel ->setPosition(Vec2(costBarLabel->getContentSize().width-costBar->getContentSize().width/2,costBar->getContentSize().height / 2));
     costBar->addChild(costBarLabel);
     
+    auto costLabel = Label::createWithTTF("Value", "fonts/Marker Felt.ttf", 32);
+    costLabel->setTag(301);
+    costLabel ->setPosition(Vec2(costBar->getContentSize().width/2,costBar->getContentSize().height / 2));
+    costBar->addChild(costLabel);
+    
     this->schedule(schedule_selector(GameMaster::recoverCost),5.0f);
     
 	currentLane = laneMid;
