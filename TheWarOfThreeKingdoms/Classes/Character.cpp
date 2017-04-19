@@ -103,14 +103,16 @@ void Character::stopAndAttack(Sprite* enemy) {
 }
 
 void Character::loseBlood(int damage){
-    this->health -= damage;
     auto HPBar= (Bar*)this->getChildByTag(101);
-    HPBar->updateHP(this->health);
+    HPBar->updateHP(this->health-damage);
+    this->health -= damage;
 	CCLOG("Enemy health: %d",this->health);
 	this->attacking = false;
 }
 
 void Character::die() {
+    auto HPBar= (Bar*)this->getChildByTag(101);
+    HPBar->updateHP(0);
 	auto fadeOut = FadeOut::create(0.5f);
     auto dieCallback = CallFuncN::create(CC_CALLBACK_1(Character::diedObject, this));
     auto runSequence = Sequence::create(fadeOut, dieCallback, nullptr);
