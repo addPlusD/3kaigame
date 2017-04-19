@@ -184,7 +184,9 @@ void Character::die() {
 }
 
 void Character::diedObject(Node* sender){
-    Sprite* sprite = (Sprite*) sender;
+//    Sprite* sprite = (Sprite*) sender;
+    this->removeChildByTag(101);
+//    Director::getInstance()->getRunningScene()->getChildByTag(999)->removeChild(sprite);
 }
 
 void Character::setHealth(int hp){
