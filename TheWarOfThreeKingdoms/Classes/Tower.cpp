@@ -46,9 +46,9 @@ void Tower::beDamaged(int hp){
 void Tower::setBoundingBox(){
     auto originalBoundingBox = this->getBoundingBox();
     if(this->getName()=="awayTower"){
-        castleBoundingBox = Rect(Director::getInstance()->getWinSize().width-100, 0, 100, Director::getInstance()->getWinSize().height);
+        castleBoundingBox = originalBoundingBox;
     } else {
-        castleBoundingBox = Rect(0, 0, 100, Director::getInstance()->getWinSize().height);
+        castleBoundingBox = originalBoundingBox;
     }
 }
 

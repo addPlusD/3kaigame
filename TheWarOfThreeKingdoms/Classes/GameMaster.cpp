@@ -492,10 +492,10 @@ void GameMaster::update(float delta) {
 	for (Character* player : AWAY_TOP_CHARACTER) {
 		bool playerFoundEnemy = false;
 		//hit the tower first if the character can
-		if (homeTower->findMinionArrived(player)) {
+		/*if (homeTower->findMinionArrived(player)) {
 			playerFoundEnemy = true;
 			homeTower->takeDamage(player);
-		}
+		}*/
 		//if no tower nearby find the enemy
 		for (Character* ai : HOME_TOP_CHARACTER) {
 			//player tries to attack the ai
@@ -536,10 +536,10 @@ void GameMaster::update(float delta) {
 	for (Character* ai : HOME_TOP_CHARACTER) {
 		bool aiFoundEnemy = false;
 		//hit the tower first if the character can
-		if (awayTower->findMinionArrived(ai)) {
+		/*if (awayTower->findMinionArrived(ai)) {
 			aiFoundEnemy = true;
 			awayTower->takeDamage(ai);
-		}
+		}*/
 		//if no tower nearby find the enemy
 		for (Character* player : AWAY_TOP_CHARACTER) {
 			//ai tries to attack the player
@@ -584,10 +584,10 @@ void GameMaster::update(float delta) {
 	for (Character* player : AWAY_MID_CHARACTER) {
 		bool playerFoundEnemy = false;
 		//hit the tower first if the character can
-		if (homeTower->findMinionArrived(player)) {
+		/*if (homeTower->findMinionArrived(player)) {
 			playerFoundEnemy = true;
 			homeTower->takeDamage(player);
-		}
+		}*/
 		//if no tower nearby find the enemy
 		for (Character* ai : HOME_MID_CHARACTER) {
 			//player tries to attack the ai
@@ -628,10 +628,10 @@ void GameMaster::update(float delta) {
 	for (Character* ai : HOME_MID_CHARACTER) {
 		bool aiFoundEnemy = false;
 		//hit the tower first if the character can
-		if (awayTower->findMinionArrived(ai)) {
+		/*if (awayTower->findMinionArrived(ai)) {
 			aiFoundEnemy = true;
 			awayTower->takeDamage(ai);
-		}
+		}*/
 		//if no tower nearby find the enemy
 		for (Character* player : AWAY_MID_CHARACTER) {
 			//ai tries to attack the player
