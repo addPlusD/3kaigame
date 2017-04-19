@@ -104,8 +104,6 @@ void GameMaster::clickOnCard(int characterId, int direction) {
 	//spawn the character object
     if (this->getCost()<1){
         return;
-    } else{
-        this->setCost(-1);
     }
     
 	if (!cardCoolDown) {
@@ -146,6 +144,7 @@ void GameMaster::clickOnCard(int characterId, int direction) {
 		//check the currentLane flag and then add the character into the corresponding vector
 		addCharacterToLane(currentLane, newCharacter, "away");
 		cardCoolDown = true;
+        this->setCost(-1);
 	}
 	else {
 		return;
