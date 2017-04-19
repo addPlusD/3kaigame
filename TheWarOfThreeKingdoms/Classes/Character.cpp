@@ -103,7 +103,6 @@ bool Character::findEnemyWithinRange(Sprite* enemy){
         this->stopPathing();
 		this->attacking = true;
 		this->stopAndAttack(static_cast<Character*>(enemy));
-        
         CCLOG("Attacker %s founds enemy %s in range %d",this->getName().c_str(), enemy->getName().c_str(), this->attackRange);
         return true;
     }
@@ -163,6 +162,7 @@ void Character::die() {
 
 void Character::diedObject(Node* sender){
     Sprite* sprite = (Sprite*) sender;
+	this->removeChildByTag(101);
     Director::getInstance()->getRunningScene()->getChildByTag(999)->removeChild(sprite);
 }
 
@@ -216,7 +216,7 @@ void Character::setProperty(int health, int attackDamage, int attackRange, float
 Rect Character::getAttackBoundingBox(){
     
     
-    Rect originalBoundingBox = this->getBoundingBox();
+    auto originalBoundingBox = this->getBoundingBox();
     float increment = 0.3 * this->attackRange;
     float newOriginX = originalBoundingBox.origin.x-increment;
     float newOriginY = originalBoundingBox.origin.y;
@@ -225,14 +225,11 @@ Rect Character::getAttackBoundingBox(){
     
     //CCLOG("OriginalBoundingBox: %f, %f", originalBoundingBox.origin.x, originalBoundingBox.origin.y);
     
-    Rect newBoundingBox = Rect(newOriginX, newOriginY, newWidth, newHeight);
+	originalBoundingBox.setRect(newOriginX, newOriginY, newWidth, newHeight);
+	
+
     
-    //For debug purpose
-    DrawNode* dn = DrawNode::create();
-    dn->drawRect(Vec2(newBoundingBox.getMinX(), newBoundingBox.getMinY()), Vec2(newBoundingBox.getMinX(), newBoundingBox.getMaxY()), Vec2(newBoundingBox.getMaxX(), newBoundingBox.getMaxY()), Vec2(newBoundingBox.getMaxX(), newBoundingBox.getMinY()), Color4F::RED);
-    this->addChild(dn, 1009);
-    
-    return newBoundingBox;
+    return originalBoundingBox;
 }
 
 float Character::getSpeed() {
