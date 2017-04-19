@@ -21,7 +21,8 @@ Scene* GameWorld::createScene() {
 
 	auto layer = GameWorld::create();
 
-	scene->addChild(layer, 1, 999);
+	layer->setTag(999);
+	scene->addChild(layer);
 
 	return scene;
 }
@@ -125,20 +126,18 @@ void GameWorld::setBackground() {
 	this->addChild(enemyCastle, 1);*/
 
 	auto castle = Tower::createTower("castle.png", towerHP);
-	castle->setPosition(Vec2(origin.x + visibleSize.width - castle->getContentSize().width / 2,
-		origin.y + visibleSize.height / 2 + castle->getContentSize().height / 2));
+	castle->setPosition(Vec2(origin.x + visibleSize.width - castle->getContentSize().width / 2, origin.y + visibleSize.height / 2 + castle->getContentSize().height / 2));
 	castle->setName("awayTower");
-	//set the bounding box of the tower;
-	castle->setBoundingBox();
 	this->addChild(castle);
+	
 
 
 	auto enemyCastle = Tower::createTower("enemy_castle.png", towerHP);
-	enemyCastle->setPosition(Vec2(origin.x + enemyCastle->getContentSize().width / 2,
-		origin.y + visibleSize.height / 2 + enemyCastle->getContentSize().height / 2));
-	enemyCastle->setName("homeTower");
+	enemyCastle->setPosition(Vec2(origin.x + enemyCastle->getContentSize().width / 2, origin.y + visibleSize.height / 2 + enemyCastle->getContentSize().height / 2));
 	//set the bounding box of the tower;
+	enemyCastle->setName("homeTower");
 	this->addChild(enemyCastle);
+	
     
     auto castleHP = Bar::create(1000);
     castleHP->setScale(0.3);

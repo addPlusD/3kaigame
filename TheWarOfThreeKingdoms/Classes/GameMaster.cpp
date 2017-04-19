@@ -179,11 +179,11 @@ void GameMaster::createAction(Character* target) {
 	//target->setMoveAction(characterMoveAction);
 
 	//set the finish callback to new character
-	//auto characterCallbackAction = CallFuncN::create(CC_CALLBACK_1(GameMaster::minionArriveTowerCallback, this));
+	auto characterCallbackAction = CallFuncN::create(CC_CALLBACK_1(GameMaster::minionArriveTowerCallback, this));
 
 	//set the action sequence to new character, later you just only need to rerun this sequence by character->runAction();
 
-	auto runSequence = Sequence::create(characterMoveAction, nullptr);
+	auto runSequence = Sequence::create(characterMoveAction, characterCallbackAction, nullptr);
 	target->setActionSequence(runSequence);
 
 	target->runAction(runSequence);
@@ -208,9 +208,9 @@ void GameMaster::resumeAction(Character* target) {
 	CCLOG("Resume duration:%f", target->getPassedActionDuration());
 
 	//set the finish callback to new character
-	//auto characterCallbackAction = CallFuncN::create(CC_CALLBACK_1(GameMaster::minionArriveTowerCallback, this ));
+	auto characterCallbackAction = CallFuncN::create(CC_CALLBACK_1(GameMaster::minionArriveTowerCallback, this ));
 
-	auto runSequence = Sequence::create(characterMoveAction, nullptr);
+	auto runSequence = Sequence::create(characterMoveAction, characterCallbackAction, nullptr);
 	target->setActionSequence(runSequence);
 
 	target->runAction(runSequence);
@@ -444,7 +444,21 @@ void GameMaster::checkCollision(){
 	
 }
 
-
+void GameMaster::minionArriveTowerCallback(Node* sender) {
+	Tower* targetTower;
+	
+	Character* character = (Character*)sender;
+	if (character->getSide() == "away") {
+		targetTower = (Tower*)Director::getInstance()->getRunningScene()->getChildByTag(999)->getChildByName("homeTower");
+	}
+	else {
+		targetTower = (Tower*)Director::getInstance()->getRunningScene()->getChildByTag(999)->getChildByName("awayTower");
+	}
+	CCLOG("Character %s reaches the end, deal %d damage", character->getName(), character->getAttackDamage());
+	removeCharacterFromLane(character->getLane(), character, character->getSide());
+	targetTower->takeDamage(character);
+	character->die();
+}
 
 void GameMaster::update(float delta) {
 	//do the update job here
@@ -470,9 +484,6 @@ void GameMaster::update(float delta) {
 	//		}
 	//	}
 	//}
-
-	auto awayTower = (Tower*)Director::getInstance()->getRunningScene()->getChildByTag(999)->getChildByName("awayTower");
-	auto homeTower = (Tower*)Director::getInstance()->getRunningScene()->getChildByTag(999)->getChildByName("homeTower");
 
 
 	Vector<Character*> homeTBDTopVector;
