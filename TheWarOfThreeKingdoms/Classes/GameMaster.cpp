@@ -454,7 +454,7 @@ void GameMaster::minionArriveTowerCallback(Node* sender) {
 	else {
 		targetTower = (Tower*)Director::getInstance()->getRunningScene()->getChildByTag(999)->getChildByName("awayTower");
 	}
-	CCLOG("Character %s reaches the end, deal %d damage", character->getName(), character->getAttackDamage());
+//	CCLOG("Character %s reaches the end, deal %d damage", character->getName(), character->getAttackDamage());
 	removeCharacterFromLane(character->getLane(), character, character->getSide());
 	targetTower->takeDamage(character);
 	character->die();

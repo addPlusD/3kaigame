@@ -51,6 +51,8 @@
 		212033D61EA7957F004C77D3 /* enemy_castle.png in Resources */ = {isa = PBXBuildFile; fileRef = 212033D21EA7957F004C77D3 /* enemy_castle.png */; };
 		212033D91EA7A878004C77D3 /* Tower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 212033D71EA7A878004C77D3 /* Tower.cpp */; };
 		212033DA1EA7A878004C77D3 /* Tower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 212033D71EA7A878004C77D3 /* Tower.cpp */; };
+		212033DC1EA7C2C7004C77D3 /* hit.png in Resources */ = {isa = PBXBuildFile; fileRef = 212033DB1EA7C2C7004C77D3 /* hit.png */; };
+		212033DD1EA7C2C7004C77D3 /* hit.png in Resources */ = {isa = PBXBuildFile; fileRef = 212033DB1EA7C2C7004C77D3 /* hit.png */; };
 		218B6D931E9FE351009395C3 /* AIGame_map.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 218B6D8C1E9FE351009395C3 /* AIGame_map.tmx */; };
 		218B6D941E9FE351009395C3 /* AIGame_map.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 218B6D8C1E9FE351009395C3 /* AIGame_map.tmx */; };
 		218B6D951E9FE351009395C3 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 218B6D8D1E9FE351009395C3 /* background.png */; };
@@ -196,6 +198,7 @@
 		212033D21EA7957F004C77D3 /* enemy_castle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy_castle.png; sourceTree = "<group>"; };
 		212033D71EA7A878004C77D3 /* Tower.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tower.cpp; sourceTree = "<group>"; };
 		212033D81EA7A878004C77D3 /* Tower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tower.h; sourceTree = "<group>"; };
+		212033DB1EA7C2C7004C77D3 /* hit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hit.png; sourceTree = "<group>"; };
 		218B6D8C1E9FE351009395C3 /* AIGame_map.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = AIGame_map.tmx; sourceTree = "<group>"; };
 		218B6D8D1E9FE351009395C3 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		218B6D8E1E9FE351009395C3 /* terrain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = terrain.png; sourceTree = "<group>"; };
@@ -403,6 +406,7 @@
 				3EACC98E19EE6D4300EB3C5E /* res */,
 				218B6D8C1E9FE351009395C3 /* AIGame_map.tmx */,
 				212033B81EA34AB9004C77D3 /* HP_bar.png */,
+				212033DB1EA7C2C7004C77D3 /* hit.png */,
 				212033A61EA347E6004C77D3 /* moveCharacter2.png */,
 				212033A71EA347E6004C77D3 /* moveCharacter3.png */,
 				212033A81EA347E6004C77D3 /* moveCharacter4.png */,
@@ -601,6 +605,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				212033DC1EA7C2C7004C77D3 /* hit.png in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				218B6D971E9FE351009395C3 /* terrain.png in Resources */,
 				212033B61EA34A9C004C77D3 /* tiletile.png in Resources */,
@@ -665,6 +670,7 @@
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				3EACC99019EE6D4300EB3C5E /* res in Resources */,
 				218B6D9E1E9FE351009395C3 /* tower_1.png in Resources */,
+				212033DD1EA7C2C7004C77D3 /* hit.png in Resources */,
 				212033AC1EA347E6004C77D3 /* moveCharacter2.png in Resources */,
 				212033971EA0A945004C77D3 /* character.plist in Resources */,
 				212033D41EA7957F004C77D3 /* castle.png in Resources */,
