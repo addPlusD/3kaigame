@@ -20,6 +20,7 @@ public:
     
     static Bar* create(int);
     void setMaxHP(int);
+    int getMaxHP();
     void updateHP(int);
     cocos2d::Rect getHPRect(int);
 

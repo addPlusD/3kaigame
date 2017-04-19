@@ -31,6 +31,10 @@ void Bar::setMaxHP(int hp){
     this->maxHP=hp;
 }
 
+int Bar::getMaxHP(){
+    return this->maxHP;
+}
+
 void Bar::updateHP(int hp){
     hp = (int)(hp*25/this->maxHP);
     setTextureRect(getHPRect(hp));

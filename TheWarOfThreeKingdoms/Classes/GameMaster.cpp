@@ -87,7 +87,11 @@ void GameMaster::setCost(int diff){
 }
 
 void GameMaster::recoverCost(float dt){
-    this->cost+=1;
+    auto costBar = (Bar*)this->getChildByTag(201);
+    
+    if (this->cost<costBar->getMaxHP()){
+        this->cost+=1;
+    }
 }
 
 int GameMaster::getCost(){
