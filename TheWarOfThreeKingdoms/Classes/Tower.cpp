@@ -63,9 +63,9 @@ bool Tower::findMinionArrived(Character* character){
 
 void Tower::takeDamage(Character* character){
     if(character->getIsCooldown()){
-        CCLOG("Tower got %d damaged", character->getAttackDamage());
+        this->beDamaged(character->getAttackDamage()*5);
+		CCLOG("Tower got %d damaged", character->getAttackDamage() * 5);
 		CCLOG("HP left: %d", this->hp);
-        this->beDamaged(character->getAttackDamage());
     } else {
         CCLOG("Luckily player is cooling down");
     }
