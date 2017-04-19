@@ -10,12 +10,21 @@
 USING_NS_CC;
 
 bool Character::init(){
+	//init the hit sprite for further use
+	auto hitSprite = Sprite::create("hit.png");
+	hitSprite->setName("hitSprite");
+	hitSprite->setPosition(this->getPositionX(), this->getPositionY() + this->getContentSize().height+50);
+	hitSprite->setScale(0.15);
+	hitSprite->setVisible(false);
+	this->addChild(hitSprite);
     currentCooldown = cooldown;
     this->attacking = false;
     this->isCooldown = true;
     this->actionSequence = nullptr;
     this->isPathing = false;
     this->stopped = false;
+	this->side = "home";
+
     scheduleUpdate();
     return true;
 }
@@ -42,6 +51,8 @@ Character* Character::createCharacter(const std::string& _file, int direction)
     return NULL;
     
 }
+
+
 
 void Character::setLane(int lane){
     this->lane = lane;
@@ -111,7 +122,7 @@ bool Character::findEnemyWithinRange(Sprite* enemy){
 }
 
 void Character::setSide(const std::string& s){
-    this->side = s.c_str();
+    this->side = s;
 }
 
 const std::string& Character::getSide(){
@@ -139,9 +150,21 @@ void Character::stopAndAttack(Sprite* enemy) {
 	//this->stopAllActions(); //stop the running action
 	//Director::getInstance()->getActionManager()->pauseTarget(this);
 	//this->stopAction(this->moveTo);
+	
     if(this->attacking && isCooldown){
+		auto hitSprite = this->getChildByName("hitSprite");
+		//make the sprite be visible now
+		hitSprite->setVisible(true);
+		//set the fade in and fade out to the hit sprite
+		auto fadeIn = FadeIn::create(0.3f);
+		auto fadeOut = FadeOut::create(0.3f);
+		auto sequence = Sequence::create(fadeIn, fadeOut, nullptr);
+		hitSprite->runAction(sequence);
+		//cool down the character
         this->isCooldown = false;
+		//damage the enemy
         static_cast<Character*>(enemy)->loseBlood(this->attackDamage);
+		
     }
 }
 

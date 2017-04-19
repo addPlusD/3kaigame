@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "cocos2d.h"
 #include "Character.h"
+#include "GameMaster.h"
 
 
 class Tower : public cocos2d::Sprite{
