@@ -153,20 +153,6 @@ void GameWorld::setBackground() {
                                     origin.y + visibleSize.height / 2 + enemyCastle->getContentSize().height / 2 +40));
     enemyCastleHP->setTag(101);
     this->addChild(enemyCastleHP, 1);
-    
-    auto costBar = Bar::create(5);
-    costBar->setScale(1,0.6);
-    costBar->setPosition(Vec2(origin.x + visibleSize.width - costBar->getContentSize().width / 2,
-                               origin.y + visibleSize.height - costBar->getContentSize().height / 2));
-    costBar->setTag(201);
-    this->addChild(costBar, 1);
-    
-    auto enemyCostBar = Bar::create(5);
-    enemyCostBar->setScale(1,0.6);
-    enemyCostBar->setPosition(Vec2(origin.x + enemyCostBar->getContentSize().width  / 2,
-                              origin.y + visibleSize.height - enemyCostBar->getContentSize().height / 2));
-    enemyCostBar->setTag(202);
-    this->addChild(enemyCostBar, 1);
 }
 
 void GameWorld::setHP() {

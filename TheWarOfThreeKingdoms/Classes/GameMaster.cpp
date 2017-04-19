@@ -60,16 +60,44 @@ bool GameMaster::init(){
 	auto animatedSequence = Sequence::createWithTwoActions(scaleAnimation, scaleAnimation2);
 	arrowIndicatorSprite->runAction(RepeatForever::create(animatedSequence));
 	this->addChild(arrowIndicatorSprite);
-
+    
+    auto visibleSize = Director::getInstance()->getVisibleSize();
+    Vec2 origin = Director::getInstance()->getVisibleOrigin();
+    
+    auto costBar = Bar::create(5);
+    costBar->setScale(1,0.6);
+    costBar->setPosition(Vec2(origin.x + visibleSize.width - costBar->getContentSize().width / 2,
+                              origin.y + visibleSize.height - costBar->getContentSize().height / 2));
+    costBar->setTag(201);
+    this->addChild(costBar, 1);
+    
+    auto costBarLabel = Label::createWithTTF("Cost Bar", "fonts/Marker Felt.ttf", 32);
+    costBarLabel ->setPosition(Vec2(costBarLabel->getContentSize().width-costBar->getContentSize().width/2,costBar->getContentSize().height / 2));
+    costBar->addChild(costBarLabel);
+    
 	currentLane = laneMid;
     return true;
 	
+}
+
+void GameMaster::setCost(int diff){
+    this->cost+=diff;
+}
+
+int GameMaster::getCost(){
+    return this->cost;
 }
 
 
 void GameMaster::clickOnCard(int characterId, int direction) {
 	//direction: 0=down, 1=left, 2=right, 3=up
 	//spawn the character object
+    if (this->getCost()<1){
+        return;
+    } else{
+        this->setCost(-1);
+    }
+    
 	if (!cardCoolDown) {
 		auto newCharacter = CharacterCreator::getInstance()->charactersFactory(characterId, direction);
 		
@@ -412,8 +440,12 @@ void GameMaster::update(float delta) {
 	Vector<Character*> awayTBDMidVector;
 	Vector<Character*> homeTBDBotVector;
 	Vector<Character*> awayTBDBotVector;
-
-
+    
+    
+    
+    //update cost bar
+    auto costBar = (Bar*)this->getChildByTag(201);
+    costBar->updateHP(this->getCost());
 	
     //Eddie on 20170418
 	//Handle top collision

@@ -66,7 +66,8 @@ public:
     void createAction(Character*);
     void resumeAction(Character*);
     
-    
+    void setCost(int);
+    int getCost();
 	
     CREATE_FUNC(GameMaster);
     
@@ -89,6 +90,7 @@ private:
 
 	
 	int currentLane;
+    int cost = 5;
 	
 	float timeStamp=0;
 	bool cardCoolDown = false;
