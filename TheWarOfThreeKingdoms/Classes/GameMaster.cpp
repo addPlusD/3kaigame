@@ -852,4 +852,56 @@ void GameMaster::update(float delta) {
 	//cocos2d::Vector<Character*> AWAY_MID_CHARACTER;
 	//cocos2d::Vector<Character*> AWAY_BOT_CHARACTER;
     
+    //AI time for generating new character
+    this->timeSpent+=delta;
+    
+    setAi(timeSpent);
 }
+
+void GameMaster::setAi(float time){
+    
+    if (!aiStart) {
+        GameAi::getInstance()->init();
+        aiStart=true;
+    }else if (time>4){
+        GameAi::getInstance()->update();
+        
+        //reset time for next 4 seconds
+        this->timeSpent=0;
+    }
+}
+
+std::vector<Character*> GameMaster::getAwayCharacter(int lane){
+    // top =0, mid =1, bot =2;
+    switch (lane) {
+        case 0:
+            return AWAY_TOP_CHARACTER;
+            break;
+        case 1:
+            return AWAY_MID_CHARACTER;
+            break;
+        case 2:
+            return AWAY_BOT_CHARACTER;
+            break;
+    }
+    
+}
+
+void GameMaster::createAiAction(Character* target){
+    //set the moveto action to the new character
+    auto characterMoveAction = MoveTo::create(1.2*target->getSpeed(), Vec2(awaySpawnPositionX, target->getPositionY()));
+    
+    CCLOG("init duration:%f",1.2*target->getSpeed());
+    
+    //set the duration to action for later resume
+    target->setPassedActionDuration(1.2*target->getSpeed());
+    
+    
+    auto runSequence = Sequence::create(characterMoveAction, nullptr);
+    target->setActionSequence(runSequence);
+    
+    target->runAction(runSequence);
+    target->startPathing();
+    
+}
+

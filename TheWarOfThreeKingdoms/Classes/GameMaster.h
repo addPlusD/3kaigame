@@ -16,6 +16,8 @@
 #include "Character.h"
 #include "CharacterCreator.h"
 #include "Bar.h"
+#include "GameAi.h"
+#include <math.h>
 
 class GameMaster : public cocos2d::Layer{
     
@@ -72,6 +74,11 @@ public:
     void setCost(int);
     void recoverCost(float);
     int getCost();
+    
+    //Ai
+    void setAi(float);
+    std::vector<Character*> getAwayCharacter(int);
+    void createAiAction(Character*);
 	
     CREATE_FUNC(GameMaster);
     
@@ -96,8 +103,10 @@ private:
 	int currentLane;
     int cost = 5;
 	
-	float timeStamp=0;
-	bool cardCoolDown = false;
+    float timeStamp=0;
+    float timeSpent=0;
+    bool cardCoolDown = false;
+    bool aiStart = false;
 };
 
 #endif /* GameMaster_class */
