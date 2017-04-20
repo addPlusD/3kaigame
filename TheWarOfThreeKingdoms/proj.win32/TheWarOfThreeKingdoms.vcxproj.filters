@@ -45,6 +45,15 @@
     <ClCompile Include="..\Classes\Tower.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\GameAi.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MainMenuScene.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PauseScene.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -78,6 +87,15 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Tower.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameAi.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MainMenuScene.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PauseScene.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
@@ -161,5 +179,34 @@
     <Image Include="..\Resources\HP_bar.png">
       <Filter>resource</Filter>
     </Image>
+    <Image Include="..\Resources\mainmenu.jpg">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\moveCharacter8.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\moveCharacter9.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\moveCharacter10.png">
+      <Filter>resource</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\Resources\BG.mp3">
+      <Filter>resource</Filter>
+    </Media>
+    <Media Include="..\Resources\misc_menu_4.wav">
+      <Filter>resource</Filter>
+    </Media>
+    <Media Include="..\Resources\negative.wav">
+      <Filter>resource</Filter>
+    </Media>
+    <Media Include="..\Resources\positive.wav">
+      <Filter>resource</Filter>
+    </Media>
+    <Media Include="..\Resources\sharp_echo.wav">
+      <Filter>resource</Filter>
+    </Media>
   </ItemGroup>
 </Project>

@@ -149,9 +149,12 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Card.cpp" />
     <ClCompile Include="..\Classes\Character.cpp" />
     <ClCompile Include="..\Classes\CharacterCreator.cpp" />
+    <ClCompile Include="..\Classes\GameAi.cpp" />
     <ClCompile Include="..\Classes\GameMaster.cpp" />
     <ClCompile Include="..\Classes\GameWorld.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
+    <ClCompile Include="..\Classes\MainMenuScene.cpp" />
+    <ClCompile Include="..\Classes\PauseScene.cpp" />
     <ClCompile Include="..\Classes\Squad.cpp" />
     <ClCompile Include="..\Classes\Tower.cpp" />
     <ClCompile Include="main.cpp" />
@@ -162,9 +165,12 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Card.h" />
     <ClInclude Include="..\Classes\Character.h" />
     <ClInclude Include="..\Classes\CharacterCreator.h" />
+    <ClInclude Include="..\Classes\GameAi.h" />
     <ClInclude Include="..\Classes\GameMaster.h" />
     <ClInclude Include="..\Classes\GameWorld.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
+    <ClInclude Include="..\Classes\MainMenuScene.h" />
+    <ClInclude Include="..\Classes\PauseScene.h" />
     <ClInclude Include="..\Classes\Squad.h" />
     <ClInclude Include="..\Classes\Tower.h" />
     <ClInclude Include="main.h" />
@@ -197,12 +203,16 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <Image Include="..\Resources\enemy_castle_orignal.png" />
     <Image Include="..\Resources\HP_bar.png" />
     <Image Include="..\Resources\image.png" />
+    <Image Include="..\Resources\mainmenu.jpg" />
     <Image Include="..\Resources\moveCharacter1.png" />
+    <Image Include="..\Resources\moveCharacter10.png" />
     <Image Include="..\Resources\moveCharacter2.png" />
     <Image Include="..\Resources\moveCharacter3.png" />
     <Image Include="..\Resources\moveCharacter4.png" />
     <Image Include="..\Resources\moveCharacter5.png" />
     <Image Include="..\Resources\moveCharacter6.png" />
+    <Image Include="..\Resources\moveCharacter8.png" />
+    <Image Include="..\Resources\moveCharacter9.png" />
     <Image Include="..\Resources\terrain.png" />
     <Image Include="..\Resources\TileNature.png" />
     <Image Include="..\Resources\TileNature_1.png" />
@@ -211,6 +221,13 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <Image Include="..\Resources\tmw_desert_spacing.png" />
     <Image Include="..\Resources\tower.png" />
     <Image Include="..\Resources\tower_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\Resources\BG.mp3" />
+    <Media Include="..\Resources\misc_menu_4.wav" />
+    <Media Include="..\Resources\negative.wav" />
+    <Media Include="..\Resources\positive.wav" />
+    <Media Include="..\Resources\sharp_echo.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

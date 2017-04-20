@@ -903,7 +903,7 @@ void GameMaster::update(float delta) {
 void GameMaster::setAi(float time){
     
     if (!aiStart) {
-        GameAi::getInstance()->init();
+        GameAi::getInstance()->init(lv);
         aiStart=true;
     }else if (time>6){
         GameAi::getInstance()->update();
