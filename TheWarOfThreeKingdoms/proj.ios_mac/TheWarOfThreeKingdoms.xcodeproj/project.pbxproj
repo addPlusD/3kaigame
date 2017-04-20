@@ -53,6 +53,14 @@
 		212033DA1EA7A878004C77D3 /* Tower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 212033D71EA7A878004C77D3 /* Tower.cpp */; };
 		212033DC1EA7C2C7004C77D3 /* hit.png in Resources */ = {isa = PBXBuildFile; fileRef = 212033DB1EA7C2C7004C77D3 /* hit.png */; };
 		212033DD1EA7C2C7004C77D3 /* hit.png in Resources */ = {isa = PBXBuildFile; fileRef = 212033DB1EA7C2C7004C77D3 /* hit.png */; };
+		212033E21EA88C9C004C77D3 /* moveCharacter8.png in Resources */ = {isa = PBXBuildFile; fileRef = 212033DF1EA88C9C004C77D3 /* moveCharacter8.png */; };
+		212033E31EA88C9C004C77D3 /* moveCharacter8.png in Resources */ = {isa = PBXBuildFile; fileRef = 212033DF1EA88C9C004C77D3 /* moveCharacter8.png */; };
+		212033E41EA88C9C004C77D3 /* moveCharacter9.png in Resources */ = {isa = PBXBuildFile; fileRef = 212033E01EA88C9C004C77D3 /* moveCharacter9.png */; };
+		212033E51EA88C9C004C77D3 /* moveCharacter9.png in Resources */ = {isa = PBXBuildFile; fileRef = 212033E01EA88C9C004C77D3 /* moveCharacter9.png */; };
+		212033E61EA88C9C004C77D3 /* moveCharacter10.png in Resources */ = {isa = PBXBuildFile; fileRef = 212033E11EA88C9C004C77D3 /* moveCharacter10.png */; };
+		212033E71EA88C9C004C77D3 /* moveCharacter10.png in Resources */ = {isa = PBXBuildFile; fileRef = 212033E11EA88C9C004C77D3 /* moveCharacter10.png */; };
+		212033EB1EA88CBE004C77D3 /* GameAi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 212033E91EA88CBE004C77D3 /* GameAi.cpp */; };
+		212033EC1EA88CBE004C77D3 /* GameAi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 212033E91EA88CBE004C77D3 /* GameAi.cpp */; };
 		218B6D931E9FE351009395C3 /* AIGame_map.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 218B6D8C1E9FE351009395C3 /* AIGame_map.tmx */; };
 		218B6D941E9FE351009395C3 /* AIGame_map.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 218B6D8C1E9FE351009395C3 /* AIGame_map.tmx */; };
 		218B6D951E9FE351009395C3 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 218B6D8D1E9FE351009395C3 /* background.png */; };
@@ -112,20 +120,15 @@
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
-		C0FB604A1EA7D65100FCBD39 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FB60441EA7D65100FCBD39 /* CloseNormal.png */; };
 		C0FB604B1EA7D65100FCBD39 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FB60441EA7D65100FCBD39 /* CloseNormal.png */; };
 		C0FB604C1EA7D65100FCBD39 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FB60451EA7D65100FCBD39 /* CloseSelected.png */; };
 		C0FB604D1EA7D65100FCBD39 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FB60451EA7D65100FCBD39 /* CloseSelected.png */; };
-		C0FB604E1EA7D65100FCBD39 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FB60461EA7D65100FCBD39 /* HelloWorld.png */; };
 		C0FB604F1EA7D65100FCBD39 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FB60461EA7D65100FCBD39 /* HelloWorld.png */; };
 		C0FB60501EA7D65100FCBD39 /* moveCharacter8.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FB60471EA7D65100FCBD39 /* moveCharacter8.png */; };
 		C0FB60511EA7D65100FCBD39 /* moveCharacter8.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FB60471EA7D65100FCBD39 /* moveCharacter8.png */; };
 		C0FB60521EA7D65100FCBD39 /* moveCharacter9.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FB60481EA7D65100FCBD39 /* moveCharacter9.png */; };
 		C0FB60531EA7D65100FCBD39 /* moveCharacter9.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FB60481EA7D65100FCBD39 /* moveCharacter9.png */; };
 		C0FB60541EA7D65100FCBD39 /* moveCharacter10.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FB60491EA7D65100FCBD39 /* moveCharacter10.png */; };
-		C0FB60551EA7D65100FCBD39 /* moveCharacter10.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FB60491EA7D65100FCBD39 /* moveCharacter10.png */; };
-		C0FB60591EA7D6FD00FCBD39 /* GameAi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0FB60571EA7D6FD00FCBD39 /* GameAi.cpp */; };
-		C0FB605A1EA7D6FD00FCBD39 /* GameAi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0FB60571EA7D6FD00FCBD39 /* GameAi.cpp */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
@@ -207,6 +210,11 @@
 		212033D71EA7A878004C77D3 /* Tower.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tower.cpp; sourceTree = "<group>"; };
 		212033D81EA7A878004C77D3 /* Tower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tower.h; sourceTree = "<group>"; };
 		212033DB1EA7C2C7004C77D3 /* hit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hit.png; sourceTree = "<group>"; };
+		212033DF1EA88C9C004C77D3 /* moveCharacter8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moveCharacter8.png; sourceTree = "<group>"; };
+		212033E01EA88C9C004C77D3 /* moveCharacter9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moveCharacter9.png; sourceTree = "<group>"; };
+		212033E11EA88C9C004C77D3 /* moveCharacter10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moveCharacter10.png; sourceTree = "<group>"; };
+		212033E91EA88CBE004C77D3 /* GameAi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameAi.cpp; sourceTree = "<group>"; };
+		212033EA1EA88CBE004C77D3 /* GameAi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameAi.h; sourceTree = "<group>"; };
 		218B6D8C1E9FE351009395C3 /* AIGame_map.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = AIGame_map.tmx; sourceTree = "<group>"; };
 		218B6D8D1E9FE351009395C3 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		218B6D8E1E9FE351009395C3 /* terrain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = terrain.png; sourceTree = "<group>"; };
@@ -265,8 +273,6 @@
 		C0FB60471EA7D65100FCBD39 /* moveCharacter8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moveCharacter8.png; sourceTree = "<group>"; };
 		C0FB60481EA7D65100FCBD39 /* moveCharacter9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moveCharacter9.png; sourceTree = "<group>"; };
 		C0FB60491EA7D65100FCBD39 /* moveCharacter10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moveCharacter10.png; sourceTree = "<group>"; };
-		C0FB60571EA7D6FD00FCBD39 /* GameAi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameAi.cpp; sourceTree = "<group>"; };
-		C0FB60581EA7D6FD00FCBD39 /* GameAi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameAi.h; sourceTree = "<group>"; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -425,6 +431,9 @@
 				212033A81EA347E6004C77D3 /* moveCharacter4.png */,
 				212033A91EA347E6004C77D3 /* moveCharacter5.png */,
 				212033AA1EA347E6004C77D3 /* moveCharacter6.png */,
+				212033DF1EA88C9C004C77D3 /* moveCharacter8.png */,
+				212033E01EA88C9C004C77D3 /* moveCharacter9.png */,
+				212033E11EA88C9C004C77D3 /* moveCharacter10.png */,
 				212033D11EA7957F004C77D3 /* castle.png */,
 				212033D21EA7957F004C77D3 /* enemy_castle.png */,
 				212033B51EA34A9C004C77D3 /* tiletile.png */,
@@ -464,11 +473,11 @@
 				05C9B27F1E90F7610031D6A3 /* GameMaster.cpp */,
 				05C9B2801E90F7610031D6A3 /* GameMaster.h */,
 				212033D71EA7A878004C77D3 /* Tower.cpp */,
-				C0FB60571EA7D6FD00FCBD39 /* GameAi.cpp */,
-				C0FB60581EA7D6FD00FCBD39 /* GameAi.h */,
 				212033D81EA7A878004C77D3 /* Tower.h */,
 				212033C91EA64ABB004C77D3 /* Bar.cpp */,
 				212033CA1EA64ABB004C77D3 /* Bar.h */,
+				212033E91EA88CBE004C77D3 /* GameAi.cpp */,
+				212033EA1EA88CBE004C77D3 /* GameAi.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -655,6 +664,7 @@
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				C0FB60501EA7D65100FCBD39 /* moveCharacter8.png in Resources */,
 				C0FB60521EA7D65100FCBD39 /* moveCharacter9.png in Resources */,
+				212033E21EA88C9C004C77D3 /* moveCharacter8.png in Resources */,
 				C0FB604C1EA7D65100FCBD39 /* CloseSelected.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				212033AD1EA347E6004C77D3 /* moveCharacter3.png in Resources */,
@@ -663,7 +673,9 @@
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
 				212033B31EA347E6004C77D3 /* moveCharacter6.png in Resources */,
 				218B6D991E9FE351009395C3 /* TileNature_1.png in Resources */,
+				212033E61EA88C9C004C77D3 /* moveCharacter10.png in Resources */,
 				218B6D931E9FE351009395C3 /* AIGame_map.tmx in Resources */,
+				212033E41EA88C9C004C77D3 /* moveCharacter9.png in Resources */,
 				218B6D9B1E9FE351009395C3 /* TileNature.png in Resources */,
 				212033D31EA7957F004C77D3 /* castle.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
@@ -691,11 +703,14 @@
 				3EACC99019EE6D4300EB3C5E /* res in Resources */,
 				218B6D9E1E9FE351009395C3 /* tower_1.png in Resources */,
 				212033DD1EA7C2C7004C77D3 /* hit.png in Resources */,
+				212033E71EA88C9C004C77D3 /* moveCharacter10.png in Resources */,
 				C0FB60511EA7D65100FCBD39 /* moveCharacter8.png in Resources */,
 				212033AC1EA347E6004C77D3 /* moveCharacter2.png in Resources */,
 				212033971EA0A945004C77D3 /* character.plist in Resources */,
 				212033D41EA7957F004C77D3 /* castle.png in Resources */,
 				521A8EAA19F11F5000D177D7 /* fonts in Resources */,
+				212033E51EA88C9C004C77D3 /* moveCharacter9.png in Resources */,
+				212033E31EA88C9C004C77D3 /* moveCharacter8.png in Resources */,
 				218B6D9A1E9FE351009395C3 /* TileNature_1.png in Resources */,
 				212033B01EA347E6004C77D3 /* moveCharacter4.png in Resources */,
 				218B6DA01E9FE351009395C3 /* tower.png in Resources */,
@@ -718,13 +733,13 @@
 				212033D91EA7A878004C77D3 /* Tower.cpp in Sources */,
 				05C9B2751E90DD7F0031D6A3 /* GameWorld.cpp in Sources */,
 				05C9B2861E90FCF50031D6A3 /* Character.cpp in Sources */,
-				C0FB60591EA7D6FD00FCBD39 /* GameAi.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				212033A31EA34788004C77D3 /* CharacterCreator.cpp in Sources */,
 				212033CB1EA64ABB004C77D3 /* Bar.cpp in Sources */,
 				05C9B27D1E90EEB70031D6A3 /* Squad.cpp in Sources */,
+				212033EB1EA88CBE004C77D3 /* GameAi.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -734,11 +749,11 @@
 			files = (
 				05C9B2761E90DD7F0031D6A3 /* GameWorld.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
-				C0FB605A1EA7D6FD00FCBD39 /* GameAi.cpp in Sources */,
 				212033A41EA34788004C77D3 /* CharacterCreator.cpp in Sources */,
 				212033DA1EA7A878004C77D3 /* Tower.cpp in Sources */,
 				212033CC1EA64ABB004C77D3 /* Bar.cpp in Sources */,
 				05C9B2821E90F7610031D6A3 /* GameMaster.cpp in Sources */,
+				212033EC1EA88CBE004C77D3 /* GameAi.cpp in Sources */,
 				05C9B2871E90FCF50031D6A3 /* Character.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				05C9B27E1E90EEB70031D6A3 /* Squad.cpp in Sources */,

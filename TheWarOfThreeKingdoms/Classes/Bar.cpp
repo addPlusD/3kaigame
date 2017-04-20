@@ -121,7 +121,7 @@ Rect Bar::getHPRect(int hp){
             return Rect(312, 832, 312, 52);
             break;
         default:
-            return Rect(0, 0, 312, 52);
+            return Rect(312, 832, 312, 52);
             break;
     }
 }

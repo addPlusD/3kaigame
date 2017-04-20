@@ -13,8 +13,6 @@
 USING_NS_CC;
 using namespace ui;
 
-int castle = 1000,enemyCastle = 1000;
-
 //Implementing createScene member function of class GameWorld
 Scene* GameWorld::createScene() {
 	auto scene = Scene::create();
@@ -156,10 +154,14 @@ void GameWorld::setBackground() {
 }
 
 void GameWorld::setHP() {
-    auto castleHP = (Bar*)getChildByTag(100);
-    castleHP->updateHP(castle);
+    auto castleHPBar = (Bar*)getChildByTag(100);
+    auto castle = (Tower*)this->getChildByName("awayTower");
+    int castleHP = castle->getHP();
+    castleHPBar->updateHP(castleHP);
     
-    auto enemyCastleHP = (Bar*)getChildByTag(101);
-    enemyCastleHP->updateHP(enemyCastle);
+    auto enemyCastleHPBar = (Bar*)getChildByTag(101);
+    auto enemyCastle = (Tower*)this->getChildByName("homeTower");
+    int enemyCastleHP = enemyCastle->getHP();
+    enemyCastleHPBar->updateHP(enemyCastleHP);
 }
 
