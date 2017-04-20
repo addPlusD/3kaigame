@@ -28,24 +28,40 @@ bool MainMenu::init()
         return false;
     }
     
+    
+    
+    
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
+
     
+    //set menu item
     auto menu_item_1 = MenuItemFont::create("Play", CC_CALLBACK_1(MainMenu::Play, this));
     auto menu_item_2 = MenuItemFont::create("Quit", CC_CALLBACK_1(MainMenu::Quit, this));
+    auto menu_item_3 = MenuItemFont::create("The Silent of the General", CC_CALLBACK_1(MainMenu::Play, this));
     
+    menu_item_1->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 4) * 2));
+    menu_item_2->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 4) * 1));
+    menu_item_3->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 4) * 3));
+
     
-    menu_item_1->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 4) * 3));
-    menu_item_2->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 4) * 2));
-  
-    
-    auto *menu = Menu::create(menu_item_1, menu_item_2, NULL);
+    auto *menu = Menu::create(menu_item_3,menu_item_1, menu_item_2, NULL);
     menu->setPosition(Point(0, 0));
     this->addChild(menu);
     
     
+    Sprite *background = Sprite::create("mainmenu.jpg");
+    background->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
+    
+    this->addChild(background, -1);
+    background->setScaleX(visibleSize.width/ background->getContentSize().width);
+    background->setScaleY(visibleSize.height/ background->getContentSize().height);
+    
+    
     return true;
 }
+
+
 
 void MainMenu::Play(cocos2d::Ref *pSender)
 {

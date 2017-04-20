@@ -30,15 +30,15 @@ GameAi::~GameAi() {
 
 void GameAi::init(){
    //top
-    for (int i=0; i<3; i++) {
+    for (int i=0; i<2; i++) {
         createSoldier(soliderSet1[i], 1, 650,-1);
     }
     //mid
-    for (int i=0; i<3; i++) {
+    for (int i=0; i<2; i++) {
         createSoldier(soliderSet2[i], 1, 450,0);
     }
     //bot
-    for (int i=0; i<3; i++) {
+    for (int i=0; i<2; i++) {
         createSoldier(soliderSet3[i], 1, 250,1);
     }
 }

@@ -120,6 +120,8 @@
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
+		C014A5DD1EA8D3380092BC35 /* mainmenu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C014A5DC1EA8D3380092BC35 /* mainmenu.jpg */; };
+		C014A5DE1EA8D3380092BC35 /* mainmenu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C014A5DC1EA8D3380092BC35 /* mainmenu.jpg */; };
 		C0510B861EA8A7BE00518866 /* misc_menu_4.wav in Resources */ = {isa = PBXBuildFile; fileRef = C0510B821EA8A7BE00518866 /* misc_menu_4.wav */; };
 		C0510B871EA8A7BE00518866 /* misc_menu_4.wav in Resources */ = {isa = PBXBuildFile; fileRef = C0510B821EA8A7BE00518866 /* misc_menu_4.wav */; };
 		C0510B881EA8A7BE00518866 /* negative.wav in Resources */ = {isa = PBXBuildFile; fileRef = C0510B831EA8A7BE00518866 /* negative.wav */; };
@@ -279,6 +281,7 @@
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C014A5DC1EA8D3380092BC35 /* mainmenu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mainmenu.jpg; sourceTree = "<group>"; };
 		C0510B821EA8A7BE00518866 /* misc_menu_4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = misc_menu_4.wav; sourceTree = "<group>"; };
 		C0510B831EA8A7BE00518866 /* negative.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = negative.wav; sourceTree = "<group>"; };
 		C0510B841EA8A7BE00518866 /* positive.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = positive.wav; sourceTree = "<group>"; };
@@ -461,6 +464,7 @@
 				212033951EA0A945004C77D3 /* character.png */,
 				218B6D8D1E9FE351009395C3 /* background.png */,
 				218B6D8E1E9FE351009395C3 /* terrain.png */,
+				C014A5DC1EA8D3380092BC35 /* mainmenu.jpg */,
 				C0510B821EA8A7BE00518866 /* misc_menu_4.wav */,
 				C0510B831EA8A7BE00518866 /* negative.wav */,
 				C0510B841EA8A7BE00518866 /* positive.wav */,
@@ -686,6 +690,7 @@
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				212033961EA0A945004C77D3 /* character.plist in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
+				C014A5DD1EA8D3380092BC35 /* mainmenu.jpg in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				212033AF1EA347E6004C77D3 /* moveCharacter4.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
@@ -752,6 +757,7 @@
 				C0FB604F1EA7D65100FCBD39 /* HelloWorld.png in Resources */,
 				C0510B871EA8A7BE00518866 /* misc_menu_4.wav in Resources */,
 				C0510B891EA8A7BE00518866 /* negative.wav in Resources */,
+				C014A5DE1EA8D3380092BC35 /* mainmenu.jpg in Resources */,
 				C0FB604D1EA7D65100FCBD39 /* CloseSelected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

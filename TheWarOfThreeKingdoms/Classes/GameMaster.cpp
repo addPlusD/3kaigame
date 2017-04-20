@@ -893,7 +893,7 @@ void GameMaster::setAi(float time){
     if (!aiStart) {
         GameAi::getInstance()->init();
         aiStart=true;
-    }else if (time>4){
+    }else if (time>6){
         GameAi::getInstance()->update();
         
         //reset time for next 4 seconds
