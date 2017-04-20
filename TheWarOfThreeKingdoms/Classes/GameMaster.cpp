@@ -7,6 +7,7 @@
 //
 
 #include "GameMaster.h"
+#include "PauseScene.h"
 
 USING_NS_CC;
 
@@ -80,6 +81,21 @@ bool GameMaster::init(){
     costBar->addChild(costBarLabel);
     
     this->schedule(schedule_selector(GameMaster::recoverCost),5.0f);
+    
+    
+    auto eventListener = EventListenerKeyboard::create();
+    eventListener->onKeyPressed = [=](EventKeyboard::KeyCode keyCode, Event* event)->void{
+        if (keyCode==EventKeyboard::KeyCode::KEY_SPACE) {
+            if (this->isPause) {
+                Director::getInstance()->resume();
+            }else{
+                Director::getInstance()->pause();
+            }
+            this->isPause=!this->isPause;
+        }
+    };
+    
+    this->_eventDispatcher->addEventListenerWithSceneGraphPriority(eventListener,this);
     
 	currentLane = laneMid;
     return true;

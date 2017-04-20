@@ -43,15 +43,7 @@ bool GameWorld::init() {
 	setBackground();
 	setCards();
 	setMaster();
-    auto test3= Character::createCharacter("moveCharacter2.png", 2);
-    
-//    test3->setPosition(Vec2(200, 650));
-//    test3->setProperty(200, 500, 50, 0, 2);
-//    this->addChild(test3,1);
-//    test3->setName("test3");
-//    //test1->health = 1000;
-//    GameMaster::getInstance()->addCharacterToLane(-1, test3, "home");
-//    
+
 //	auto test1= Character::createCharacter("moveCharacter2.png", 2);
 //	test1->setPosition(Vec2(200, 450));
 //	test1->setProperty(200, 500, 50, 0, 2);
@@ -59,14 +51,6 @@ bool GameWorld::init() {
 //    test1->setName("test1");
 //	//test1->health = 1000;
 //	GameMaster::getInstance()->addCharacterToLane(-1, test1, "home");
-//
-//	auto test2 = Character::createCharacter("moveCharacter3.png", 2);
-//	test2->setPosition(Vec2(100, 250));
-//	test2->setProperty(1000, 50, 20, 0, 2);
-//	this->addChild(test2, 1);
-//	test2->setHealth(1000);
-//    test2->setName("test2");
-//	GameMaster::getInstance()->addCharacterToLane(-1, test2, "home");
 
 	//tell program to do update
 	scheduleUpdate();

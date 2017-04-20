@@ -1,6 +1,7 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
 #include "GameWorld.h"
+#include "MainMenuScene.h"
 
 USING_NS_CC;
 
@@ -77,7 +78,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("character.plist");
     // create a scene. it's an autorelease object
-    auto scene = GameWorld::createScene();
+    auto scene = MainMenu::createScene();
     
     // run
     director->runWithScene(scene);

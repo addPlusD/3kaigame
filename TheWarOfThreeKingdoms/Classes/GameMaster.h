@@ -76,6 +76,8 @@ public:
     void recoverCost(float);
     int getCost();
     
+    
+    
     //Ai
     void setAi(float);
     std::vector<Character*> getAwayCharacter(int);
@@ -85,6 +87,7 @@ public:
     
 private:
 
+    
 		std::vector<Squad*> HOME_TOP_SQUAD;
 		std::vector<Squad*> HOME_MID_SQUAD;
 		std::vector<Squad*> HOME_BOT_SQUAD;
@@ -108,6 +111,8 @@ private:
     float timeSpent=0;
     bool cardCoolDown = false;
     bool aiStart = false;
+    
+    bool isPause = false;
 };
 
 #endif /* GameMaster_class */

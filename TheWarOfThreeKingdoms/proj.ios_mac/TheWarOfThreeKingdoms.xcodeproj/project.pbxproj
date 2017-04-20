@@ -120,6 +120,18 @@
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
+		C0510B861EA8A7BE00518866 /* misc_menu_4.wav in Resources */ = {isa = PBXBuildFile; fileRef = C0510B821EA8A7BE00518866 /* misc_menu_4.wav */; };
+		C0510B871EA8A7BE00518866 /* misc_menu_4.wav in Resources */ = {isa = PBXBuildFile; fileRef = C0510B821EA8A7BE00518866 /* misc_menu_4.wav */; };
+		C0510B881EA8A7BE00518866 /* negative.wav in Resources */ = {isa = PBXBuildFile; fileRef = C0510B831EA8A7BE00518866 /* negative.wav */; };
+		C0510B891EA8A7BE00518866 /* negative.wav in Resources */ = {isa = PBXBuildFile; fileRef = C0510B831EA8A7BE00518866 /* negative.wav */; };
+		C0510B8A1EA8A7BE00518866 /* positive.wav in Resources */ = {isa = PBXBuildFile; fileRef = C0510B841EA8A7BE00518866 /* positive.wav */; };
+		C0510B8B1EA8A7BE00518866 /* positive.wav in Resources */ = {isa = PBXBuildFile; fileRef = C0510B841EA8A7BE00518866 /* positive.wav */; };
+		C0510B8C1EA8A7BE00518866 /* sharp_echo.wav in Resources */ = {isa = PBXBuildFile; fileRef = C0510B851EA8A7BE00518866 /* sharp_echo.wav */; };
+		C0510B8D1EA8A7BE00518866 /* sharp_echo.wav in Resources */ = {isa = PBXBuildFile; fileRef = C0510B851EA8A7BE00518866 /* sharp_echo.wav */; };
+		C0510B901EA8A7EB00518866 /* BG.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0510B8F1EA8A7EB00518866 /* BG.mp3 */; };
+		C0510B911EA8A7EB00518866 /* BG.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0510B8F1EA8A7EB00518866 /* BG.mp3 */; };
+		C0F4C6861EA8B06E00802F83 /* MainMenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0F4C6841EA8B06E00802F83 /* MainMenuScene.cpp */; };
+		C0F4C6871EA8B06E00802F83 /* MainMenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0F4C6841EA8B06E00802F83 /* MainMenuScene.cpp */; };
 		C0FB604B1EA7D65100FCBD39 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FB60441EA7D65100FCBD39 /* CloseNormal.png */; };
 		C0FB604C1EA7D65100FCBD39 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FB60451EA7D65100FCBD39 /* CloseSelected.png */; };
 		C0FB604D1EA7D65100FCBD39 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FB60451EA7D65100FCBD39 /* CloseSelected.png */; };
@@ -267,6 +279,13 @@
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C0510B821EA8A7BE00518866 /* misc_menu_4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = misc_menu_4.wav; sourceTree = "<group>"; };
+		C0510B831EA8A7BE00518866 /* negative.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = negative.wav; sourceTree = "<group>"; };
+		C0510B841EA8A7BE00518866 /* positive.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = positive.wav; sourceTree = "<group>"; };
+		C0510B851EA8A7BE00518866 /* sharp_echo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sharp_echo.wav; sourceTree = "<group>"; };
+		C0510B8F1EA8A7EB00518866 /* BG.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BG.mp3; sourceTree = "<group>"; };
+		C0F4C6841EA8B06E00802F83 /* MainMenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainMenuScene.cpp; sourceTree = "<group>"; };
+		C0F4C6851EA8B06E00802F83 /* MainMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuScene.h; sourceTree = "<group>"; };
 		C0FB60441EA7D65100FCBD39 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
 		C0FB60451EA7D65100FCBD39 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
 		C0FB60461EA7D65100FCBD39 /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
@@ -442,6 +461,11 @@
 				212033951EA0A945004C77D3 /* character.png */,
 				218B6D8D1E9FE351009395C3 /* background.png */,
 				218B6D8E1E9FE351009395C3 /* terrain.png */,
+				C0510B821EA8A7BE00518866 /* misc_menu_4.wav */,
+				C0510B831EA8A7BE00518866 /* negative.wav */,
+				C0510B841EA8A7BE00518866 /* positive.wav */,
+				C0510B8F1EA8A7EB00518866 /* BG.mp3 */,
+				C0510B851EA8A7BE00518866 /* sharp_echo.wav */,
 				218B6D8F1E9FE351009395C3 /* TileNature_1.png */,
 				218B6D901E9FE351009395C3 /* TileNature.png */,
 				C0FB60441EA7D65100FCBD39 /* CloseNormal.png */,
@@ -478,6 +502,8 @@
 				212033CA1EA64ABB004C77D3 /* Bar.h */,
 				212033E91EA88CBE004C77D3 /* GameAi.cpp */,
 				212033EA1EA88CBE004C77D3 /* GameAi.h */,
+				C0F4C6841EA8B06E00802F83 /* MainMenuScene.cpp */,
+				C0F4C6851EA8B06E00802F83 /* MainMenuScene.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -633,8 +659,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				212033DC1EA7C2C7004C77D3 /* hit.png in Resources */,
+				C0510B8A1EA8A7BE00518866 /* positive.wav in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				218B6D971E9FE351009395C3 /* terrain.png in Resources */,
+				C0510B881EA8A7BE00518866 /* negative.wav in Resources */,
 				212033B61EA34A9C004C77D3 /* tiletile.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
@@ -643,7 +671,9 @@
 				218B6D9D1E9FE351009395C3 /* tower_1.png in Resources */,
 				218B6D951E9FE351009395C3 /* background.png in Resources */,
 				212033B91EA34AB9004C77D3 /* HP_bar.png in Resources */,
+				C0510B901EA8A7EB00518866 /* BG.mp3 in Resources */,
 				212033D51EA7957F004C77D3 /* enemy_castle.png in Resources */,
+				C0510B8C1EA8A7BE00518866 /* sharp_echo.wav in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				C0FB60541EA7D65100FCBD39 /* moveCharacter10.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
@@ -662,6 +692,7 @@
 				3EACC98F19EE6D4300EB3C5E /* res in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
+				C0510B861EA8A7BE00518866 /* misc_menu_4.wav in Resources */,
 				C0FB60501EA7D65100FCBD39 /* moveCharacter8.png in Resources */,
 				C0FB60521EA7D65100FCBD39 /* moveCharacter9.png in Resources */,
 				212033E21EA88C9C004C77D3 /* moveCharacter8.png in Resources */,
@@ -691,9 +722,11 @@
 				218B6D9C1E9FE351009395C3 /* TileNature.png in Resources */,
 				212033C51EA51951004C77D3 /* arrow.png in Resources */,
 				218B6D941E9FE351009395C3 /* AIGame_map.tmx in Resources */,
+				C0510B911EA8A7EB00518866 /* BG.mp3 in Resources */,
 				212033B71EA34A9C004C77D3 /* tiletile.png in Resources */,
 				212033991EA0A945004C77D3 /* character.png in Resources */,
 				218B6D961E9FE351009395C3 /* background.png in Resources */,
+				C0510B8D1EA8A7BE00518866 /* sharp_echo.wav in Resources */,
 				C0FB604B1EA7D65100FCBD39 /* CloseNormal.png in Resources */,
 				218B6D981E9FE351009395C3 /* terrain.png in Resources */,
 				212033AE1EA347E6004C77D3 /* moveCharacter3.png in Resources */,
@@ -705,6 +738,7 @@
 				212033DD1EA7C2C7004C77D3 /* hit.png in Resources */,
 				212033E71EA88C9C004C77D3 /* moveCharacter10.png in Resources */,
 				C0FB60511EA7D65100FCBD39 /* moveCharacter8.png in Resources */,
+				C0510B8B1EA8A7BE00518866 /* positive.wav in Resources */,
 				212033AC1EA347E6004C77D3 /* moveCharacter2.png in Resources */,
 				212033971EA0A945004C77D3 /* character.plist in Resources */,
 				212033D41EA7957F004C77D3 /* castle.png in Resources */,
@@ -716,6 +750,8 @@
 				218B6DA01E9FE351009395C3 /* tower.png in Resources */,
 				212033D61EA7957F004C77D3 /* enemy_castle.png in Resources */,
 				C0FB604F1EA7D65100FCBD39 /* HelloWorld.png in Resources */,
+				C0510B871EA8A7BE00518866 /* misc_menu_4.wav in Resources */,
+				C0510B891EA8A7BE00518866 /* negative.wav in Resources */,
 				C0FB604D1EA7D65100FCBD39 /* CloseSelected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -740,6 +776,7 @@
 				212033CB1EA64ABB004C77D3 /* Bar.cpp in Sources */,
 				05C9B27D1E90EEB70031D6A3 /* Squad.cpp in Sources */,
 				212033EB1EA88CBE004C77D3 /* GameAi.cpp in Sources */,
+				C0F4C6861EA8B06E00802F83 /* MainMenuScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,6 +788,7 @@
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				212033A41EA34788004C77D3 /* CharacterCreator.cpp in Sources */,
 				212033DA1EA7A878004C77D3 /* Tower.cpp in Sources */,
+				C0F4C6871EA8B06E00802F83 /* MainMenuScene.cpp in Sources */,
 				212033CC1EA64ABB004C77D3 /* Bar.cpp in Sources */,
 				05C9B2821E90F7610031D6A3 /* GameMaster.cpp in Sources */,
 				212033EC1EA88CBE004C77D3 /* GameAi.cpp in Sources */,
