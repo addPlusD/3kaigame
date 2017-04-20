@@ -25,9 +25,9 @@ public:
     void setLv(int);
     void update();
 private:
-    
+
     int findlanePosition(int );
-    void createSolider(int,int,int);
+    void createSoldier(int,int,int,int);
     int soliderSet1[3]={0,0,1};
     int soliderSet2[3]={1,0,2};
     int soliderSet3[3]={2,2,1};

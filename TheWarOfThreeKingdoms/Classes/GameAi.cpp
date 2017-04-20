@@ -31,15 +31,15 @@ GameAi::~GameAi() {
 void GameAi::init(){
    //top
     for (int i=0; i<3; i++) {
-        createSolider(soliderSet1[i], 1, 650);
+        createSoldier(soliderSet1[i], 1, 650,-1);
     }
     //mid
     for (int i=0; i<3; i++) {
-        createSolider(soliderSet2[i], 1, 450);
+        createSoldier(soliderSet2[i], 1, 450,0);
     }
     //bot
     for (int i=0; i<3; i++) {
-        createSolider(soliderSet3[i], 1, 250);
+        createSoldier(soliderSet3[i], 1, 250,1);
     }
 }
 
@@ -63,15 +63,15 @@ void GameAi::update(){
         for (Character* character : gM->getAwayCharacter(i)) {
             if (character->getHealth()>maxHpOnLane) {
                 maxHpOnLane=character->getHealth();
-                strategy1=i;
+                strategy1=i-1;
             }
             if (character->getAttackDamage()>highestPowerCharacter) {
                 highestPowerCharacter=character->getAttackDamage();
-                strategy2=i;
+                strategy2=i-1;
             }
             if (character->getPositionX()>closetPosition) {
                 closetPosition=character->getPositionX();
-                strategy3=i;
+                strategy3=i-1;
             }
         }
     }
@@ -82,28 +82,29 @@ void GameAi::update(){
     
     if(closetPosition<300&&closetPosition!=-1){
         //too close, sd defence team(knight) to that lane
-        int lane = findlanePosition(strategy3);
+        int position = findlanePosition(strategy3);
         for (int i=0; i<2; i++) {
-            createSolider(defenceTeam1[i], 1, lane);
-             CCLOG("createSolider 1");
+            createSoldier(defenceTeam1[i], 1, position,strategy3);
+             CCLOG("createSoldier 1");
         }
     }else if (strat2>0.5){
         //high power(dmg), sd defence team(archer1) to that lane
-        int lane = findlanePosition(strategy2);
+        int position = findlanePosition(strategy2);
         for (int i=0; i<2; i++) {
-            createSolider(defenceTeam2[i], 1, lane);
-            CCLOG("createSolider 2");
+            createSoldier(defenceTeam2[i], 1, position,strategy2);
+            CCLOG("createSoldier 2");
         }
     }else if (strat1>0.5){
         //high power(hp), sd defence team(archer2) to that lane
-        int lane = findlanePosition(strategy2);
+        int position = findlanePosition(strategy1);
         for (int i=0; i<2; i++) {
-            createSolider(defenceTeam3[i], 1, lane);
-                 CCLOG("createSolider 3");
+            createSoldier(defenceTeam3[i], 1, position,strategy1);
+                 CCLOG("createSoldier 3");
         }
     }else{
-        createSolider(rand()%3, 1, findlanePosition(rand()%3));
-        CCLOG("createSolider 4");
+        int random = rand()%3-1;
+        createSoldier(rand()%3, 1, findlanePosition(random),random);
+        CCLOG("createSoldier 4");
     }
     
     
@@ -112,39 +113,39 @@ void GameAi::update(){
 int GameAi::findlanePosition(int i){
     
     switch (i) {
-        case 0:
+        case -1:
             return 650;
             break;
-        case 1:
+        case 0:
             return 450;
             break;
-        case 2:
+        case 1:
             return 250;
             break;
     }
     return 0;
 }
 
-void GameAi::createSolider(int sol, int quantity, int position){
+void GameAi::createSoldier(int sol, int quantity, int position,int lane){
 
-    // Solider 0, archer 1, knight 2
+    // warrior 0, archer 1, knight 2
     for (int i=0; i<quantity; i++) {
         string fileName[3] = { "moveCharacter10.png", "moveCharacter9.png","moveCharacter8.png"};
         auto newCharacter = Character::createCharacter(fileName[sol].c_str(), 2);
         switch (sol) {
             case 0:
                 // int health, int attackDamage, int attackRange, float speed, float cooldown
-                newCharacter->setProperty(45, 10, 10, 10, 0);
-                newCharacter->setName("solider");
+                newCharacter->setProperty(50, 10, 10, 12, 3);
+                newCharacter->setName("soldier");
                 break;
                 
             case 1:
-                newCharacter->setProperty(40, 5, 60, 7, 0);
+                newCharacter->setProperty(30, 5, 60, 15, 3);
                 newCharacter->setName("archer");
                 break;
                 
             case 2:
-                newCharacter->setProperty(60, 12, 20, 5, 2);
+                newCharacter->setProperty(60, 12, 20, 8, 2);
                 newCharacter->setName("knight");
                 break;
         }
@@ -153,7 +154,7 @@ void GameAi::createSolider(int sol, int quantity, int position){
         scene->addChild(newCharacter, 1);
         newCharacter->setPosition(Vec2(100, position));
         GameMaster::getInstance()->createAiAction(newCharacter);
-        GameMaster::getInstance()->addCharacterToLane(-1, newCharacter , "home");
+        GameMaster::getInstance()->addCharacterToLane(lane, newCharacter , "home");
     }
 }
 
