@@ -44,6 +44,10 @@ bool GameMaster::init(){
     if(!Layer::init()){
         return false;
     }
+	auto audio = CocosDenshion::SimpleAudioEngine::getInstance();
+	audio->preloadBackgroundMusic("BG.mp3");
+	audio->playBackgroundMusic("BG.mp3");
+	audio->setEffectsVolume(1.0f);
 
 	EventListenerMouse* switchLaneListener = EventListenerMouse::create();
 	switchLaneListener->onMouseDown = CC_CALLBACK_1(GameMaster::switchLaneCallback, this);
@@ -103,10 +107,17 @@ void GameMaster::clickOnCard(int characterId, int direction) {
 	//direction: 0=down, 1=left, 2=right, 3=up
 	//spawn the character object
     if (this->getCost()<1){
+		auto audio = CocosDenshion::SimpleAudioEngine::getInstance();
+
+		audio->playEffect("negative.wav");
         return;
     }
     
 	if (!cardCoolDown) {
+		auto audio = CocosDenshion::SimpleAudioEngine::getInstance();
+
+		audio->playEffect("misc_menu_4.wav");
+
 		auto newCharacter = CharacterCreator::getInstance()->charactersFactory(characterId, direction);
 
 		auto scene = cocos2d::Director::getInstance()->getRunningScene()->getChildByTag(999);
@@ -147,6 +158,9 @@ void GameMaster::clickOnCard(int characterId, int direction) {
         this->setCost(-1);
 	}
 	else {
+		auto audio = CocosDenshion::SimpleAudioEngine::getInstance();
+
+		audio->playEffect("negative.wav");
 		return;
 	}
 }

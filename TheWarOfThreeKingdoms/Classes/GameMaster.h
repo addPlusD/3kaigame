@@ -18,6 +18,7 @@
 #include "Bar.h"
 #include "GameAi.h"
 #include <math.h>
+#include "SimpleAudioEngine.h"  
 
 class GameMaster : public cocos2d::Layer{
     
