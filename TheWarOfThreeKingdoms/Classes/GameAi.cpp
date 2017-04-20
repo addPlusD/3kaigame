@@ -128,7 +128,7 @@ int GameAi::findlanePosition(int i){
 
 void GameAi::createSoldier(int sol, int quantity, int position,int lane){
 
-    // warrior 0, archer 1, knight 2
+    // soldier 0, archer 1, knight 2
     for (int i=0; i<quantity; i++) {
         string fileName[3] = { "moveCharacter10.png", "moveCharacter9.png","moveCharacter8.png"};
         auto newCharacter = Character::createCharacter(fileName[sol].c_str(), 2);
