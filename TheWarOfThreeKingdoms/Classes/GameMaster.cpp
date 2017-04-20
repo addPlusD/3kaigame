@@ -7,7 +7,8 @@
 //
 
 #include "GameMaster.h"
-#include "PauseScene.h"
+#include "MainMenuScene.h"
+
 
 USING_NS_CC;
 
@@ -891,7 +892,7 @@ void GameMaster::update(float delta) {
 void GameMaster::setAi(float time){
     
     if (!aiStart) {
-        GameAi::getInstance()->init();
+        GameAi::getInstance()->init(this->lv);
         aiStart=true;
     }else if (time>6){
         GameAi::getInstance()->update();
@@ -933,5 +934,10 @@ void GameMaster::createAiAction(Character* target){
     target->runAction(runSequence);
     target->startPathing();
     
+}
+
+void GameMaster::setLV(int LV){
+    this->lv = LV;
+    CCLOG("lv %d",LV);
 }
 

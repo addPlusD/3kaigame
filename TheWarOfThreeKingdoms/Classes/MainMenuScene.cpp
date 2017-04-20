@@ -8,6 +8,7 @@
 
 #include "MainMenuScene.h"
 #include "GameWorld.h"
+#include "GameMaster.h"
 
 USING_NS_CC;
 
@@ -36,16 +37,25 @@ bool MainMenu::init()
 
     
     //set menu item
-    auto menu_item_1 = MenuItemFont::create("Play", CC_CALLBACK_1(MainMenu::Play, this));
+    //auto menu_item_1 = MenuItemFont::create("Play", CC_CALLBACK_1(MainMenu::Play, this));
     auto menu_item_2 = MenuItemFont::create("Quit", CC_CALLBACK_1(MainMenu::Quit, this));
     auto menu_item_3 = MenuItemFont::create("The Silent of the General", CC_CALLBACK_1(MainMenu::Play, this));
     
-    menu_item_1->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 4) * 2));
+    auto hard = MenuItemFont::create("Hard", CC_CALLBACK_1(MainMenu::hard, this));
+    auto normal = MenuItemFont::create("Normal", CC_CALLBACK_1(MainMenu::normal, this));
+    auto easy = MenuItemFont::create("Easy", CC_CALLBACK_1(MainMenu::easy, this));
+
+    
+    //menu_item_1->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 4) * 2));
     menu_item_2->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 4) * 1));
     menu_item_3->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 4) * 3));
 
+    hard->setPosition(Point(visibleSize.width / 4, (visibleSize.height / 4) * 2));
+    normal->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 4) * 2));
+    easy->setPosition(Point(visibleSize.width*3/4 , (visibleSize.height / 4) * 2));
     
-    auto *menu = Menu::create(menu_item_3,menu_item_1, menu_item_2, NULL);
+    auto *menu = Menu::create(menu_item_3, menu_item_2,hard,normal,easy, NULL);
+    
     menu->setPosition(Point(0, 0));
     this->addChild(menu);
     
@@ -61,6 +71,26 @@ bool MainMenu::init()
     return true;
 }
 
+
+void MainMenu::hard(cocos2d::Ref *pSender){
+    
+    GameMaster::getInstance()->setLV(3);
+    CCLOG("hard clicked");
+    this->Play(pSender);
+}
+
+void MainMenu::normal(cocos2d::Ref *pSender){
+    GameMaster::getInstance()->setLV(2);
+    CCLOG("normal clicked");
+    this->Play(pSender);
+
+}
+
+void MainMenu::easy(cocos2d::Ref *pSender){
+    GameMaster::getInstance()->setLV(1);
+    CCLOG("easy clicked");
+    this->Play(pSender);
+}
 
 
 void MainMenu::Play(cocos2d::Ref *pSender)

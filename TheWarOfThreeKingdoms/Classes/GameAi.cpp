@@ -25,20 +25,17 @@ GameAi::GameAi() {
 GameAi::~GameAi() {
 }
 
-
-
-
-void GameAi::init(){
+void GameAi::init(int lv){
    //top
-    for (int i=0; i<2; i++) {
+    for (int i=0; i<lv; i++) {
         createSoldier(soliderSet1[i], 1, 650,-1);
     }
     //mid
-    for (int i=0; i<2; i++) {
+    for (int i=0; i<lv; i++) {
         createSoldier(soliderSet2[i], 1, 450,0);
     }
     //bot
-    for (int i=0; i<2; i++) {
+    for (int i=0; i<lv; i++) {
         createSoldier(soliderSet3[i], 1, 250,1);
     }
 }
@@ -82,23 +79,20 @@ void GameAi::update(){
     
     if(closetPosition<300&&closetPosition!=-1){
         //too close, sd defence team(knight) to that lane
-        int position = findlanePosition(strategy3);
         for (int i=0; i<2; i++) {
-            createSoldier(defenceTeam1[i], 1, position,strategy3);
+            createSoldier(defenceTeam1[i], 1, findlanePosition(strategy3),strategy3);
              CCLOG("createSoldier 1");
         }
     }else if (strat2>0.5){
         //high power(dmg), sd defence team(archer1) to that lane
-        int position = findlanePosition(strategy2);
         for (int i=0; i<2; i++) {
-            createSoldier(defenceTeam2[i], 1, position,strategy2);
+            createSoldier(defenceTeam2[i], 1, findlanePosition(strategy2),strategy2);
             CCLOG("createSoldier 2");
         }
     }else if (strat1>0.5){
         //high power(hp), sd defence team(archer2) to that lane
-        int position = findlanePosition(strategy1);
         for (int i=0; i<2; i++) {
-            createSoldier(defenceTeam3[i], 1, position,strategy1);
+            createSoldier(defenceTeam3[i], 1, findlanePosition(strategy1),strategy1);
                  CCLOG("createSoldier 3");
         }
     }else{
@@ -159,19 +153,5 @@ void GameAi::createSoldier(int sol, int quantity, int position,int lane){
 }
 
 
-void GameAi::setLv(int lv){
-    
-    //    //level easy = 0, normal = 1, hard = 2;
-    //    switch (lv) {
-    //        case 0:
-    //           GameAi::easyLv();
-    //            break;
-    //        case 1:
-    //            GameAi::normalLv();
-    //            break;
-    //        case 2:
-    //            GameAi::hardLv();
-    //            break;
-    //    }
-}
+
 

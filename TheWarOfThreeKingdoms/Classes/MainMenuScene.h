@@ -27,6 +27,10 @@ public:
     
     cocos2d::Sprite *mySprite;
     
+    void hard(Ref *pSender);
+    void normal(Ref *pSender);
+    void easy(Ref *pSender);
+    
     void Play(Ref *pSender);
     void Quit(Ref *pSender);
     
