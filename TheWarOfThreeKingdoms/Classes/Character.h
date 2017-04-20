@@ -50,10 +50,13 @@ public:
     //cocos2d::CallFuncN* getCallbackAction();
     
     //for character's die callback
-    void diedObject(Node*);
+    void diedObject(cocos2d::Node*);
     
     //get the attack range bounding box
     cocos2d::Rect getAttackBoundingBox();
+
+	//done hit sprite fading call back
+	//void doneFading(cocos2d::Node*);
     
     //check attacking status
     bool getAttacking();

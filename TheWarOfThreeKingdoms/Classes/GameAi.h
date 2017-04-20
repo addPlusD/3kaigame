@@ -22,12 +22,9 @@ public:
     GameAi();
     ~GameAi();
     void init(int);
-    void setLv(int);
     void update();
 private:
-    
-    int lv;
-
+	int lv;
     int findlanePosition(int );
     void createSoldier(int,int,int,int);
     int soliderSet1[3]={0,1,0};

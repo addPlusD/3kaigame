@@ -20,11 +20,18 @@ Bar::~Bar()
 Bar* Bar::create(int maxHP)
 {
     Bar* pBar = new Bar();
-    pBar = (Bar*) Sprite::create("HP_bar.png");
-    pBar->setTextureRect(Rect(0, 0, 312, 52));
-    pBar->setMaxHP(maxHP);
-    
-    return pBar;
+	if (pBar && pBar->init()) {
+		if (pBar->initWithFile("HP_bar.png")) {
+			pBar->autorelease();
+			pBar->setTextureRect(Rect(0, 0, 312, 52));
+			pBar->setMaxHP(maxHP);
+			return pBar;
+		}
+		
+	}
+	
+	CC_SAFE_DELETE(pBar);
+    return nullptr;
 }
 
 void Bar::setMaxHP(int hp){

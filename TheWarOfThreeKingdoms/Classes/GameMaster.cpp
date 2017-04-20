@@ -9,7 +9,6 @@
 #include "GameMaster.h"
 #include "MainMenuScene.h"
 
-
 USING_NS_CC;
 
 
@@ -547,7 +546,7 @@ void GameMaster::update(float delta) {
 				if (ai->getHealth() <= 0) {
 					CCLOG("Player killed the AI with damage %d", player->getAttackDamage());
 					//ai dies
-					ai->die();
+					//ai->die();
 					//add the object to TO BE DELETED vector
 					homeTBDTopVector.pushBack(ai);
 					//remove ai from the lane vector
@@ -559,6 +558,11 @@ void GameMaster::update(float delta) {
 				break;
 			}
 		}
+		//remove all the fucking elements in the TO BE DELETED vector, becoz they can't be erased inside the iteration
+		for (Character* character : homeTBDTopVector) {
+			removeCharacterFromLane(laneTop, character, "home");
+			character->die();
+		}
 		//if this round did not find any enemy, and player is not in action(may be due to last round hit)
 		//then resume its action
 		if (!playerFoundEnemy && player->isStopped()) {
@@ -567,10 +571,7 @@ void GameMaster::update(float delta) {
 		}
 	}
 
-	//remove all the fucking elements in the TO BE DELETED vector, becoz they can't be erased inside the iteration
-	for (Character* character : homeTBDTopVector) {
-		removeCharacterFromLane(laneTop, character, "home");
-	}
+	
 
 
 	//Handle top collision (AI attack turn)
@@ -593,7 +594,7 @@ void GameMaster::update(float delta) {
 					//stop player action
 					player->stopAction(player->getActionSequence());
 					//player dies
-					player->die();
+					//player->die();
 					//add the object to TO BE DELETED vector
 					awayTBDTopVector.pushBack(player);
 					//remove player from the lane vector
@@ -606,6 +607,11 @@ void GameMaster::update(float delta) {
 			}
 
 		}
+		//remove all the fucking elements in the TO BE DELETED vector, becoz they can't be erased inside the iteration
+		for (Character* character : awayTBDTopVector) {
+			removeCharacterFromLane(laneTop, character, "away");
+			character->die();
+		}
 		//if this round did not find any enemy, and player is not in action(may be due to last round hit)
 		//then resume its action
 		if (!aiFoundEnemy && ai->isStopped()) {
@@ -614,10 +620,7 @@ void GameMaster::update(float delta) {
 		}
 	}
 
-	//remove all the fucking elements in the TO BE DELETED vector, becoz they can't be erased inside the iteration
-	for (Character* character : awayTBDTopVector) {
-		removeCharacterFromLane(laneTop, character, "away");
-	}
+	
 
 
 
@@ -639,7 +642,7 @@ void GameMaster::update(float delta) {
 				if (ai->getHealth() <= 0) {
 					CCLOG("Player killed the AI with damage %d", player->getAttackDamage());
 					//ai dies
-					ai->die();
+					//ai->die();
 					//add the object to TO BE DELETED vector
 					homeTBDMidVector.pushBack(ai);
 					//remove ai from the lane vector
@@ -651,6 +654,11 @@ void GameMaster::update(float delta) {
 				break;
 			}
 		}
+		//remove all the fucking elements in the TO BE DELETED vector, becoz they can't be erased inside the iteration
+		for (Character* character : homeTBDMidVector) {
+			removeCharacterFromLane(laneMid, character, "home");
+			character->die();
+		}
 		//if this round did not find any enemy, and player is not in action(may be due to last round hit)
 		//then resume its action
 		if (!playerFoundEnemy && player->isStopped()) {
@@ -659,10 +667,7 @@ void GameMaster::update(float delta) {
 		}
 	}
 
-	//remove all the fucking elements in the TO BE DELETED vector, becoz they can't be erased inside the iteration
-	for (Character* character : homeTBDMidVector) {
-		removeCharacterFromLane(laneMid, character, "home");
-	}
+	
 
 
 	//Handle mid collision (AI attack turn)
@@ -685,7 +690,7 @@ void GameMaster::update(float delta) {
 					//stop player action
 					player->stopAction(player->getActionSequence());
 					//player dies
-					player->die();
+					//player->die();
 					//add the object to TO BE DELETED vector
 					awayTBDMidVector.pushBack(player);
 					//remove player from the lane vector
@@ -698,6 +703,11 @@ void GameMaster::update(float delta) {
 			}
 
 		}
+		//remove all the fucking elements in the TO BE DELETED vector, becoz they can't be erased inside the iteration
+		for (Character* character : awayTBDMidVector) {
+			removeCharacterFromLane(laneMid, character, "away");
+			character->die();
+		}
 		//if this round did not find any enemy, and player is not in action(may be due to last round hit)
 		//then resume its action
 		if (!aiFoundEnemy && ai->isStopped()) {
@@ -706,10 +716,7 @@ void GameMaster::update(float delta) {
 		}
 	}
 
-	//remove all the fucking elements in the TO BE DELETED vector, becoz they can't be erased inside the iteration
-	for (Character* character : awayTBDMidVector) {
-		removeCharacterFromLane(laneMid, character, "away");
-	}
+	
 
 
 
@@ -725,7 +732,7 @@ void GameMaster::update(float delta) {
 				if (ai->getHealth() <= 0) {
 					CCLOG("Player killed the AI with damage %d", player->getAttackDamage());
 					//ai dies
-					ai->die();
+					//ai->die();
 					//add the object to TO BE DELETED vector
 					homeTBDBotVector.pushBack(ai);
 					//remove ai from the lane vector
@@ -737,6 +744,11 @@ void GameMaster::update(float delta) {
 				break;
 			}
 		}
+		//remove all the fucking elements in the TO BE DELETED vector, becoz they can't be erased inside the iteration
+		for (Character* character : homeTBDBotVector) {
+			removeCharacterFromLane(laneBot, character, "home");
+			character->die();
+		}
 		//if this round did not find any enemy, and player is not in action(may be due to last round hit)
 		//then resume its action
 		if (!playerFoundEnemy && player->isStopped()) {
@@ -745,10 +757,7 @@ void GameMaster::update(float delta) {
 		}
 	}
 
-	//remove all the fucking elements in the TO BE DELETED vector, becoz they can't be erased inside the iteration
-	for (Character* character : homeTBDBotVector) {
-		removeCharacterFromLane(laneBot, character, "home");
-	}
+	
 
 
 	//Handle bot collision (AI attack turn)
@@ -765,7 +774,7 @@ void GameMaster::update(float delta) {
 					//stop player action
 					player->stopAction(player->getActionSequence());
 					//player dies
-					player->die();
+					//player->die();
 					//add the object to TO BE DELETED vector
 					awayTBDBotVector.pushBack(player);
 					//remove player from the lane vector
@@ -778,6 +787,11 @@ void GameMaster::update(float delta) {
 			}
 
 		}
+		//remove all the fucking elements in the TO BE DELETED vector, becoz they can't be erased inside the iteration
+		for (Character* character : awayTBDBotVector) {
+			removeCharacterFromLane(laneBot, character, "away");
+			character->die();
+		}
 		//if this round did not find any enemy, and player is not in action(may be due to last round hit)
 		//then resume its action
 		if (!aiFoundEnemy && ai->isStopped()) {
@@ -786,10 +800,7 @@ void GameMaster::update(float delta) {
 		}
 	}
 
-	//remove all the fucking elements in the TO BE DELETED vector, becoz they can't be erased inside the iteration
-	for (Character* character : awayTBDBotVector) {
-		removeCharacterFromLane(laneBot, character, "away");
-	}
+	
 
 	if (cardCoolDown) {
 		this->timeStamp += delta;
@@ -892,7 +903,7 @@ void GameMaster::update(float delta) {
 void GameMaster::setAi(float time){
     
     if (!aiStart) {
-        GameAi::getInstance()->init(this->lv);
+        GameAi::getInstance()->init();
         aiStart=true;
     }else if (time>6){
         GameAi::getInstance()->update();
@@ -918,26 +929,25 @@ std::vector<Character*> GameMaster::getAwayCharacter(int lane){
     
 }
 
-void GameMaster::createAiAction(Character* target){
-    //set the moveto action to the new character
-    auto characterMoveAction = MoveTo::create(1.2*target->getSpeed(), Vec2(awaySpawnPositionX, target->getPositionY()));
-    
-    CCLOG("init duration:%f",1.2*target->getSpeed());
-    
-    //set the duration to action for later resume
-    target->setPassedActionDuration(1.2*target->getSpeed());
-    
-    
-    auto runSequence = Sequence::create(characterMoveAction, nullptr);
-    target->setActionSequence(runSequence);
-    
-    target->runAction(runSequence);
-    target->startPathing();
-    
-}
+//void GameMaster::createAiAction(Character* target){
+//    //set the moveto action to the new character
+//    auto characterMoveAction = MoveTo::create(1.2*target->getSpeed(), Vec2(awaySpawnPositionX, target->getPositionY()));
+//    
+//    CCLOG("init duration:%f",1.2*target->getSpeed());
+//    
+//    //set the duration to action for later resume
+//    target->setPassedActionDuration(1.2*target->getSpeed());
+//    
+//    
+//    auto runSequence = Sequence::create(characterMoveAction, nullptr);
+//    target->setActionSequence(runSequence);
+//    
+//    target->runAction(runSequence);
+//    target->startPathing();
+//    
+//}
 
-void GameMaster::setLV(int LV){
-    this->lv = LV;
-    CCLOG("lv %d",LV);
+void GameMaster::setLV(int LV) {
+	this->lv = LV;
+	CCLOG("lv %d", LV);
 }
-

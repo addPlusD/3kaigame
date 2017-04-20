@@ -48,7 +48,7 @@ Character* Character::createCharacter(const std::string& _file, int direction)
     
     
     CC_SAFE_DELETE(pCharacter);
-    return NULL;
+    return nullptr;
     
 }
 
@@ -156,8 +156,9 @@ void Character::stopAndAttack(Sprite* enemy) {
 		//make the sprite be visible now
 		hitSprite->setVisible(true);
 		//set the fade in and fade out to the hit sprite
-		auto fadeIn = FadeIn::create(0.3f);
-		auto fadeOut = FadeOut::create(0.3f);
+		auto fadeIn = FadeIn::create(0.2f);
+		auto fadeOut = FadeOut::create(0.2f);
+		//auto fadeDoneCallback = CallFuncN::create(CC_CALLBACK_1(Character::doneFading, this));
 		auto sequence = Sequence::create(fadeIn, fadeOut, nullptr);
 		hitSprite->runAction(sequence);
 		//cool down the character
@@ -167,6 +168,11 @@ void Character::stopAndAttack(Sprite* enemy) {
 		
     }
 }
+
+//void Character::doneFading(Node* sender) {
+//	Sprite* theSender = (Sprite*)sender;
+//	theSender->removeFromParent();
+//}
 
 void Character::loseBlood(int damage){
     this->health -= damage;
@@ -181,12 +187,13 @@ void Character::die() {
     auto dieCallback = CallFuncN::create(CC_CALLBACK_1(Character::diedObject, this));
     auto runSequence = Sequence::create(fadeOut, dieCallback, nullptr);
 	this->runAction(runSequence);
+	this->getChildByTag(101)->runAction(runSequence->clone());
 }
 
 void Character::diedObject(Node* sender){
-//    Sprite* sprite = (Sprite*) sender;
-    this->removeChildByTag(101);
-//    Director::getInstance()->getRunningScene()->getChildByTag(999)->removeChild(sprite);
+    Sprite* sprite = (Sprite*) sender;
+	sprite->removeAllChildren();
+    sprite->removeFromParent();
 }
 
 void Character::setHealth(int hp){

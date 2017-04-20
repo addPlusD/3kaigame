@@ -76,8 +76,8 @@ public:
     void recoverCost(float);
     int getCost();
     
-    void setLV(int);
     
+	void setLV(int);
     //Ai
     void setAi(float);
     std::vector<Character*> getAwayCharacter(int);
@@ -106,9 +106,9 @@ private:
 	
 	int currentLane;
     int cost = 5;
-    int lv =1;
-    
-    
+	int lv = 1;
+
+
     float timeStamp=0;
     float timeSpent=0;
     bool cardCoolDown = false;
